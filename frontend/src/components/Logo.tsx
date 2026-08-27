@@ -169,8 +169,8 @@ export const LogoMark: React.FC<{ size?: number; className?: string }> = ({ size
 export const Logo: React.FC<LogoProps> = ({
   size = 'md',
   showSubtitle = false,
-  showBadge = true,
-  badgeText = 'v2.0',
+  showBadge = false,
+  badgeText = '',
   className = '',
   iconOnly = false,
   onClick,

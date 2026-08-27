@@ -50,10 +50,12 @@ const Landing: React.FC = () => {
         animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
-        <div style={{ marginBottom: 16 }}>
-          <Logo size="hero" showSubtitle showBadge badgeText="v2.0 • LIVE SOVEREIGN BASKET" />
+        <div style={{ marginBottom: 18 }}>
+          <Logo size="hero" />
         </div>
-        <div className="landing-subtitle" style={{ marginTop: 12 }}>Indian Airfare Price Index & Analytics</div>
+        <div className="landing-subtitle" style={{ marginTop: 8 }}>
+          National Airfare Price Index &amp; Aviation Intelligence
+        </div>
         <div className="landing-desc">
           A real-time aviation intelligence platform utilizing modified Laspeyres passenger-weighted
           indexing to track domestic fare cost structures across 20 airports and 80 routes.
