@@ -36,8 +36,7 @@ const Landing: React.FC = () => {
   return (
     <div className="landing">
       {/* Top bar */}
-      <div style={{ width: '100%', maxWidth: 1100, display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-        <Logo size="md" showSubtitle />
+      <div style={{ width: '100%', maxWidth: 1100, display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginBottom: '2rem' }}>
         <button className="btn btn-primary" onClick={() => navigate('/dashboard')}>
           ENTER FLIGHT DECK →
         </button>
