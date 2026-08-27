@@ -179,7 +179,7 @@ const ATFSimulator: React.FC<{ dark: boolean }> = ({ dark }) => {
           <div className="stat-note">on typical ₹5,200 ticket</div>
         </div>
         <div className="stat-cell">
-          <div className="stat-sub">New APIx Level</div>
+          <div className="stat-sub">New FareX Level</div>
           <div className="stat-big stat-amber">{newIndex.toFixed(1)}</div>
           <div className="stat-note">vs current {apixBase}</div>
         </div>
@@ -252,10 +252,10 @@ const ATFSimulator: React.FC<{ dark: boolean }> = ({ dark }) => {
           layout={{
             ...PB, height: 340,
             margin: { l: 70, r: 20, t: 30, b: 50 },
-            title: { text: '30-Day APIx Projection', font: { color: dark ? '#B7C7CC' : '#0C2C55', size: 13 } },
+            title: { text: '30-Day FareX Projection', font: { color: dark ? '#B7C7CC' : '#0C2C55', size: 13 } },
             legend: { font: { color: dark ? '#B7C7CC' : '#296374', size: 11 }, bgcolor: 'transparent' },
             xaxis: { ...AX, title: { text: 'Days from Today', font: { size: 12 }, standoff: 10 } },
-            yaxis: { ...AX, title: { text: 'APIx Level', font: { size: 12 }, standoff: 10 }, tickformat: '.1f' },
+            yaxis: { ...AX, title: { text: 'FareX Level', font: { size: 12 }, standoff: 10 }, tickformat: '.1f' },
             shapes: [{ type: 'line', x0: 14, x1: 14, y0: 0, y1: 1, xref: 'x', yref: 'paper', line: { color: '#296374', dash: 'dash', width: 1 } }],
             annotations: [{ x: 14, y: 0.97, xref: 'x', yref: 'paper', text: 'Full phase-in', showarrow: false, font: { color: '#296374', size: 10 } }],
           }}
@@ -271,7 +271,7 @@ const ATFSimulator: React.FC<{ dark: boolean }> = ({ dark }) => {
           <div style={{ color: 'var(--sub)', fontSize: '0.88rem', lineHeight: 1.7 }}>
             A +{atfChange}% ATF shock risks fare inflation of <strong style={{ color: 'var(--red)' }}>+{avgFareImpact.toFixed(1)}%</strong>. Recommended actions:
             consider temporary Fuel Surcharge Cap notification under Civil Aviation Policy Section 3.4, or ATF import duty relaxation for domestic operators.
-            <strong style={{ color: 'var(--text)' }}> Monitor APIx for 3 consecutive weeks before invoking fare ceiling orders.</strong>
+            <strong style={{ color: 'var(--text)' }}> Monitor FareX for 3 consecutive weeks before invoking fare ceiling orders.</strong>
           </div>
         </div>
       )}

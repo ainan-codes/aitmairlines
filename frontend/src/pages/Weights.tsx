@@ -85,7 +85,7 @@ const Weights: React.FC = () => {
         <h1 style={{ fontSize: '2.4rem', fontWeight: 900, letterSpacing: -1, color: 'var(--text)', margin: '0 0 10px 0' }}>Passenger-Weighted Route Allocation</h1>
         <p style={{ color: 'var(--sub)', fontSize: '1rem', maxWidth: 820, lineHeight: 1.75, margin: 0 }}>
           A naive index treats every route equally — the Chandigarh-Jaipur hop would carry the same weight as DEL-BOM.
-          APIx uses quarterly passenger volume from the <strong style={{ color: 'var(--text)' }}>Directorate General of Civil Aviation (DGCA)</strong> to weight each route by its true share of national air traffic.
+          FareX uses quarterly passenger volume from the <strong style={{ color: 'var(--text)' }}>Directorate General of Civil Aviation (DGCA)</strong> to weight each route by its true share of national air traffic.
         </p>
       </div>
 
@@ -269,7 +269,7 @@ const Weights: React.FC = () => {
               <div style={{ color: 'var(--sub)', fontSize: '0.8rem', marginTop: 4 }}>Equally divides across {routes.length} routes</div>
             </div>
             <div className="card" style={{ border: '1px solid rgba(139,92,246,0.3)', background: 'rgba(139,92,246,0.06)' }}>
-              <div style={{ color: '#629FAD', fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>APIx DGCA Weighted</div>
+              <div style={{ color: '#629FAD', fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>FareX DGCA Weighted</div>
               <div style={{ color: 'var(--purple)', fontSize: '1.8rem', fontWeight: 900, fontFamily: 'JetBrains Mono,monospace' }}>
                 {weightImpact >= 0 ? '+' : ''}{weightImpact.toFixed(3)} pts
               </div>
@@ -283,7 +283,7 @@ const Weights: React.FC = () => {
             key={`impact-${dark}`}
             data={[{
               type: 'bar',
-              x: ['Naive (Unweighted)', `APIx | ${selectedId}`],
+              x: ['Naive (Unweighted)', `FareX | ${selectedId}`],
               y: [naiveImpact, weightImpact],
               marker: { color: ['#EF4444', '#0C2C55'] },
               text: [`${naiveImpact >= 0 ? '+' : ''}${naiveImpact.toFixed(3)} pts`, `${weightImpact >= 0 ? '+' : ''}${weightImpact.toFixed(3)} pts`],

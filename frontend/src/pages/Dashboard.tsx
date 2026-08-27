@@ -265,7 +265,7 @@ const Dashboard: React.FC = () => {
       {/* ── HUD Ticker ── */}
       <div className="hud-ticker">
         <div className="hud-ticker-item">
-          <div className="hud-ticker-label">APIx Live</div>
+          <div className="hud-ticker-label">FareX Live</div>
           <div className="hud-ticker-live">{loading ? '—' : ti7.toFixed(1)}</div>
           <div style={{fontSize:'0.75rem', color:'var(--sub)', marginTop:4, fontFamily:'JetBrains Mono,monospace'}}>T+7 basis</div>
         </div>
@@ -284,7 +284,7 @@ const Dashboard: React.FC = () => {
 
       {/* ── 30-Day Forward Trend ── */}
       <div style={{marginBottom:8}}>
-        <div className="section-label">30-Day APIx Forward Trajectory</div>
+        <div className="section-label">30-Day FareX Forward Trajectory</div>
         <div style={{color:'var(--sub)', fontSize:'0.8rem', marginBottom:8}}>
           Projected index values across booking horizons · Base = 100 (parity)
         </div>
@@ -295,10 +295,10 @@ const Dashboard: React.FC = () => {
           { x:trendDates, y:Array(45).fill(fillBase), mode:'lines', line:{width:0}, showlegend:false, hoverinfo:'skip' as const },
           {
             x:trendDates, y:trendVals,
-            mode:'lines', name:'APIx Index',
+            mode:'lines', name:'FareX Index',
             fill:'tonexty', fillcolor: dark ? 'rgba(98,159,173,0.09)' : 'rgba(12,44,85,0.09)',
             line:{color: dark ? '#629FAD' : '#0C2C55', width:2.5, shape:'spline' as const},
-            hovertemplate:'<b>Date:</b> %{x}<br><b>APIx:</b> %{y:.2f}<extra></extra>',
+            hovertemplate:'<b>Date:</b> %{x}<br><b>FareX:</b> %{y:.2f}<extra></extra>',
             hoverlabel: {
               bgcolor: dark ? '#1c4262' : '#FFFFFF',
               bordercolor: dark ? '#296374' : '#B7C7CC',
@@ -330,7 +330,7 @@ const Dashboard: React.FC = () => {
           },
           yaxis:{
             ...AX,
-            title:{text:'APIx Index', font:{color: dark?'#B7C7CC':'#296374', size:13}, standoff:10},
+            title:{text:'FareX Index', font:{color: dark?'#B7C7CC':'#296374', size:13}, standoff:10},
             tickformat:'.1f',
             range: [yMin, yMax],
           },
@@ -375,7 +375,7 @@ const Dashboard: React.FC = () => {
                           <Popup>
                             <div style={{fontFamily:'Inter,sans-serif', minWidth:160}}>
                               <div style={{fontSize:'1.05rem', fontWeight:800, color:'#629FAD', marginBottom:6}}>{r.route_id}</div>
-                              <div>APIx: <b>{r.route_index.toFixed(1)}</b></div>
+                              <div>FareX: <b>{r.route_index.toFixed(1)}</b></div>
                               <div>Avg Change: <b style={{color:r.avg_pct_change>0?'#EF4444':'#10B981'}}>
                                 {r.avg_pct_change>0?'+':''}{r.avg_pct_change.toFixed(1)}%
                               </b></div>

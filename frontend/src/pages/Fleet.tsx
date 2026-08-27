@@ -345,7 +345,7 @@ const Fleet: React.FC = () => {
               <div style={{ fontSize: '0.82rem', color: 'var(--sub)', lineHeight: 2.2 }}>
                 <div>🛫 Hubs: <strong style={{ color: 'var(--text)' }}>{c.hubs.join(', ')}</strong></div>
                 <div>🌐 Routes: <strong style={{ color: 'var(--text)' }}>{c.routes} (total)</strong></div>
-                <div>📊 In APIx Basket: <strong style={{ color: c.color }}>{c.routesInBasket} / 80 routes</strong></div>
+                <div>📊 In FareX Basket: <strong style={{ color: c.color }}>{c.routesInBasket} / 80 routes</strong></div>
                 <div>🏆 Market Share: <strong style={{ color: c.color, fontFamily: 'JetBrains Mono,monospace' }}>{c.marketShare}%</strong></div>
                 <div>💺 Fleet Type: <strong style={{ color: 'var(--text)' }}>{c.fleetType}</strong></div>
               </div>
@@ -378,7 +378,7 @@ const Fleet: React.FC = () => {
               <MetricBar label="Comfort Score"         value={c.metrics.comfort}  color="#296374" dark={dark} />
 
               <div style={{ marginTop: 24 }}>
-                <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1.5, color: 'var(--sub)', marginBottom: 12 }}>Top Routes in APIx Basket</div>
+                <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1.5, color: 'var(--sub)', marginBottom: 12 }}>Top Routes in FareX Basket</div>
                 {c.topRoutes.map((r, i) => (
                   <div key={r} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 0', borderBottom: `1px solid ${dark ? '#296374' : '#B7C7CC'}` }}>
                     <span style={{ width: 22, height: 22, borderRadius: 6, background: c.color + '22', color: c.color, fontSize: '0.7rem', fontWeight: 800, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>#{i + 1}</span>
@@ -465,7 +465,7 @@ const Fleet: React.FC = () => {
           layout={{
             ...PB, height: 320,
             margin: { t: 40, b: 10, l: 30, r: 30 },
-            title: { text: 'Market Share by Carrier (APIx Routes)', font: { color: dark ? '#EDEDCE' : '#0C2C55', size: 13 } },
+            title: { text: 'Market Share by Carrier (FareX Routes)', font: { color: dark ? '#EDEDCE' : '#0C2C55', size: 13 } },
             showlegend: true,
             legend: { font: { color: dark ? '#B7C7CC' : '#296374', size: 10 }, bgcolor: 'transparent', orientation: 'h', x: 0.5, xanchor: 'center', y: -0.1 },
             annotations: [{ text: '<b>Market Share</b>', x: 0.5, y: 0.5, showarrow: false, font: { color: dark ? '#EDEDCE' : '#0C2C55', size: 13 }, align: 'center' }],
@@ -535,7 +535,7 @@ const Fleet: React.FC = () => {
       {/* Footer context */}
       <div style={{ marginTop: 32, padding: 20, borderRadius: 12, background: dark ? '#163a63' : '#EDEDCE', border: `1px solid ${dark ? '#296374' : '#B7C7CC'}` }}>
         <div style={{ fontSize: '0.75rem', color: 'var(--sub)', lineHeight: 1.8 }}>
-          <strong style={{ color: 'var(--text)' }}>📌 Data Sources & Methodology:</strong> Market share figures derived from DGCA quarterly traffic data (Q1 2024). Fleet counts from DGCA aircraft register and airline annual reports. Performance metrics are composite scores computed from DGCA on-time statistics, DGCA consumer complaint data, and APIx pricing analysis. Logos served via Logo.dev (identification use only). All figures are for analytical and research purposes.
+          <strong style={{ color: 'var(--text)' }}>📌 Data Sources & Methodology:</strong> Market share figures derived from DGCA quarterly traffic data (Q1 2024). Fleet counts from DGCA aircraft register and airline annual reports. Performance metrics are composite scores computed from DGCA on-time statistics, DGCA consumer complaint data, and FareX pricing analysis. Logos served via Logo.dev (identification use only). All figures are for analytical and research purposes.
         </div>
       </div>
     </div>

@@ -227,7 +227,7 @@ export const Analysts: React.FC = () => {
         y: apixInflation,
         type: 'scatter' as const,
         mode: 'lines' as const,
-        name: 'APIx Airfare Price Inflation (%)',
+        name: 'FareX Airfare Price Inflation (%)',
         line: { color: '#EF4444', width: 2.5, dash: 'dot' },
       }
     ];
@@ -311,7 +311,7 @@ export const Analysts: React.FC = () => {
               Aviation Pricing & Policy Intelligence Hub
             </h1>
             <p style={{ color: 'var(--sub)', fontSize: '0.96rem', maxWidth: 840, lineHeight: 1.6, margin: 0 }}>
-              Official regulatory auditing suite for the <strong>Airfare Price Index (APIx)</strong>. Designed for economists, competition regulators, and government analysts to detect price gouging, track macroeconomic inflation correlation, evaluate route monopolies (HHI), and export publication-ready data.
+              Official regulatory auditing suite for the <strong>Airfare Price Index (FareX)</strong>. Designed for economists, competition regulators, and government analysts to detect price gouging, track macroeconomic inflation correlation, evaluate route monopolies (HHI), and export publication-ready data.
             </p>
           </div>
 
@@ -561,7 +561,7 @@ export const Analysts: React.FC = () => {
         {/* Statistical Note */}
         <div style={{ background: dark ? '#091f3d' : '#EDEDCE', padding: '12px 16px', borderRadius: 8, fontSize: '0.8rem', color: 'var(--sub)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 10 }}>
           <div>
-            <strong>IQR Outlier Ceiling:</strong> Q3 (₹{anomalyData?.iqr_stats.q3.toLocaleString()}) + 1.5×IQR (₹{anomalyData?.iqr_stats.iqr.toLocaleString()}) = <strong style={{ color: 'var(--cyan)' }}>₹{anomalyData?.iqr_stats.upper_bound.toLocaleString()}</strong>. Fares above this are filtered out during median APIx computation.
+            <strong>IQR Outlier Ceiling:</strong> Q3 (₹{anomalyData?.iqr_stats.q3.toLocaleString()}) + 1.5×IQR (₹{anomalyData?.iqr_stats.iqr.toLocaleString()}) = <strong style={{ color: 'var(--cyan)' }}>₹{anomalyData?.iqr_stats.upper_bound.toLocaleString()}</strong>. Fares above this are filtered out during median FareX computation.
           </div>
           <button 
             className="btn btn-sm"
@@ -597,7 +597,7 @@ export const Analysts: React.FC = () => {
         </div>
 
         <p style={{ color: 'var(--sub)', fontSize: '0.88rem', margin: '0 0 16px 0' }}>
-          Comparing Ministry of Statistics (MoSPI) Headline Consumer Price Index (CPI) year-over-year inflation against the APIx domestic airfare index. Economists can observe post-2022 fuel and capacity shock elasticity.
+          Comparing Ministry of Statistics (MoSPI) Headline Consumer Price Index (CPI) year-over-year inflation against the FareX domestic airfare index. Economists can observe post-2022 fuel and capacity shock elasticity.
         </p>
 
         {/* Plotly Dual Axis Chart with Zoom & Range Slider */}
@@ -606,7 +606,7 @@ export const Analysts: React.FC = () => {
             data={inflationChartData as any}
             layout={{
               ...PB,
-              title: { text: 'YoY Inflation: MoSPI Headline CPI vs APIx Airfare Index (%)', font: { size: 13, color: dark ? '#EDEDCE' : '#0C2C55' } },
+              title: { text: 'YoY Inflation: MoSPI Headline CPI vs FareX Airfare Index (%)', font: { size: 13, color: dark ? '#EDEDCE' : '#0C2C55' } },
               xaxis: { ...AX, title: { text: 'Timeline (Monthly History)', font: { size: 11, color: dark ? '#B7C7CC' : '#296374' } } },
               yaxis: { ...AX, title: { text: 'Inflation Rate (% YoY)', font: { size: 11, color: dark ? '#B7C7CC' : '#296374' } } },
               legend: { orientation: 'h', y: -0.22, font: { size: 11, color: dark ? '#EDEDCE' : '#0C2C55' } }

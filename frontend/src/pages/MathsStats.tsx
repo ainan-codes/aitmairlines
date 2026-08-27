@@ -79,7 +79,7 @@ const IndexMath: React.FC<{ dark: boolean }> = ({ dark }) => {
         <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 2, color: 'var(--cyan)', marginBottom: 8 }}>Methodology</div>
         <h1 style={{ fontSize: '2.4rem', fontWeight: 900, letterSpacing: -1, color: 'var(--text)', margin: '0 0 10px 0' }}>Modified Laspeyres Price Index</h1>
         <p style={{ color: 'var(--sub)', fontSize: '1rem', maxWidth: 820, lineHeight: 1.75, margin: 0 }}>
-          The <strong style={{ color: 'var(--text)' }}>Airfare Price Index (APIx)</strong> uses a modified Laspeyres methodology — the gold standard used by national statistical agencies — adapted specifically for India's aviation market, where booking horizon, airline mix, and passenger volume vary enormously across routes.
+          The <strong style={{ color: 'var(--text)' }}>Airfare Price Index (FareX)</strong> uses a modified Laspeyres methodology — the gold standard used by national statistical agencies — adapted specifically for India's aviation market, where booking horizon, airline mix, and passenger volume vary enormously across routes.
         </p>
       </div>
 
@@ -298,7 +298,7 @@ const WeightAllocation: React.FC<{ dark: boolean }> = ({ dark }) => {
         <h2 style={{ fontSize: '2.4rem', fontWeight: 900, letterSpacing: -1, color: 'var(--text)', margin: '0 0 10px 0' }}>Passenger-Weighted Route Allocation</h2>
         <p style={{ color: 'var(--sub)', fontSize: '1rem', maxWidth: 820, lineHeight: 1.75, margin: 0 }}>
           A naive index treats every route equally — the Chandigarh-Jaipur hop would carry the same weight as DEL-BOM.
-          APIx uses quarterly passenger volume from the <strong style={{ color: 'var(--text)' }}>Directorate General of Civil Aviation (DGCA)</strong> to weight each route by its true share of national air traffic.
+          FareX uses quarterly passenger volume from the <strong style={{ color: 'var(--text)' }}>Directorate General of Civil Aviation (DGCA)</strong> to weight each route by its true share of national air traffic.
         </p>
       </div>
 
@@ -436,7 +436,7 @@ const WeightAllocation: React.FC<{ dark: boolean }> = ({ dark }) => {
               <div style={{ color: 'var(--sub)', fontSize: '0.8rem', marginTop: 4 }}>Equally divides across {routes.length} routes</div>
             </div>
             <div className="card" style={{ border: '1px solid rgba(139,92,246,0.3)', background: 'rgba(139,92,246,0.06)' }}>
-              <div style={{ color: '#629FAD', fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>APIx DGCA Weighted</div>
+              <div style={{ color: '#629FAD', fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>FareX DGCA Weighted</div>
               <div style={{ color: 'var(--purple)', fontSize: '1.8rem', fontWeight: 900, fontFamily: 'JetBrains Mono,monospace' }}>
                 {weightImpact >= 0 ? '+' : ''}{weightImpact.toFixed(3)} pts
               </div>
@@ -449,7 +449,7 @@ const WeightAllocation: React.FC<{ dark: boolean }> = ({ dark }) => {
             key={`impact-${dark}`}
             data={[{
               type: 'bar',
-              x: ['Naive (Unweighted)', `APIx | ${selectedId}`],
+              x: ['Naive (Unweighted)', `FareX | ${selectedId}`],
               y: [naiveImpact, weightImpact],
               marker: { color: ['#EF4444', '#0C2C55'] },
               text: [`${naiveImpact >= 0 ? '+' : ''}${naiveImpact.toFixed(3)} pts`, `${weightImpact >= 0 ? '+' : ''}${weightImpact.toFixed(3)} pts`],
