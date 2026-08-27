@@ -80,46 +80,37 @@ body {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
 }
 
+.hud-logo-clickable {
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
+}
+.hud-logo-clickable:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+.hud-logo-clickable:hover .apix-logo-mark {
+  transform: scale(1.06) rotate(-2deg);
+}
+
+.apix-brand-logo {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.apix-logo-mark {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.35s ease;
+}
+.apix-brand-logo:hover .apix-logo-mark {
+  filter: drop-shadow(0 4px 12px rgba(6, 182, 212, 0.4));
+}
+
+.apix-logo-badge {
+  box-shadow: 0 1px 4px rgba(12, 44, 85, 0.05);
+}
+
 .hud-logo {
   display: flex;
   align-items: center;
   gap: 12px;
   flex-shrink: 0;
-}
-
-.hud-logo-icon { 
-  font-size: 2.2rem; 
-  color: var(--cyan); 
-  filter: drop-shadow(0 0 10px rgba(6,182,212,0.5)); 
-  animation: float 3s ease-in-out infinite;
-}
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
-}
-
-.hud-logo-text {
-  font-family: var(--font-heading);
-  font-size: 2.2rem;
-  font-weight: 900;
-  letter-spacing: -1px;
-  color: var(--text);
-  line-height: 1;
-  background: linear-gradient(135deg, var(--text) 0%, var(--cyan) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.hud-badge {
-  font-size: 0.62rem;
-  background: var(--cyan-dim);
-  color: var(--cyan);
-  border: 1px solid var(--border-glow);
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-family: var(--font-mono);
-  font-weight: 700;
-  margin-top: 8px;
-  align-self: flex-start;
 }
 
 .hud-nav-tabs {

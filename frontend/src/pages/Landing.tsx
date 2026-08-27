@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import Logo from '../components/Logo';
 
 const FEATURES = [
   {
@@ -36,10 +37,7 @@ const Landing: React.FC = () => {
     <div className="landing">
       {/* Top bar */}
       <div style={{ width: '100%', maxWidth: 1100, display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-        <div className="hud-logo" style={{ gap: 10 }}>
-          <span className="hud-logo-icon" style={{ fontSize: '1.4rem' }}>✈</span>
-          <span className="hud-logo-text" style={{ fontSize: '1.3rem' }}>APIx</span>
-        </div>
+        <Logo size="md" />
         <button className="btn btn-primary" onClick={() => navigate('/dashboard')}>
           ENTER FLIGHT DECK →
         </button>
@@ -47,16 +45,15 @@ const Landing: React.FC = () => {
 
       {/* Title Card */}
       <motion.div
-        style={{ width: '100%', maxWidth: 1100, textAlign: 'center', marginBottom: 60 }}
+        style={{ width: '100%', maxWidth: 1100, textAlign: 'center', marginBottom: 60, display: 'flex', flexDirection: 'column', alignItems: 'center' }}
         initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
         animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
-        <div className="landing-title">
-          <span style={{ color: 'var(--cyan)', filter: 'drop-shadow(0 0 12px rgba(98,159,173,0.4))' }}>✈</span>
-          APIx
+        <div style={{ marginBottom: 16 }}>
+          <Logo size="hero" showSubtitle showBadge badgeText="v2.0 • LIVE SOVEREIGN BASKET" />
         </div>
-        <div className="landing-subtitle">Indian Airfare Price Index & Analytics</div>
+        <div className="landing-subtitle" style={{ marginTop: 12 }}>Indian Airfare Price Index & Analytics</div>
         <div className="landing-desc">
           A real-time aviation intelligence platform utilizing modified Laspeyres passenger-weighted
           indexing to track domestic fare cost structures across 20 airports and 80 routes.

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import ThreeUIButton from './ThreeUIButton';
 import GlassmorphismCTA from './GlassmorphismCTA';
+import Logo from './Logo';
 import { API_BASE_URL } from '../config';
 
 const TABS = [
@@ -37,11 +38,7 @@ const HudNav: React.FC = () => {
   return (
     <nav className="hud-nav">
       {/* Logo */}
-      <div className="hud-logo">
-        <span className="hud-logo-icon">✈</span>
-        <span className="hud-logo-text">APIx</span>
-        <span className="hud-badge">v2.0</span>
-      </div>
+      <Logo size="sm" onClick={() => navigate('/dashboard')} className="hud-logo-clickable" />
 
       {/* Tabs */}
       <div className="hud-nav-tabs">
