@@ -308,7 +308,7 @@ const Fleet: React.FC = () => {
         boxShadow: `0 0 60px ${c.color}25`,
       }}>
         {/* ── Header banner with blended logo on left ── */}
-        <div style={{
+        <div className="fleet-banner" style={{
           background: c.bannerBg,
           padding: '0',
           display: 'flex', alignItems: 'stretch', minHeight: 140,
@@ -322,7 +322,7 @@ const Fleet: React.FC = () => {
           }} />
 
           {/* LEFT — seamlessly blended floating logo with glass contrast badge */}
-          <div style={{
+          <div className="fleet-banner-logo" style={{
             width: 280, minHeight: '100%', flexShrink: 0,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             padding: '16px 24px',
@@ -365,7 +365,7 @@ const Fleet: React.FC = () => {
           </div>
 
           {/* RIGHT — airline name, codes, rating */}
-          <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '24px 36px', flexWrap: 'wrap', gap: 12 }}>
+          <div className="fleet-banner-info" style={{ flex: 1, minWidth: 0, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '24px 36px', flexWrap: 'wrap', gap: 12 }}>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 6 }}>
                 <span style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: 2.5, color: 'rgba(255,255,255,0.65)', textTransform: 'uppercase', background: 'rgba(0,0,0,0.15)', padding: '2px 8px', borderRadius: 4 }}>IATA: {c.iata}</span>
@@ -385,7 +385,7 @@ const Fleet: React.FC = () => {
 
         {/* Body */}
         <div style={{ padding: 28, background: dark ? '#1c4262' : '#FFFFFF' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 24, flexWrap: 'wrap' }}>
+          <div className="responsive-grid-3" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 24, flexWrap: 'wrap' }}>
 
             {/* Col 1 — Info */}
             <div>
@@ -477,7 +477,7 @@ const Fleet: React.FC = () => {
               />
 
               {/* Fare KPIs */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, marginTop: 8 }}>
+              <div className="responsive-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, marginTop: 8 }}>
                 {[
                   { label: 'T+1 Fare',    val: `₹${c.booking.t1.toLocaleString()}`, color: '#EF4444' },
                   { label: 'T+45 Fare',   val: `₹${c.booking.t45.toLocaleString()}`, color: '#10B981' },

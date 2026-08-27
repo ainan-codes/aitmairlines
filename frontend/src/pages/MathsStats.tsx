@@ -497,7 +497,7 @@ const MathsStats: React.FC = () => {
       <div style={{
         display: 'flex', gap: 8, marginBottom: 40,
         borderBottom: `1px solid ${dark ? '#296374' : '#B7C7CC'}`,
-        paddingBottom: 0,
+        paddingBottom: 0, overflowX: 'auto',
       }}>
         {INNER_TABS.map(t => (
           <button
@@ -507,6 +507,8 @@ const MathsStats: React.FC = () => {
               padding: '10px 22px',
               fontSize: '0.9rem',
               fontWeight: 600,
+              whiteSpace: 'nowrap',
+              flexShrink: 0,
               fontFamily: 'Inter, sans-serif',
               background: 'none',
               border: 'none',

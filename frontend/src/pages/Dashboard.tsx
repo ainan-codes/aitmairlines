@@ -355,7 +355,7 @@ const Dashboard: React.FC = () => {
 
           {/* ────────── TAB 0 — MAP ────────── */}
           {activeTab===0 && (
-            <div className="grid-2" style={{gridTemplateColumns:'3fr 1fr', gap:16}}>
+            <div className="grid-2 responsive-grid-31" style={{gridTemplateColumns:'3fr 1fr', gap:16}}>
               <div>
                 <div className="section-label">Live Route Map — {routeSummary.length} Routes</div>
                 <div style={{fontSize:'0.8rem', color:'var(--sub)', marginBottom:10}}>
@@ -447,11 +447,13 @@ const Dashboard: React.FC = () => {
                 {/* Scrollable heatmap container */}
                 <div style={{
                   overflowY: 'auto',
+                  overflowX: 'auto',
                   maxHeight: '80vh',
                   border: '1px solid var(--border)',
                   borderRadius: 12,
                   background: dark ? '#163a63' : '#E1E1C4',
                 }}>
+                  <div style={{ minWidth: 640 }}>
                   <Plot
                     key={`heatmap-${dark}`}
                     data={[
@@ -552,6 +554,7 @@ const Dashboard: React.FC = () => {
                       modeBarButtonsToRemove:['select2d','lasso2d'] as any}}
                     style={{width:'100%'}}
                   />
+                  </div>
                 </div>
               </div>
             );

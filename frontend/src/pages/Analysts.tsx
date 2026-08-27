@@ -94,6 +94,18 @@ const HORIZONS = ['all', 'T+1', 'T+7', 'T+15', 'T+30', 'T+45'];
 export const Analysts: React.FC = () => {
   const { dark } = useTheme();
 
+  /* Plotly chart titles don't wrap and can visually overflow their SVG on
+     narrow screens (Chromium doesn't reliably clip long <text> elements) —
+     break them onto two lines below this width instead. */
+  const [isNarrow, setIsNarrow] = useState<boolean>(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 600px)');
+    const update = () => setIsNarrow(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+
   /* State */
   const [threshold, setThreshold] = useState<number>(25);
   const [selectedHorizon, setSelectedHorizon] = useState<string>('all');
@@ -316,7 +328,7 @@ export const Analysts: React.FC = () => {
           </div>
 
           {/* Action Bar (Print & Export) */}
-          <div className="hud-actions print-hidden" style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+          <div className="print-hidden" style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
             <button 
               className="btn btn-primary" 
               onClick={handlePrint}
@@ -343,9 +355,9 @@ export const Analysts: React.FC = () => {
       <div className="card print-hidden" style={{ marginBottom: 28, padding: '16px 20px', background: dark ? '#1c4262' : '#FFFFFF', border: dark ? '1px solid #296374' : '1px solid #B7C7CC' }}>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20, alignItems: 'center', justifyContent: 'space-between' }}>
           {/* Horizon Pills */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
             <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--sub)', textTransform: 'uppercase' }}>Booking Horizon:</span>
-            <div style={{ display: 'flex', gap: 6 }}>
+            <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
               {HORIZONS.map(h => (
                 <button
                   key={h}
@@ -606,7 +618,13 @@ export const Analysts: React.FC = () => {
             data={inflationChartData as any}
             layout={{
               ...PB,
-              title: { text: 'YoY Inflation: MoSPI Headline CPI vs FareX Airfare Index (%)', font: { size: 13, color: dark ? '#EDEDCE' : '#0C2C55' } },
+              margin: isNarrow ? { ...PB.margin, t: 60 } : PB.margin,
+              title: {
+                text: isNarrow
+                  ? 'YoY Inflation:<br>MoSPI CPI vs FareX Index (%)'
+                  : 'YoY Inflation: MoSPI Headline CPI vs FareX Airfare Index (%)',
+                font: { size: isNarrow ? 11 : 13, color: dark ? '#EDEDCE' : '#0C2C55' },
+              },
               xaxis: { ...AX, title: { text: 'Timeline (Monthly History)', font: { size: 11, color: dark ? '#B7C7CC' : '#296374' } } },
               yaxis: { ...AX, title: { text: 'Inflation Rate (% YoY)', font: { size: 11, color: dark ? '#B7C7CC' : '#296374' } } },
               legend: { orientation: 'h', y: -0.22, font: { size: 11, color: dark ? '#EDEDCE' : '#0C2C55' } }
@@ -751,9 +769,12 @@ export const Analysts: React.FC = () => {
             data={competitionScatter as any}
             layout={{
               ...PB,
-              title: { 
-                text: 'Route Concentration (HHI) vs Average Fare Surge (%) • Hover on bubbles for full route breakdown', 
-                font: { size: 12, color: dark ? '#EDEDCE' : '#0C2C55' }
+              margin: isNarrow ? { ...PB.margin, t: 70 } : PB.margin,
+              title: {
+                text: isNarrow
+                  ? 'Route Concentration (HHI)<br>vs Average Fare Surge (%)'
+                  : 'Route Concentration (HHI) vs Average Fare Surge (%) • Hover on bubbles for full route breakdown',
+                font: { size: isNarrow ? 11 : 12, color: dark ? '#EDEDCE' : '#0C2C55' }
               },
               xaxis: { 
                 ...AX, 
@@ -865,7 +886,7 @@ export const Analysts: React.FC = () => {
 
         <div className="grid-2" style={{ gap: 16 }}>
           {/* Export Card 1 */}
-          <div className="card" style={{ padding: 18, background: dark ? '#1c4262' : '#FFFFFF', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div className="card export-card-row" style={{ padding: 18, background: dark ? '#1c4262' : '#FFFFFF', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
             <div>
               <div style={{ fontWeight: 700, color: 'var(--text)', marginBottom: 2 }}>📊 Full Scraped Fares Snapshot</div>
               <div style={{ fontSize: '0.78rem', color: 'var(--sub)' }}>All 3,000+ individual ticket offers across all 80 domestic routes.</div>
@@ -881,7 +902,7 @@ export const Analysts: React.FC = () => {
           </div>
 
           {/* Export Card 2 */}
-          <div className="card" style={{ padding: 18, background: dark ? '#1c4262' : '#FFFFFF', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div className="card export-card-row" style={{ padding: 18, background: dark ? '#1c4262' : '#FFFFFF', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
             <div>
               <div style={{ fontWeight: 700, color: 'var(--text)', marginBottom: 2 }}>⚖️ DGCA Traffic & Weight Allocations</div>
               <div style={{ fontSize: '0.78rem', color: 'var(--sub)' }}>Laspeyres route weights and passenger distributions for 80 routes.</div>
@@ -897,7 +918,7 @@ export const Analysts: React.FC = () => {
           </div>
 
           {/* Export Card 3 */}
-          <div className="card" style={{ padding: 18, background: dark ? '#1c4262' : '#FFFFFF', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div className="card export-card-row" style={{ padding: 18, background: dark ? '#1c4262' : '#FFFFFF', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
             <div>
               <div style={{ fontWeight: 700, color: 'var(--text)', marginBottom: 2 }}>🚨 Regulatory Anomaly Audit Report</div>
               <div style={{ fontSize: '0.78rem', color: 'var(--sub)' }}>Flagged routes with severe surge multipliers for DGCA review.</div>
@@ -913,7 +934,7 @@ export const Analysts: React.FC = () => {
           </div>
 
           {/* Export Card 4 */}
-          <div className="card" style={{ padding: 18, background: dark ? '#1c4262' : '#FFFFFF', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div className="card export-card-row" style={{ padding: 18, background: dark ? '#1c4262' : '#FFFFFF', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
             <div>
               <div style={{ fontWeight: 700, color: 'var(--text)', marginBottom: 2 }}>🏢 HHI Route Competition Matrix</div>
               <div style={{ fontSize: '0.78rem', color: 'var(--sub)' }}>Antitrust metrics, carrier flight shares, and monopoly indices for all routes.</div>

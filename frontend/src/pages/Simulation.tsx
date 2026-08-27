@@ -319,7 +319,7 @@ const CarrierScorecard: React.FC<{ dark: boolean }> = ({ dark }) => {
       </div>
 
       {/* Selected airline spotlight */}
-      <div style={{
+      <div className="responsive-grid-12" style={{
         display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 24, marginBottom: 32,
         padding: 28, borderRadius: 16,
         background: dark ? '#091f3d' : '#E1E1C4',
@@ -396,7 +396,7 @@ const CarrierScorecard: React.FC<{ dark: boolean }> = ({ dark }) => {
           />
 
           {/* KPI row */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 10, marginTop: 16 }}>
+          <div className="responsive-grid-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 10, marginTop: 16 }}>
             {[
               { label: 'T+1/T+45 Ratio', val: `${surgeRatio.toFixed(2)}×`, color: surgeRatio > 2 ? '#EF4444' : surgeRatio > 1.5 ? '#296374' : '#10B981' },
               { label: 'Surge Score',     val: `${airline.surgeScore}/100`, color: airline.surgeScore > 70 ? '#EF4444' : '#10B981' },
@@ -464,12 +464,12 @@ const Simulation: React.FC = () => {
       <div style={{
         display: 'flex', gap: 8, marginBottom: 40,
         borderBottom: `1px solid ${dark ? '#296374' : '#B7C7CC'}`,
-        paddingBottom: 0,
+        paddingBottom: 0, overflowX: 'auto',
       }}>
         {SIM_TABS.map(t => (
           <button key={t.id} onClick={() => setActiveTab(t.id as 'atf' | 'scorecard')}
             style={{
-              padding: '10px 22px', fontSize: '0.9rem', fontWeight: 600,
+              padding: '10px 22px', fontSize: '0.9rem', fontWeight: 600, whiteSpace: 'nowrap', flexShrink: 0,
               fontFamily: 'Inter, sans-serif', background: 'none', border: 'none',
               borderBottom: activeTab === t.id
                 ? `2px solid ${t.id === 'atf' ? '#296374' : '#629FAD'}`
