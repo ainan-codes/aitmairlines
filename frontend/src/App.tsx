@@ -1,4 +1,4 @@
-import React, { useState, createContext, useContext } from 'react';
+import React, { createContext, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Landing from './pages/Landing';
 import Dashboard from './pages/Dashboard';
@@ -8,9 +8,9 @@ import Simulation from './pages/Simulation';
 import Fleet from './pages/Fleet';
 import HudNav from './components/HudNav';
 
-type ThemeMode = 'light' | 'intermediate' | 'coastal' | 'dark';
-interface ThemeCtx { theme: ThemeMode; dark: boolean; setTheme: (t: ThemeMode) => void; }
-export const ThemeContext = createContext<ThemeCtx>({ theme: 'dark', dark: true, setTheme: () => {} });
+type ThemeMode = 'light';
+interface ThemeCtx { theme: ThemeMode; dark: boolean; }
+export const ThemeContext = createContext<ThemeCtx>({ theme: 'light', dark: false });
 export const useTheme = () => useContext(ThemeContext);
 
 /* ─── Inner layout (with HUD nav) ───────────────────────────────────────── */
@@ -36,36 +36,18 @@ const AppInner: React.FC = () => {
 };
 
 const App: React.FC = () => {
-  const [theme, setTheme] = useState<ThemeMode>('dark');
-  const dark = theme === 'dark';
-
   React.useEffect(() => {
     const html = document.documentElement;
     const body = document.body;
-    
-    html.setAttribute('data-theme', theme);
-    
-    if (theme === 'dark') {
-      html.style.colorScheme = 'dark';
-      body.style.backgroundColor = '#060B14';
-      body.style.color = '#E2E8F0';
-    } else if (theme === 'intermediate') {
-      html.style.colorScheme = 'light';
-      body.style.backgroundColor = '#F5F0E9'; // SWAN WING
-      body.style.color = '#112250'; // ROYAL BLUE
-    } else if (theme === 'coastal') {
-      html.style.colorScheme = 'light';
-      body.style.backgroundColor = '#CCD4D7'; // LIGHT BLUE-GREY
-      body.style.color = '#3F4F5F'; // DARK BLUE-GREY
-    } else {
-      html.style.colorScheme = 'light';
-      body.style.backgroundColor = '#F0F4F8';
-      body.style.color = '#0F172A';
-    }
-  }, [theme]);
+
+    html.setAttribute('data-theme', 'light');
+    html.style.colorScheme = 'light';
+    body.style.backgroundColor = '#EDEDCE';
+    body.style.color = '#0C2C55';
+  }, []);
 
   return (
-    <ThemeContext.Provider value={{ theme, dark, setTheme }}>
+    <ThemeContext.Provider value={{ theme: 'light', dark: false }}>
       <Router>
         <AppInner />
       </Router>

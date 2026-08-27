@@ -1,163 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
-/* ─── Design tokens ──────────────────────────────────────────────────────── */
+/* ─── Design tokens (single Light palette) ──────────────────────────────── */
 :root {
-  --bg:        #000000;
-  --bg-gradient: linear-gradient(180deg, #000000 0%, #050505 100%);
-  --surface:   #0A0A0A;
-  --surface-glass: rgba(10, 10, 10, 0.7);
-  --card:      #111111;
-  --card-glass: rgba(17, 17, 17, 0.65);
-  --border:    #222222;
-  --border-glow: rgba(6, 182, 212, 0.25);
-  --muted:     #3B4E7A;
-  --text:      #F1F5F9;
-  --sub:       #94A3B8;
-  --cyan:      #06B6D4;
-  --cyan-dim:  rgba(6, 182, 212, 0.15);
-  --amber:     #F59E0B;
-  --amber-dim: rgba(245, 158, 11, 0.15);
-  --green:     #10B981;
-  --green-dim: rgba(16, 185, 129, 0.15);
-  --red:       #EF4444;
-  --red-dim:   rgba(239, 68, 68, 0.15);
-  --purple:    #A78BFA;
-  --purple-dim:rgba(167, 139, 250, 0.15);
-  --font-mono: 'JetBrains Mono', monospace;
-  --font-heading: 'Playfair Display', serif;
-  --glow-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
-}
-
-/* Light mode — responds to BOTH OS setting AND the JS data-theme toggle */
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme='dark']) {
-    --bg:        #F1F5F9;
-    --bg-gradient: linear-gradient(180deg, #F8FAFC 0%, #E2E8F0 100%);
-    --surface:   #E2E8F0;
-    --surface-glass: rgba(226, 232, 240, 0.8);
-    --card:      #FFFFFF;
-    --card-glass: rgba(255, 255, 255, 0.85);
-    --border:    #CBD5E1;
-    --border-glow: rgba(3, 105, 161, 0.2);
-    --muted:     #94A3B8;
-    --text:      #0F172A;
-    --sub:       #475569;
-    --cyan:      #0284C7;
-    --cyan-dim:  rgba(2, 132, 199, 0.12);
-    --amber:     #D97706;
-    --amber-dim: rgba(217, 119, 6, 0.12);
-    --green:     #16A34A;
-    --green-dim: rgba(22, 163, 74, 0.12);
-    --red:       #DC2626;
-    --red-dim:   rgba(220, 38, 38, 0.12);
-    --purple:    #7C3AED;
-    --purple-dim:rgba(124, 58, 237, 0.12);
-    --glow-shadow: 0 0 15px rgba(2, 132, 199, 0.08);
-  }
-}
-
-/* JS-driven light mode via data-theme attribute */
-[data-theme='light'] {
-  --bg:        #F1F5F9;
-  --bg-gradient: linear-gradient(180deg, #F8FAFC 0%, #E2E8F0 100%);
-  --surface:   #E2E8F0;
-  --surface-glass: rgba(226, 232, 240, 0.8);
+  --bg:        #EDEDCE;
+  --bg-gradient: linear-gradient(180deg, #F4F4DE 0%, #EDEDCE 100%);
+  --surface:   #E1E1C4;
+  --surface-glass: rgba(225, 225, 196, 0.8);
   --card:      #FFFFFF;
   --card-glass: rgba(255, 255, 255, 0.85);
-  --border:    #CBD5E1;
-  --border-glow: rgba(3, 105, 161, 0.2);
-  --muted:     #94A3B8;
-  --text:      #0F172A;
-  --sub:       #475569;
-  --cyan:      #0284C7;
-  --cyan-dim:  rgba(2, 132, 199, 0.12);
-  --amber:     #D97706;
-  --amber-dim: rgba(217, 119, 6, 0.12);
+  --border:    #B7C7CC;
+  --border-glow: rgba(12, 44, 85, 0.2);
+  --muted:     #B7C7CC;
+  --text:      #0C2C55;
+  --sub:       #296374;
+  --cyan:      #0C2C55;
+  --cyan-dim:  rgba(12, 44, 85, 0.12);
+  --amber:     #296374;
+  --amber-dim: rgba(41, 99, 116, 0.12);
   --green:     #16A34A;
   --green-dim: rgba(22, 163, 74, 0.12);
   --red:       #DC2626;
   --red-dim:   rgba(220, 38, 38, 0.12);
-  --purple:    #7C3AED;
-  --purple-dim:rgba(124, 58, 237, 0.12);
-  --glow-shadow: 0 0 15px rgba(2, 132, 199, 0.08);
-}
-
-/* JS-driven intermediate mode via data-theme attribute */
-[data-theme='intermediate'] {
-  --bg:        #F5F0E9;
-  --bg-gradient: linear-gradient(180deg, #F5F0E9 0%, #EAE0D5 100%);
-  --surface:   #D9CBC2;
-  --surface-glass: rgba(217, 203, 194, 0.7);
-  --card:      #FFFFFF;
-  --card-glass: rgba(255, 255, 255, 0.75);
-  --border:    #D9CBC2;
-  --border-glow: rgba(60, 80, 125, 0.2);
-  --muted:     #A3B1C6;
-  --text:      #112250;
-  --sub:       #3C507D;
-  --cyan:      #3C507D;
-  --cyan-dim:  rgba(60, 80, 125, 0.12);
-  --amber:     #E0C58F;
-  --amber-dim: rgba(224, 197, 143, 0.12);
-  --green:     #16A34A;
-  --green-dim: rgba(22, 163, 74, 0.12);
-  --red:       #DC2626;
-  --red-dim:   rgba(220, 38, 38, 0.12);
-  --purple:    #112250;
-  --purple-dim:rgba(17, 34, 80, 0.12);
-  --glow-shadow: 0 0 15px rgba(60, 80, 125, 0.15);
-}
-
-/* JS-driven coastal mode via data-theme attribute */
-[data-theme='coastal'] {
-  --bg:        #CCD4D7;
-  --bg-gradient: linear-gradient(180deg, #CCD4D7 0%, #C4CCCF 100%);
-  --surface:   #D0BEA8;
-  --surface-glass: rgba(208, 190, 168, 0.7);
-  --card:      #D8C6B0;
-  --card-glass: rgba(216, 198, 176, 0.75);
-  --border:    #BE965B;
-  --border-glow: rgba(190, 150, 91, 0.3);
-  --muted:     #C4CCCF;
-  --text:      #3F4F5F;
-  --sub:       #3F4F5F;
-  --cyan:      #3F4F5F;
-  --cyan-dim:  rgba(63, 79, 95, 0.15);
-  --amber:     #BE965B;
-  --amber-dim: rgba(190, 150, 91, 0.15);
-  --green:     #16A34A;
-  --green-dim: rgba(22, 163, 74, 0.12);
-  --red:       #DC2626;
-  --red-dim:   rgba(220, 38, 38, 0.12);
-  --purple:    #3F4F5F;
-  --purple-dim:rgba(63, 79, 95, 0.12);
-  --glow-shadow: 0 0 15px rgba(63, 79, 95, 0.15);
-}
-
-/* Explicit dark mode lock */
-[data-theme='dark'] {
-  --bg:        #000000;
-  --bg-gradient: linear-gradient(180deg, #000000 0%, #050505 100%);
-  --surface:   #0A0A0A;
-  --surface-glass: rgba(10, 10, 10, 0.7);
-  --card:      #111111;
-  --card-glass: rgba(17, 17, 17, 0.65);
-  --border:    #222222;
-  --border-glow: rgba(6, 182, 212, 0.25);
-  --muted:     #3B4E7A;
-  --text:      #F1F5F9;
-  --sub:       #94A3B8;
-  --cyan:      #06B6D4;
-  --cyan-dim:  rgba(6, 182, 212, 0.15);
-  --amber:     #F59E0B;
-  --amber-dim: rgba(245, 158, 11, 0.15);
-  --green:     #10B981;
-  --green-dim: rgba(16, 185, 129, 0.15);
-  --red:       #EF4444;
-  --red-dim:   rgba(239, 68, 68, 0.15);
-  --purple:    #A78BFA;
-  --purple-dim:rgba(167, 139, 250, 0.15);
-  --glow-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
+  --purple:    #629FAD;
+  --purple-dim:rgba(98, 159, 173, 0.12);
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-heading: 'Playfair Display', serif;
+  --glow-shadow: 0 0 15px rgba(12, 44, 85, 0.08);
 }
 
 /* ─── Reset ──────────────────────────────────────────────────────────────── */
@@ -320,8 +188,8 @@ body {
   box-shadow: var(--glow-shadow);
   transform: translateY(-1px);
 }
-.btn-primary { background: var(--cyan); color: #060B14; border-color: var(--cyan); }
-.btn-primary:hover { background: #0891B2; border-color: #0891B2; color: #060B14; }
+.btn-primary { background: var(--cyan); color: #FFFFFF; border-color: var(--cyan); }
+.btn-primary:hover { background: #1E4A5C; border-color: #1E4A5C; color: #FFFFFF; }
 
 /* ─── Runway bar ─────────────────────────────────────────────────────────── */
 .runway-bar {
@@ -627,7 +495,7 @@ body {
 .map-wrap .leaflet-container {
   height: 100%;
   width: 100%;
-  background: #060B14;
+  background: #0C2C55;
 }
 
 /* ─── Formula display ────────────────────────────────────────────────────── */
@@ -759,7 +627,7 @@ input[type="range"]::-webkit-slider-thumb {
 @media print {
   body, html {
     background: #FFFFFF !important;
-    color: #0F172A !important;
+    color: #0C2C55 !important;
     font-size: 10pt !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
@@ -774,27 +642,27 @@ input[type="range"]::-webkit-slider-thumb {
   }
   .card {
     background: #FFFFFF !important;
-    border: 1px solid #CBD5E1 !important;
+    border: 1px solid #B7C7CC !important;
     box-shadow: none !important;
-    color: #0F172A !important;
+    color: #0C2C55 !important;
     page-break-inside: avoid;
     margin-bottom: 24px !important;
     padding: 16px !important;
   }
   h1, h2, h3, strong, th {
-    color: #0F172A !important;
+    color: #0C2C55 !important;
   }
   table {
     width: 100% !important;
     border-collapse: collapse !important;
   }
   th, td {
-    border: 1px solid #E2E8F0 !important;
+    border: 1px solid #B7C7CC !important;
     padding: 6px 8px !important;
-    color: #0F172A !important;
+    color: #0C2C55 !important;
   }
   .analyst-header {
-    border-bottom: 2px solid #0F172A;
+    border-bottom: 2px solid #0C2C55;
     padding-bottom: 12px;
     margin-bottom: 20px !important;
   }

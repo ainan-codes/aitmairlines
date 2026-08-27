@@ -9,17 +9,17 @@ const API = API_BASE_URL;
 function plotBase(dark: boolean): Partial<any> {
   return {
     paper_bgcolor: 'rgba(0,0,0,0)',
-    plot_bgcolor:  dark ? '#0A1628' : '#F8FAFC',
-    font: { color: dark ? '#94A3B8' : '#334155', family: 'Inter, sans-serif', size: 12 },
+    plot_bgcolor:  dark ? '#163a63' : '#E1E1C4',
+    font: { color: dark ? '#B7C7CC' : '#296374', family: 'Inter, sans-serif', size: 12 },
   };
 }
 function axisStyle(dark: boolean): Partial<any> {
   return {
-    gridcolor: dark ? '#1E3A5F' : '#E2E8F0', gridwidth: 1,
-    zerolinecolor: dark ? '#2D4A6E' : '#CBD5E1', zerolinewidth: 1,
-    tickfont: { color: dark ? '#64748B' : '#475569', size: 10, family: 'Inter, sans-serif' },
-    titlefont: { color: dark ? '#94A3B8' : '#334155', size: 12, family: 'Inter, sans-serif' },
-    showline: true, linecolor: dark ? '#1E3A5F' : '#CBD5E1', linewidth: 1,
+    gridcolor: dark ? '#296374' : '#B7C7CC', gridwidth: 1,
+    zerolinecolor: dark ? '#296374' : '#B7C7CC', zerolinewidth: 1,
+    tickfont: { color: dark ? '#296374' : '#296374', size: 10, family: 'Inter, sans-serif' },
+    titlefont: { color: dark ? '#B7C7CC' : '#296374', size: 12, family: 'Inter, sans-serif' },
+    showline: true, linecolor: dark ? '#296374' : '#B7C7CC', linewidth: 1,
   };
 }
 
@@ -94,9 +94,9 @@ const ATF_ROUTES = [
   { id: 'BOM-AMD', baseFare: 2600, atfSens: 0.30, dominant: 'QP' },
 ];
 
-/* ════════════════════════════════════════════════════════════════════════════
+/* ────────────────────────────────────────────────────────────────────────────
    SECTION A — ATF Fuel Price Shock Simulator
-   ════════════════════════════════════════════════════════════════════════════ */
+   ──────────────────────────────────────────────────────────────────────────── */
 const ATFSimulator: React.FC<{ dark: boolean }> = ({ dark }) => {
   const [atfChange, setAtfChange]   = useState(15);
   const [passThru, setPassThru]     = useState<'low' | 'medium' | 'high'>('medium');
@@ -128,9 +128,9 @@ const ATFSimulator: React.FC<{ dark: boolean }> = ({ dark }) => {
   return (
     <>
       <div style={{ marginBottom: 32 }}>
-        <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 2, color: '#F59E0B', marginBottom: 8 }}>Economic Shock Modelling</div>
+        <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 2, color: '#296374', marginBottom: 8 }}>Economic Shock Modelling</div>
         <h2 style={{ fontSize: '2rem', fontWeight: 900, letterSpacing: -0.5, color: 'var(--text)', margin: '0 0 8px 0' }}>
-          ⛽ ATF Fuel Price Shock Simulator
+          🛩️ ATF Fuel Price Shock Simulator
         </h2>
         <p style={{ color: 'var(--sub)', fontSize: '0.95rem', maxWidth: 760, lineHeight: 1.75, margin: 0 }}>
           Aviation Turbine Fuel (ATF) constitutes ~35–42% of an airline's operating cost. Simulate how a global crude price shock ripples through India's domestic airfare index and household budgets.
@@ -138,12 +138,12 @@ const ATFSimulator: React.FC<{ dark: boolean }> = ({ dark }) => {
       </div>
 
       {/* Controls */}
-      <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap', marginBottom: 32, padding: 24, background: dark ? '#0A1628' : '#F8FAFC', borderRadius: 12, border: `1px solid ${dark ? '#1E3A5F' : '#E2E8F0'}` }}>
+      <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap', marginBottom: 32, padding: 24, background: dark ? '#163a63' : '#E1E1C4', borderRadius: 12, border: `1px solid ${dark ? '#296374' : '#B7C7CC'}` }}>
         <div style={{ flex: 1, minWidth: 260 }}>
-          <label className="control-label">ATF Price Change: <span style={{ color: '#F59E0B', fontFamily: 'JetBrains Mono,monospace' }}>{atfChange > 0 ? '+' : ''}{atfChange}%</span></label>
+          <label className="control-label">ATF Price Change: <span style={{ color: '#296374', fontFamily: 'JetBrains Mono,monospace' }}>{atfChange > 0 ? '+' : ''}{atfChange}%</span></label>
           <input type="range" min={-20} max={60} step={1} value={atfChange}
             onChange={e => setAtfChange(Number(e.target.value))}
-            style={{ width: '100%', accentColor: '#F59E0B', marginTop: 8 }} />
+            style={{ width: '100%', accentColor: '#296374', marginTop: 8 }} />
           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--sub)', marginTop: 4 }}>
             <span>−20% (Global glut)</span><span>+60% (Supply crisis)</span>
           </div>
@@ -155,7 +155,7 @@ const ATFSimulator: React.FC<{ dark: boolean }> = ({ dark }) => {
               <button key={p} onClick={() => setPassThru(p)}
                 style={{
                   flex: 1, padding: '8px 0', borderRadius: 8, border: 'none', cursor: 'pointer', fontWeight: 600, fontSize: '0.8rem',
-                  background: passThru === p ? (p === 'low' ? '#10B981' : p === 'medium' ? '#F59E0B' : '#EF4444') : (dark ? '#1F2D54' : '#E2E8F0'),
+                  background: passThru === p ? (p === 'low' ? '#10B981' : p === 'medium' ? '#296374' : '#EF4444') : (dark ? '#296374' : '#B7C7CC'),
                   color: passThru === p ? '#fff' : 'var(--sub)',
                   transition: 'all 0.2s',
                 }}>
@@ -185,7 +185,7 @@ const ATFSimulator: React.FC<{ dark: boolean }> = ({ dark }) => {
         </div>
         <div className="stat-cell">
           <div className="stat-sub">Consumer Cost Impact</div>
-          <div className="stat-big" style={{ color: '#F59E0B', fontSize: '1.2rem' }}>
+          <div className="stat-big" style={{ color: '#296374', fontSize: '1.2rem' }}>
             ₹{(consumerCostPerYear / 1e9).toFixed(1)}B/yr
           </div>
           <div className="stat-note">across 150M annual pax</div>
@@ -207,7 +207,7 @@ const ATFSimulator: React.FC<{ dark: boolean }> = ({ dark }) => {
               type: 'bar', name: 'Base Fare',
               x: ATF_ROUTES.map(r => r.id),
               y: ATF_ROUTES.map(r => r.baseFare),
-              marker: { color: dark ? '#1F2D54' : '#CBD5E1' },
+              marker: { color: dark ? '#296374' : '#B7C7CC' },
               hovertemplate: '<b>%{x}</b><br>Base: ₹%{y:,}<extra></extra>',
             },
             {
@@ -222,8 +222,8 @@ const ATFSimulator: React.FC<{ dark: boolean }> = ({ dark }) => {
           layout={{
             ...PB, barmode: 'overlay', height: 340,
             margin: { l: 70, r: 20, t: 30, b: 70 },
-            title: { text: 'Route-Level Fare Impact', font: { color: dark ? '#E2E8F0' : '#0F172A', size: 13 } },
-            legend: { font: { color: dark ? '#94A3B8' : '#475569', size: 11 }, bgcolor: 'transparent' },
+            title: { text: 'Route-Level Fare Impact', font: { color: dark ? '#B7C7CC' : '#0C2C55', size: 13 } },
+            legend: { font: { color: dark ? '#B7C7CC' : '#296374', size: 11 }, bgcolor: 'transparent' },
             xaxis: { ...AX, tickfont: { size: 9, family: 'JetBrains Mono, monospace' }, tickangle: -35 },
             yaxis: { ...AX, title: { text: 'Fare (₹)', font: { size: 12 }, standoff: 10 }, tickformat: ',.0f' },
           }}
@@ -238,7 +238,7 @@ const ATFSimulator: React.FC<{ dark: boolean }> = ({ dark }) => {
             {
               type: 'scatter', mode: 'lines', name: 'Baseline Trend',
               x: days, y: baselineTrend,
-              line: { color: '#06B6D4', width: 2, dash: 'dot' },
+              line: { color: '#629FAD', width: 2, dash: 'dot' },
               hovertemplate: 'Day %{x}<br>Baseline: %{y:.1f}<extra></extra>',
             },
             {
@@ -252,12 +252,12 @@ const ATFSimulator: React.FC<{ dark: boolean }> = ({ dark }) => {
           layout={{
             ...PB, height: 340,
             margin: { l: 70, r: 20, t: 30, b: 50 },
-            title: { text: '30-Day APIx Projection', font: { color: dark ? '#E2E8F0' : '#0F172A', size: 13 } },
-            legend: { font: { color: dark ? '#94A3B8' : '#475569', size: 11 }, bgcolor: 'transparent' },
+            title: { text: '30-Day APIx Projection', font: { color: dark ? '#B7C7CC' : '#0C2C55', size: 13 } },
+            legend: { font: { color: dark ? '#B7C7CC' : '#296374', size: 11 }, bgcolor: 'transparent' },
             xaxis: { ...AX, title: { text: 'Days from Today', font: { size: 12 }, standoff: 10 } },
             yaxis: { ...AX, title: { text: 'APIx Level', font: { size: 12 }, standoff: 10 }, tickformat: '.1f' },
-            shapes: [{ type: 'line', x0: 14, x1: 14, y0: 0, y1: 1, xref: 'x', yref: 'paper', line: { color: '#F59E0B', dash: 'dash', width: 1 } }],
-            annotations: [{ x: 14, y: 0.97, xref: 'x', yref: 'paper', text: 'Full phase-in', showarrow: false, font: { color: '#F59E0B', size: 10 } }],
+            shapes: [{ type: 'line', x0: 14, x1: 14, y0: 0, y1: 1, xref: 'x', yref: 'paper', line: { color: '#296374', dash: 'dash', width: 1 } }],
+            annotations: [{ x: 14, y: 0.97, xref: 'x', yref: 'paper', text: 'Full phase-in', showarrow: false, font: { color: '#296374', size: 10 } }],
           }}
           config={{ displayModeBar: false, responsive: true }}
           style={{ width: '100%' }}
@@ -267,10 +267,10 @@ const ATFSimulator: React.FC<{ dark: boolean }> = ({ dark }) => {
       {/* Policy recommendation */}
       {atfChange > 20 && (
         <div style={{ padding: 20, borderRadius: 12, background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.3)', marginBottom: 16 }}>
-          <div style={{ color: '#FCA5A5', fontWeight: 700, fontSize: '0.85rem', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 8 }}>⚠ DGCA Policy Alert — High ATF Shock Scenario</div>
+          <div style={{ color: '#FCA5A5', fontWeight: 700, fontSize: '0.85rem', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 8 }}>⚠️ DGCA Policy Alert — High ATF Shock Scenario</div>
           <div style={{ color: 'var(--sub)', fontSize: '0.88rem', lineHeight: 1.7 }}>
             A +{atfChange}% ATF shock risks fare inflation of <strong style={{ color: 'var(--red)' }}>+{avgFareImpact.toFixed(1)}%</strong>. Recommended actions:
-            consider temporary Fuel Surcharge Cap notification under Civil Aviation Policy § 3.4, or ATF import duty relaxation for domestic operators.
+            consider temporary Fuel Surcharge Cap notification under Civil Aviation Policy Section 3.4, or ATF import duty relaxation for domestic operators.
             <strong style={{ color: 'var(--text)' }}> Monitor APIx for 3 consecutive weeks before invoking fare ceiling orders.</strong>
           </div>
         </div>
@@ -279,9 +279,9 @@ const ATFSimulator: React.FC<{ dark: boolean }> = ({ dark }) => {
   );
 };
 
-/* ════════════════════════════════════════════════════════════════════════════
+/* ────────────────────────────────────────────────────────────────────────────
    SECTION B — Carrier Pricing Aggressiveness Scorecard
-   ════════════════════════════════════════════════════════════════════════════ */
+   ──────────────────────────────────────────────────────────────────────────── */
 const CarrierScorecard: React.FC<{ dark: boolean }> = ({ dark }) => {
   const [selected, setSelected] = useState(0);
   const airline = AIRLINES[selected];
@@ -293,7 +293,7 @@ const CarrierScorecard: React.FC<{ dark: boolean }> = ({ dark }) => {
   return (
     <>
       <div style={{ marginBottom: 32 }}>
-        <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 2, color: '#8B5CF6', marginBottom: 8 }}>Carrier Intelligence</div>
+        <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 2, color: '#629FAD', marginBottom: 8 }}>Carrier Intelligence</div>
         <h2 style={{ fontSize: '2rem', fontWeight: 900, letterSpacing: -0.5, color: 'var(--text)', margin: '0 0 8px 0' }}>
           📊 Carrier Pricing Aggressiveness Scorecard
         </h2>
@@ -307,7 +307,7 @@ const CarrierScorecard: React.FC<{ dark: boolean }> = ({ dark }) => {
         {AIRLINES.map((a, i) => (
           <button key={a.code} onClick={() => setSelected(i)}
             style={{
-              padding: '10px 20px', borderRadius: 50, border: `2px solid ${selected === i ? a.color : (dark ? '#1E3A5F' : '#E2E8F0')}`,
+              padding: '10px 20px', borderRadius: 50, border: `2px solid ${selected === i ? a.color : (dark ? '#296374' : '#B7C7CC')}`,
               background: selected === i ? a.color + '22' : 'transparent',
               color: selected === i ? a.color : 'var(--sub)', cursor: 'pointer',
               fontWeight: 700, fontSize: '0.88rem', fontFamily: 'Inter, sans-serif',
@@ -322,7 +322,7 @@ const CarrierScorecard: React.FC<{ dark: boolean }> = ({ dark }) => {
       <div style={{
         display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 24, marginBottom: 32,
         padding: 28, borderRadius: 16,
-        background: dark ? '#080F1F' : '#F8FAFC',
+        background: dark ? '#091f3d' : '#E1E1C4',
         border: `1px solid ${airline.color}30`,
         boxShadow: `0 0 40px ${airline.color}15`,
       }}>
@@ -343,7 +343,7 @@ const CarrierScorecard: React.FC<{ dark: boolean }> = ({ dark }) => {
             <div>🛫 Hub: <span style={{ color: 'var(--text)' }}>{airline.hub}</span></div>
             <div>✈ Fleet: <span style={{ color: 'var(--text)' }}>{airline.fleet} aircraft</span></div>
             <div>📅 Founded: <span style={{ color: 'var(--text)' }}>{airline.founded}</span></div>
-            <div>🗺 Market Share: <span style={{ color: airline.color, fontWeight: 700 }}>{Math.round(airline.routeShare * 100)}%</span></div>
+            <div>🗺️ Market Share: <span style={{ color: airline.color, fontWeight: 700 }}>{Math.round(airline.routeShare * 100)}%</span></div>
           </div>
 
           {/* Booking advice */}
@@ -369,7 +369,7 @@ const CarrierScorecard: React.FC<{ dark: boolean }> = ({ dark }) => {
                 x: HORIZONS,
                 y: FARE_KEYS.map(k => Number(airline[k])),
                 line: { color: airline.color, width: 3 },
-                marker: { size: 10, color: airline.color, line: { color: dark ? '#060B14' : '#fff', width: 2 } },
+                marker: { size: 10, color: airline.color, line: { color: dark ? '#0C2C55' : '#fff', width: 2 } },
                 fill: 'tozeroy', fillcolor: airline.color + '15',
                 hovertemplate: '<b>%{x}</b><br>₹%{y:,}<extra></extra>',
                 name: airline.name,
@@ -378,7 +378,7 @@ const CarrierScorecard: React.FC<{ dark: boolean }> = ({ dark }) => {
                 type: 'scatter' as const, mode: 'lines' as const,
                 x: HORIZONS,
                 y: FARE_KEYS.map(k => Number(a[k])),
-                line: { color: dark ? '#1E3A5F' : '#CBD5E1', width: 1, dash: 'dot' as const },
+                line: { color: dark ? '#296374' : '#B7C7CC', width: 1, dash: 'dot' as const },
                 name: a.name, opacity: 0.5,
                 hovertemplate: `<b>${a.name} %{x}</b><br>₹%{y:,}<extra></extra>`,
               })),
@@ -386,8 +386,8 @@ const CarrierScorecard: React.FC<{ dark: boolean }> = ({ dark }) => {
             layout={{
               ...PB, height: 280,
               margin: { l: 70, r: 20, t: 30, b: 50 },
-              title: { text: 'Fare Curve: Booking Horizon vs Price', font: { color: dark ? '#E2E8F0' : '#0F172A', size: 13 } },
-              legend: { font: { color: dark ? '#94A3B8' : '#475569', size: 10 }, bgcolor: 'transparent', orientation: 'h', y: -0.2 },
+              title: { text: 'Fare Curve: Booking Horizon vs Price', font: { color: dark ? '#B7C7CC' : '#0C2C55', size: 13 } },
+              legend: { font: { color: dark ? '#B7C7CC' : '#296374', size: 10 }, bgcolor: 'transparent', orientation: 'h', y: -0.2 },
               xaxis: { ...AX, title: { text: 'Days Before Flight', font: { size: 11 }, standoff: 8 } },
               yaxis: { ...AX, title: { text: 'Median Fare (₹)', font: { size: 11 }, standoff: 8 }, tickformat: ',.0f' },
             }}
@@ -398,9 +398,9 @@ const CarrierScorecard: React.FC<{ dark: boolean }> = ({ dark }) => {
           {/* KPI row */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 10, marginTop: 16 }}>
             {[
-              { label: 'T+1/T+45 Ratio', val: `${surgeRatio.toFixed(2)}×`, color: surgeRatio > 2 ? '#EF4444' : surgeRatio > 1.5 ? '#F59E0B' : '#10B981' },
+              { label: 'T+1/T+45 Ratio', val: `${surgeRatio.toFixed(2)}×`, color: surgeRatio > 2 ? '#EF4444' : surgeRatio > 1.5 ? '#296374' : '#10B981' },
               { label: 'Surge Score',     val: `${airline.surgeScore}/100`, color: airline.surgeScore > 70 ? '#EF4444' : '#10B981' },
-              { label: 'Route Network',   val: `${airline.network}/100`,   color: '#06B6D4' },
+              { label: 'Route Network',   val: `${airline.network}/100`,   color: '#629FAD' },
               { label: 'Price Rank',      val: airline.rating,             color: airline.color },
             ].map(k => (
               <div key={k.label} className="card" style={{ textAlign: 'center', padding: 12 }}>
@@ -431,11 +431,11 @@ const CarrierScorecard: React.FC<{ dark: boolean }> = ({ dark }) => {
         layout={{
           ...PB, height: 420,
           polar: {
-            bgcolor: dark ? '#0A1628' : '#F8FAFC',
-            radialaxis: { visible: true, range: [0, 100], color: dark ? '#1E3A5F' : '#CBD5E1', tickfont: { size: 9, color: dark ? '#475569' : '#94A3B8' } },
-            angularaxis: { color: dark ? '#1E3A5F' : '#CBD5E1', tickfont: { size: 11, color: dark ? '#94A3B8' : '#334155' } },
+            bgcolor: dark ? '#163a63' : '#E1E1C4',
+            radialaxis: { visible: true, range: [0, 100], color: dark ? '#296374' : '#B7C7CC', tickfont: { size: 9, color: dark ? '#296374' : '#B7C7CC' } },
+            angularaxis: { color: dark ? '#296374' : '#B7C7CC', tickfont: { size: 11, color: dark ? '#B7C7CC' : '#296374' } },
           },
-          legend: { font: { color: dark ? '#94A3B8' : '#475569', size: 11 }, bgcolor: 'transparent', orientation: 'h', x: 0.5, xanchor: 'center', y: -0.12 },
+          legend: { font: { color: dark ? '#B7C7CC' : '#296374', size: 11 }, bgcolor: 'transparent', orientation: 'h', x: 0.5, xanchor: 'center', y: -0.12 },
           margin: { t: 30, b: 60, l: 40, r: 40 },
         }}
         config={{ displayModeBar: false, responsive: true }}
@@ -445,11 +445,11 @@ const CarrierScorecard: React.FC<{ dark: boolean }> = ({ dark }) => {
   );
 };
 
-/* ════════════════════════════════════════════════════════════════════════════
+/* ────────────────────────────────────────────────────────────────────────────
    SIMULATION ROOT — with inner tab switcher
-   ════════════════════════════════════════════════════════════════════════════ */
+   ──────────────────────────────────────────────────────────────────────────── */
 const SIM_TABS = [
-  { id: 'atf',      label: '⛽ ATF Shock Simulator' },
+  { id: 'atf',      label: '🛩️ ATF Shock Simulator' },
   { id: 'scorecard', label: '📊 Carrier Scorecard' },
 ];
 
@@ -463,7 +463,7 @@ const Simulation: React.FC = () => {
 
       <div style={{
         display: 'flex', gap: 8, marginBottom: 40,
-        borderBottom: `1px solid ${dark ? '#1E3A5F' : '#E2E8F0'}`,
+        borderBottom: `1px solid ${dark ? '#296374' : '#B7C7CC'}`,
         paddingBottom: 0,
       }}>
         {SIM_TABS.map(t => (
@@ -472,7 +472,7 @@ const Simulation: React.FC = () => {
               padding: '10px 22px', fontSize: '0.9rem', fontWeight: 600,
               fontFamily: 'Inter, sans-serif', background: 'none', border: 'none',
               borderBottom: activeTab === t.id
-                ? `2px solid ${t.id === 'atf' ? '#F59E0B' : '#8B5CF6'}`
+                ? `2px solid ${t.id === 'atf' ? '#296374' : '#629FAD'}`
                 : '2px solid transparent',
               color: activeTab === t.id ? 'var(--text)' : 'var(--sub)',
               cursor: 'pointer', marginBottom: -1, transition: 'all 0.2s',

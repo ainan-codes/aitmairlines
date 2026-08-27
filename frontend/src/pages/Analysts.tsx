@@ -68,8 +68,8 @@ interface MospiRow {
 function plotBase(dark: boolean): Partial<any> {
   return {
     paper_bgcolor: 'rgba(0,0,0,0)',
-    plot_bgcolor: dark ? '#0A1628' : '#F8FAFC',
-    font: { color: dark ? '#94A3B8' : '#334155', family: 'Inter, sans-serif', size: 11 },
+    plot_bgcolor: dark ? '#163a63' : '#EDEDCE',
+    font: { color: dark ? '#B7C7CC' : '#0C2C55', family: 'Inter, sans-serif', size: 11 },
     margin: { t: 40, r: 24, l: 56, b: 48 },
     hovermode: 'closest',
   };
@@ -77,14 +77,14 @@ function plotBase(dark: boolean): Partial<any> {
 
 function axisStyle(dark: boolean): Partial<any> {
   return {
-    gridcolor: dark ? '#1E3A5F' : '#E2E8F0',
+    gridcolor: dark ? '#296374' : '#B7C7CC',
     gridwidth: 1,
-    zerolinecolor: dark ? '#2D4A6E' : '#CBD5E1',
+    zerolinecolor: dark ? '#296374' : '#B7C7CC',
     zerolinewidth: 1,
-    tickfont: { color: dark ? '#64748B' : '#475569', size: 10, family: 'Inter, sans-serif' },
-    titlefont: { color: dark ? '#94A3B8' : '#334155', size: 11, family: 'Inter, sans-serif' },
+    tickfont: { color: dark ? '#B7C7CC' : '#296374', size: 10, family: 'Inter, sans-serif' },
+    titlefont: { color: dark ? '#B7C7CC' : '#0C2C55', size: 11, family: 'Inter, sans-serif' },
     showline: true,
-    linecolor: dark ? '#1E3A5F' : '#CBD5E1',
+    linecolor: dark ? '#296374' : '#B7C7CC',
     linewidth: 1,
   };
 }
@@ -220,7 +220,7 @@ export const Analysts: React.FC = () => {
         type: 'scatter' as const,
         mode: 'lines' as const,
         name: 'MoSPI General CPI Inflation (%)',
-        line: { color: '#06B6D4', width: 2.2 },
+        line: { color: '#629FAD', width: 2.2 },
       },
       {
         x: dates,
@@ -261,13 +261,13 @@ export const Analysts: React.FC = () => {
         textfont: {
           family: 'Inter, sans-serif',
           size: 10,
-          color: dark ? '#CBD5E1' : '#1E293B'
+          color: dark ? '#EDEDCE' : '#0C2C55'
         },
         marker: {
           size: routes.map(r => Math.max(14, Math.min(32, r.dominant_share_pct / 2.2))),
-          color: routes.map(r => r.hhi > 2500 ? '#EF4444' : (r.hhi > 1500 ? '#F59E0B' : '#10B981')),
+          color: routes.map(r => r.hhi > 2500 ? '#EF4444' : (r.hhi > 1500 ? '#296374' : '#10B981')),
           opacity: 0.85,
-          line: { color: dark ? '#FFFFFF' : '#0F172A', width: 1.5 }
+          line: { color: dark ? '#FFFFFF' : '#0C2C55', width: 1.5 }
         },
         name: 'Domestic Routes'
       }
@@ -301,7 +301,7 @@ export const Analysts: React.FC = () => {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
               <span className="badge badge-cyan" style={{ fontSize: '0.72rem', letterSpacing: 1.5, textTransform: 'uppercase', padding: '4px 10px' }}>
-                🏛 DGCA & Policy Economists Portal
+                🏛️ DGCA & Policy Economists Portal
               </span>
               <span className="badge" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10B981', border: '1px solid rgba(16, 185, 129, 0.3)', fontSize: '0.72rem' }}>
                 ✓ Local Verified Engine • 80 Routes
@@ -318,9 +318,9 @@ export const Analysts: React.FC = () => {
           {/* Action Bar (Print & Export) */}
           <div className="hud-actions print-hidden" style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
             <button 
-              className="btn" 
+              className="btn btn-primary" 
               onClick={handlePrint}
-              style={{ background: 'var(--cyan)', color: '#060B14', fontWeight: 700, border: 'none', display: 'flex', alignItems: 'center', gap: 6 }}
+              style={{ background: 'var(--cyan)', color: '#FFFFFF', fontWeight: 700, border: 'none', display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer' }}
               title="Print official executive briefing PDF"
             >
               <span>🖨️</span> Print / Save PDF
@@ -331,7 +331,7 @@ export const Analysts: React.FC = () => {
                 const el = document.getElementById('export-center');
                 el?.scrollIntoView({ behavior: 'smooth' });
               }}
-              style={{ background: 'rgba(139, 92, 246, 0.18)', color: '#A78BFA', border: '1px solid rgba(139, 92, 246, 0.4)', fontWeight: 600 }}
+              style={{ background: 'var(--card)', color: 'var(--text)', border: '1px solid var(--border)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer' }}
             >
               <span>📥</span> Export Center
             </button>
@@ -340,7 +340,7 @@ export const Analysts: React.FC = () => {
       </div>
 
       {/* ── Control & Filtering Bar ────────────────────────────────────── */}
-      <div className="card print-hidden" style={{ marginBottom: 28, padding: '16px 20px', background: dark ? '#0C1629' : '#FFFFFF', border: dark ? '1px solid #1E2D45' : '1px solid #E2E8F0' }}>
+      <div className="card print-hidden" style={{ marginBottom: 28, padding: '16px 20px', background: dark ? '#1c4262' : '#FFFFFF', border: dark ? '1px solid #296374' : '1px solid #B7C7CC' }}>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20, alignItems: 'center', justifyContent: 'space-between' }}>
           {/* Horizon Pills */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -355,8 +355,8 @@ export const Analysts: React.FC = () => {
                     padding: '4px 12px',
                     fontSize: '0.78rem',
                     borderRadius: 6,
-                    background: selectedHorizon === h ? 'var(--cyan)' : (dark ? '#132238' : '#F1F5F9'),
-                    color: selectedHorizon === h ? '#060B14' : 'var(--text)',
+                    background: selectedHorizon === h ? 'var(--cyan)' : (dark ? '#1c4262' : '#B7C7CC'),
+                    color: selectedHorizon === h ? '#FFFFFF' : 'var(--text)',
                     fontWeight: selectedHorizon === h ? 700 : 500,
                     border: 'none'
                   }}
@@ -374,9 +374,9 @@ export const Analysts: React.FC = () => {
               value={selectedRoute}
               onChange={e => setSelectedRoute(e.target.value)}
               style={{
-                background: dark ? '#132238' : '#F1F5F9',
+                background: dark ? '#1c4262' : '#B7C7CC',
                 color: 'var(--text)',
-                border: dark ? '1px solid #1E3A5F' : '1px solid #CBD5E1',
+                border: dark ? '1px solid #296374' : '1px solid #B7C7CC',
                 padding: '6px 12px',
                 borderRadius: 6,
                 fontSize: '0.85rem',
@@ -425,11 +425,11 @@ export const Analysts: React.FC = () => {
         </div>
 
         {/* Card 2: National HHI */}
-        <div className="card" style={{ padding: 20, borderLeft: '4px solid #F59E0B' }}>
+        <div className="card" style={{ padding: 20, borderLeft: '4px solid #296374' }}>
           <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--sub)', textTransform: 'uppercase', marginBottom: 4 }}>
             🏢 National Market HHI
           </div>
-          <div style={{ fontSize: '2.1rem', fontWeight: 900, color: '#F59E0B', fontFamily: 'JetBrains Mono, monospace' }}>
+          <div style={{ fontSize: '2.1rem', fontWeight: 900, color: '#296374', fontFamily: 'JetBrains Mono, monospace' }}>
             {competitionData ? competitionData.national_avg_hhi : '—'}
           </div>
           <div style={{ fontSize: '0.78rem', color: 'var(--sub)', marginTop: 4 }}>
@@ -438,7 +438,7 @@ export const Analysts: React.FC = () => {
         </div>
 
         {/* Card 3: Inflation Beta Elasticity */}
-        <div className="card" style={{ padding: 20, borderLeft: '4px solid #06B6D4' }}>
+        <div className="card" style={{ padding: 20, borderLeft: '4px solid #629FAD' }}>
           <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--sub)', textTransform: 'uppercase', marginBottom: 4 }}>
             📈 Inflation Elasticity (β)
           </div>
@@ -487,7 +487,7 @@ export const Analysts: React.FC = () => {
             <button 
               className="btn btn-sm"
               onClick={handlePrint}
-              style={{ background: dark ? '#1E293B' : '#E2E8F0', color: 'var(--text)', border: 'none' }}
+              style={{ background: dark ? '#1c4262' : '#B7C7CC', color: 'var(--text)', border: 'none' }}
             >
               🖨️ Print Section
             </button>
@@ -498,7 +498,7 @@ export const Analysts: React.FC = () => {
         <div style={{ overflowX: 'auto', marginBottom: 20 }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.86rem', textAlign: 'left' }}>
             <thead>
-              <tr style={{ borderBottom: dark ? '2px solid #1E2D45' : '2px solid #CBD5E1', color: 'var(--sub)', textTransform: 'uppercase', fontSize: '0.72rem', letterSpacing: 1 }}>
+              <tr style={{ borderBottom: dark ? '2px solid #296374' : '2px solid #B7C7CC', color: 'var(--sub)', textTransform: 'uppercase', fontSize: '0.72rem', letterSpacing: 1 }}>
                 <th style={{ padding: '10px 12px' }}>Route</th>
                 <th style={{ padding: '10px 12px' }}>Airline</th>
                 <th style={{ padding: '10px 12px' }}>Horizon</th>
@@ -516,7 +516,7 @@ export const Analysts: React.FC = () => {
                   <tr 
                     key={idx} 
                     style={{ 
-                      borderBottom: dark ? '1px solid #142033' : '1px solid #F1F5F9',
+                      borderBottom: dark ? '1px solid #296374' : '1px solid #B7C7CC',
                       background: idx % 2 === 0 ? (dark ? 'rgba(255,255,255,0.015)' : 'rgba(0,0,0,0.015)') : 'transparent'
                     }}
                   >
@@ -525,7 +525,7 @@ export const Analysts: React.FC = () => {
                     <td style={{ padding: '10px 12px', fontFamily: 'JetBrains Mono, monospace' }}>{a.horizon}</td>
                     <td style={{ padding: '10px 12px', fontFamily: 'JetBrains Mono, monospace', color: 'var(--sub)' }}>₹{a.fare_base.toLocaleString()}</td>
                     <td style={{ padding: '10px 12px', fontFamily: 'JetBrains Mono, monospace', fontWeight: 700, color: 'var(--text)' }}>₹{a.fare_current.toLocaleString()}</td>
-                    <td style={{ padding: '10px 12px', fontFamily: 'JetBrains Mono, monospace', fontWeight: 800, color: a.pct_change >= 80 ? '#EF4444' : '#F59E0B' }}>
+                    <td style={{ padding: '10px 12px', fontFamily: 'JetBrains Mono, monospace', fontWeight: 800, color: a.pct_change >= 80 ? '#EF4444' : '#296374' }}>
                       +{a.pct_change.toFixed(1)}%
                     </td>
                     <td style={{ padding: '10px 12px', fontFamily: 'JetBrains Mono, monospace' }}>{a.surge_multiplier}x</td>
@@ -537,7 +537,7 @@ export const Analysts: React.FC = () => {
                           fontSize: '0.72rem',
                           fontWeight: 800,
                           background: a.severity === 'CRITICAL' ? 'rgba(239, 68, 68, 0.2)' : (a.severity === 'HIGH' ? 'rgba(245, 158, 11, 0.2)' : 'rgba(16, 185, 129, 0.2)'),
-                          color: a.severity === 'CRITICAL' ? '#EF4444' : (a.severity === 'HIGH' ? '#F59E0B' : '#10B981'),
+                          color: a.severity === 'CRITICAL' ? '#EF4444' : (a.severity === 'HIGH' ? '#296374' : '#10B981'),
                           border: a.severity === 'CRITICAL' ? '1px solid rgba(239, 68, 68, 0.4)' : (a.severity === 'HIGH' ? '1px solid rgba(245, 158, 11, 0.4)' : '1px solid rgba(16, 185, 129, 0.4)')
                         }}
                       >
@@ -559,7 +559,7 @@ export const Analysts: React.FC = () => {
         </div>
 
         {/* Statistical Note */}
-        <div style={{ background: dark ? '#0B1322' : '#F8FAFC', padding: '12px 16px', borderRadius: 8, fontSize: '0.8rem', color: 'var(--sub)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 10 }}>
+        <div style={{ background: dark ? '#091f3d' : '#EDEDCE', padding: '12px 16px', borderRadius: 8, fontSize: '0.8rem', color: 'var(--sub)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 10 }}>
           <div>
             <strong>IQR Outlier Ceiling:</strong> Q3 (₹{anomalyData?.iqr_stats.q3.toLocaleString()}) + 1.5×IQR (₹{anomalyData?.iqr_stats.iqr.toLocaleString()}) = <strong style={{ color: 'var(--cyan)' }}>₹{anomalyData?.iqr_stats.upper_bound.toLocaleString()}</strong>. Fares above this are filtered out during median APIx computation.
           </div>
@@ -589,7 +589,7 @@ export const Analysts: React.FC = () => {
               className="btn btn-sm"
               onClick={() => handleDownloadDataset('mospi', 'mospi_vs_apix_inflation.csv')}
               disabled={downloading === 'mospi'}
-              style={{ background: 'rgba(6, 182, 212, 0.15)', color: 'var(--cyan)', border: '1px solid rgba(6, 182, 212, 0.3)' }}
+              style={{ background: 'rgba(98, 159, 173, 0.15)', color: 'var(--cyan)', border: '1px solid rgba(98, 159, 173, 0.3)' }}
             >
               {downloading === 'mospi' ? 'Exporting...' : '📥 Export MoSPI Series (CSV)'}
             </button>
@@ -606,10 +606,10 @@ export const Analysts: React.FC = () => {
             data={inflationChartData as any}
             layout={{
               ...PB,
-              title: { text: 'YoY Inflation: MoSPI Headline CPI vs APIx Airfare Index (%)', font: { size: 13, color: dark ? '#E2E8F0' : '#0F172A' } },
-              xaxis: { ...AX, title: { text: 'Timeline (Monthly History)', font: { size: 11, color: dark ? '#94A3B8' : '#475569' } } },
-              yaxis: { ...AX, title: { text: 'Inflation Rate (% YoY)', font: { size: 11, color: dark ? '#94A3B8' : '#475569' } } },
-              legend: { orientation: 'h', y: -0.22, font: { size: 11, color: dark ? '#E2E8F0' : '#0F172A' } }
+              title: { text: 'YoY Inflation: MoSPI Headline CPI vs APIx Airfare Index (%)', font: { size: 13, color: dark ? '#EDEDCE' : '#0C2C55' } },
+              xaxis: { ...AX, title: { text: 'Timeline (Monthly History)', font: { size: 11, color: dark ? '#B7C7CC' : '#296374' } } },
+              yaxis: { ...AX, title: { text: 'Inflation Rate (% YoY)', font: { size: 11, color: dark ? '#B7C7CC' : '#296374' } } },
+              legend: { orientation: 'h', y: -0.22, font: { size: 11, color: dark ? '#EDEDCE' : '#0C2C55' } }
             }}
             useResizeHandler
             style={{ width: '100%', height: '100%' }}
@@ -627,7 +627,7 @@ export const Analysts: React.FC = () => {
       <div className="card" style={{ marginBottom: 32, padding: 24 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 18, flexWrap: 'wrap', gap: 12 }}>
           <div>
-            <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1.5, color: '#F59E0B' }}>
+            <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1.5, color: '#296374' }}>
               Module 03 • Antitrust & Market Dominance
             </div>
             <h2 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text)', margin: '4px 0 0 0' }}>
@@ -639,7 +639,7 @@ export const Analysts: React.FC = () => {
               className="btn btn-sm"
               onClick={() => handleDownloadDataset('competition', 'apix_hhi_market_concentration.csv')}
               disabled={downloading === 'competition'}
-              style={{ background: 'rgba(245, 158, 11, 0.15)', color: '#F59E0B', border: '1px solid rgba(245, 158, 11, 0.3)' }}
+              style={{ background: 'rgba(245, 158, 11, 0.15)', color: '#296374', border: '1px solid rgba(245, 158, 11, 0.3)' }}
             >
               {downloading === 'competition' ? 'Exporting...' : '📥 Export HHI Matrix (CSV)'}
             </button>
@@ -659,10 +659,10 @@ export const Analysts: React.FC = () => {
             justifyContent: 'space-between', 
             gap: 12, 
             padding: '12px 16px', 
-            background: dark ? '#0B1526' : '#F1F5F9', 
-            borderRadius: 8, 
+            background: dark ? '#091f3d' : '#B7C7CC',
+            borderRadius: 8,
             marginBottom: 16,
-            border: dark ? '1px solid #1E2E48' : '1px solid #E2E8F0'
+            border: dark ? '1px solid #296374' : '1px solid #B7C7CC'
           }}
         >
           {/* Zoom Presets */}
@@ -673,35 +673,35 @@ export const Analysts: React.FC = () => {
             <button 
               className={`btn btn-sm ${hhiZoomPreset === 'all' ? 'active' : ''}`}
               onClick={() => setHhiZoomPreset('all')}
-              style={{ padding: '3px 10px', fontSize: '0.76rem', borderRadius: 4, background: hhiZoomPreset === 'all' ? 'var(--cyan)' : (dark ? '#132035' : '#E2E8F0'), color: hhiZoomPreset === 'all' ? '#060B14' : 'var(--text)', fontWeight: 700 }}
+              style={{ padding: '3px 10px', fontSize: '0.76rem', borderRadius: 4, background: hhiZoomPreset === 'all' ? 'var(--cyan)' : (dark ? '#1c4262' : '#B7C7CC'), color: hhiZoomPreset === 'all' ? '#FFFFFF' : 'var(--text)', fontWeight: 700 }}
             >
               🌐 All Routes (80)
             </button>
             <button 
               className={`btn btn-sm ${hhiZoomPreset === 'competitive' ? 'active' : ''}`}
               onClick={() => setHhiZoomPreset('competitive')}
-              style={{ padding: '3px 10px', fontSize: '0.76rem', borderRadius: 4, background: hhiZoomPreset === 'competitive' ? '#10B981' : (dark ? '#132035' : '#E2E8F0'), color: hhiZoomPreset === 'competitive' ? '#FFFFFF' : 'var(--text)', fontWeight: 700 }}
+              style={{ padding: '3px 10px', fontSize: '0.76rem', borderRadius: 4, background: hhiZoomPreset === 'competitive' ? '#10B981' : (dark ? '#1c4262' : '#B7C7CC'), color: hhiZoomPreset === 'competitive' ? '#FFFFFF' : 'var(--text)', fontWeight: 700 }}
             >
               🟢 Competitive (&lt;1500)
             </button>
             <button 
               className={`btn btn-sm ${hhiZoomPreset === 'moderate' ? 'active' : ''}`}
               onClick={() => setHhiZoomPreset('moderate')}
-              style={{ padding: '3px 10px', fontSize: '0.76rem', borderRadius: 4, background: hhiZoomPreset === 'moderate' ? '#F59E0B' : (dark ? '#132035' : '#E2E8F0'), color: hhiZoomPreset === 'moderate' ? '#060B14' : 'var(--text)', fontWeight: 700 }}
+              style={{ padding: '3px 10px', fontSize: '0.76rem', borderRadius: 4, background: hhiZoomPreset === 'moderate' ? '#296374' : (dark ? '#1c4262' : '#B7C7CC'), color: hhiZoomPreset === 'moderate' ? '#FFFFFF' : 'var(--text)', fontWeight: 700 }}
             >
               🟡 Moderate (1500–2500)
             </button>
             <button 
               className={`btn btn-sm ${hhiZoomPreset === 'monopoly' ? 'active' : ''}`}
               onClick={() => setHhiZoomPreset('monopoly')}
-              style={{ padding: '3px 10px', fontSize: '0.76rem', borderRadius: 4, background: hhiZoomPreset === 'monopoly' ? '#EF4444' : (dark ? '#132035' : '#E2E8F0'), color: hhiZoomPreset === 'monopoly' ? '#FFFFFF' : 'var(--text)', fontWeight: 700 }}
+              style={{ padding: '3px 10px', fontSize: '0.76rem', borderRadius: 4, background: hhiZoomPreset === 'monopoly' ? '#EF4444' : (dark ? '#1c4262' : '#B7C7CC'), color: hhiZoomPreset === 'monopoly' ? '#FFFFFF' : 'var(--text)', fontWeight: 700 }}
             >
               🔴 Monopoly Risk (&gt;2500)
             </button>
             <button 
               className={`btn btn-sm ${hhiZoomPreset === 'surge' ? 'active' : ''}`}
               onClick={() => setHhiZoomPreset('surge')}
-              style={{ padding: '3px 10px', fontSize: '0.76rem', borderRadius: 4, background: hhiZoomPreset === 'surge' ? '#8B5CF6' : (dark ? '#132035' : '#E2E8F0'), color: hhiZoomPreset === 'surge' ? '#FFFFFF' : 'var(--text)', fontWeight: 700 }}
+              style={{ padding: '3px 10px', fontSize: '0.76rem', borderRadius: 4, background: hhiZoomPreset === 'surge' ? '#296374' : (dark ? '#1c4262' : '#B7C7CC'), color: hhiZoomPreset === 'surge' ? '#FFFFFF' : 'var(--text)', fontWeight: 700 }}
             >
               🔥 High Surge (&gt;+15%)
             </button>
@@ -713,9 +713,9 @@ export const Analysts: React.FC = () => {
               value={searchHhiRoute}
               onChange={e => setSearchHhiRoute(e.target.value)}
               style={{
-                background: dark ? '#132035' : '#FFFFFF',
+                background: dark ? '#1c4262' : '#FFFFFF',
                 color: 'var(--text)',
-                border: dark ? '1px solid #1E3A5F' : '1px solid #CBD5E1',
+                border: dark ? '1px solid #296374' : '1px solid #B7C7CC',
                 padding: '4px 10px',
                 borderRadius: 4,
                 fontSize: '0.78rem',
@@ -734,7 +734,7 @@ export const Analysts: React.FC = () => {
               style={{ 
                 padding: '4px 12px', 
                 fontSize: '0.76rem', 
-                background: showHhiLabels ? 'rgba(6, 182, 212, 0.2)' : (dark ? '#132035' : '#E2E8F0'), 
+                background: showHhiLabels ? 'rgba(98, 159, 173, 0.2)' : (dark ? '#1c4262' : '#B7C7CC'),
                 color: showHhiLabels ? 'var(--cyan)' : 'var(--text)',
                 border: showHhiLabels ? '1px solid var(--cyan)' : 'none',
                 fontWeight: 700
@@ -753,17 +753,17 @@ export const Analysts: React.FC = () => {
               ...PB,
               title: { 
                 text: 'Route Concentration (HHI) vs Average Fare Surge (%) • Hover on bubbles for full route breakdown', 
-                font: { size: 12, color: dark ? '#E2E8F0' : '#0F172A' } 
+                font: { size: 12, color: dark ? '#EDEDCE' : '#0C2C55' }
               },
               xaxis: { 
                 ...AX, 
-                title: { text: 'Herfindahl-Hirschman Index (HHI) → Higher = Monopoly Risk', font: { size: 11, color: dark ? '#94A3B8' : '#475569' } },
+                title: { text: 'Herfindahl-Hirschman Index (HHI) → Higher = Monopoly Risk', font: { size: 11, color: dark ? '#B7C7CC' : '#296374' } },
                 range: hhiLayoutRanges.xrange,
                 autorange: hhiLayoutRanges.autorangeX
               },
               yaxis: { 
                 ...AX, 
-                title: { text: 'Average Fare Surge vs Base (%)', font: { size: 11, color: dark ? '#94A3B8' : '#475569' } },
+                title: { text: 'Average Fare Surge vs Base (%)', font: { size: 11, color: dark ? '#B7C7CC' : '#296374' } },
                 range: hhiLayoutRanges.yrange,
                 autorange: hhiLayoutRanges.autorangeY
               },
@@ -791,7 +791,7 @@ export const Analysts: React.FC = () => {
         <div style={{ overflowX: 'auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.86rem', textAlign: 'left' }}>
             <thead>
-              <tr style={{ borderBottom: dark ? '2px solid #1E2D45' : '2px solid #CBD5E1', color: 'var(--sub)', textTransform: 'uppercase', fontSize: '0.72rem', letterSpacing: 1 }}>
+              <tr style={{ borderBottom: dark ? '2px solid #296374' : '2px solid #B7C7CC', color: 'var(--sub)', textTransform: 'uppercase', fontSize: '0.72rem', letterSpacing: 1 }}>
                 <th style={{ padding: '10px 12px' }}>Route ID</th>
                 <th style={{ padding: '10px 12px' }}>HHI Score</th>
                 <th style={{ padding: '10px 12px' }}>Market Concentration</th>
@@ -806,7 +806,7 @@ export const Analysts: React.FC = () => {
                 <tr 
                   key={idx} 
                   style={{ 
-                    borderBottom: dark ? '1px solid #142033' : '1px solid #F1F5F9',
+                    borderBottom: dark ? '1px solid #296374' : '1px solid #B7C7CC',
                     background: idx % 2 === 0 ? (dark ? 'rgba(255,255,255,0.015)' : 'rgba(0,0,0,0.015)') : 'transparent'
                   }}
                 >
@@ -820,7 +820,7 @@ export const Analysts: React.FC = () => {
                         fontSize: '0.72rem',
                         fontWeight: 700,
                         background: r.hhi > 2500 ? 'rgba(239, 68, 68, 0.2)' : (r.hhi > 1500 ? 'rgba(245, 158, 11, 0.2)' : 'rgba(16, 185, 129, 0.2)'),
-                        color: r.hhi > 2500 ? '#EF4444' : (r.hhi > 1500 ? '#F59E0B' : '#10B981')
+                        color: r.hhi > 2500 ? '#EF4444' : (r.hhi > 1500 ? '#296374' : '#10B981')
                       }}
                     >
                       {r.market_type}
@@ -840,10 +840,10 @@ export const Analysts: React.FC = () => {
       </div>
 
       {/* ── Module 4: Bulk Export Center ───────────────────────────────── */}
-      <div id="export-center" className="card" style={{ marginBottom: 32, padding: 24, background: dark ? '#0A1424' : '#F8FAFC', border: dark ? '1px solid #1E3A5F' : '1px solid #CBD5E1' }}>
+      <div id="export-center" className="card" style={{ marginBottom: 32, padding: 24, background: dark ? '#091f3d' : '#EDEDCE', border: dark ? '1px solid #296374' : '1px solid #B7C7CC' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 18, flexWrap: 'wrap', gap: 12 }}>
           <div>
-            <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1.5, color: '#A78BFA' }}>
+            <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1.5, color: '#629FAD' }}>
               Module 04 • Universal Open Data Hub
             </div>
             <h2 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text)', margin: '4px 0 0 0' }}>
@@ -851,9 +851,9 @@ export const Analysts: React.FC = () => {
             </h2>
           </div>
           <button 
-            className="btn" 
+            className="btn btn-primary" 
             onClick={handlePrint}
-            style={{ background: 'var(--cyan)', color: '#060B14', fontWeight: 700, border: 'none' }}
+            style={{ background: 'var(--cyan)', color: '#FFFFFF', fontWeight: 700, border: 'none', cursor: 'pointer' }}
           >
             🖨️ Print Full Official Brief (PDF)
           </button>
@@ -865,39 +865,39 @@ export const Analysts: React.FC = () => {
 
         <div className="grid-2" style={{ gap: 16 }}>
           {/* Export Card 1 */}
-          <div className="card" style={{ padding: 18, background: dark ? '#0F1E33' : '#FFFFFF', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div className="card" style={{ padding: 18, background: dark ? '#1c4262' : '#FFFFFF', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
               <div style={{ fontWeight: 700, color: 'var(--text)', marginBottom: 2 }}>📊 Full Scraped Fares Snapshot</div>
               <div style={{ fontSize: '0.78rem', color: 'var(--sub)' }}>All 3,000+ individual ticket offers across all 80 domestic routes.</div>
             </div>
             <button 
-              className="btn btn-sm"
+              className="btn btn-sm btn-primary"
               onClick={() => handleDownloadDataset('fares', 'apix_fares_latest.csv')}
               disabled={downloading === 'fares'}
-              style={{ background: 'var(--cyan)', color: '#060B14', fontWeight: 700, border: 'none' }}
+              style={{ background: 'var(--cyan)', color: '#FFFFFF', fontWeight: 700, border: 'none', cursor: 'pointer' }}
             >
               {downloading === 'fares' ? 'Downloading...' : '📥 Download CSV'}
             </button>
           </div>
 
           {/* Export Card 2 */}
-          <div className="card" style={{ padding: 18, background: dark ? '#0F1E33' : '#FFFFFF', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div className="card" style={{ padding: 18, background: dark ? '#1c4262' : '#FFFFFF', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
               <div style={{ fontWeight: 700, color: 'var(--text)', marginBottom: 2 }}>⚖️ DGCA Traffic & Weight Allocations</div>
               <div style={{ fontSize: '0.78rem', color: 'var(--sub)' }}>Laspeyres route weights and passenger distributions for 80 routes.</div>
             </div>
             <button 
-              className="btn btn-sm"
+              className="btn btn-sm btn-primary"
               onClick={() => handleDownloadDataset('weights', 'apix_routes_weights.csv')}
               disabled={downloading === 'weights'}
-              style={{ background: 'var(--cyan)', color: '#060B14', fontWeight: 700, border: 'none' }}
+              style={{ background: 'var(--cyan)', color: '#FFFFFF', fontWeight: 700, border: 'none', cursor: 'pointer' }}
             >
               {downloading === 'weights' ? 'Downloading...' : '📥 Download CSV'}
             </button>
           </div>
 
           {/* Export Card 3 */}
-          <div className="card" style={{ padding: 18, background: dark ? '#0F1E33' : '#FFFFFF', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div className="card" style={{ padding: 18, background: dark ? '#1c4262' : '#FFFFFF', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
               <div style={{ fontWeight: 700, color: 'var(--text)', marginBottom: 2 }}>🚨 Regulatory Anomaly Audit Report</div>
               <div style={{ fontSize: '0.78rem', color: 'var(--sub)' }}>Flagged routes with severe surge multipliers for DGCA review.</div>
@@ -913,7 +913,7 @@ export const Analysts: React.FC = () => {
           </div>
 
           {/* Export Card 4 */}
-          <div className="card" style={{ padding: 18, background: dark ? '#0F1E33' : '#FFFFFF', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div className="card" style={{ padding: 18, background: dark ? '#1c4262' : '#FFFFFF', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
               <div style={{ fontWeight: 700, color: 'var(--text)', marginBottom: 2 }}>🏢 HHI Route Competition Matrix</div>
               <div style={{ fontSize: '0.78rem', color: 'var(--sub)' }}>Antitrust metrics, carrier flight shares, and monopoly indices for all routes.</div>
@@ -922,7 +922,7 @@ export const Analysts: React.FC = () => {
               className="btn btn-sm"
               onClick={() => handleDownloadDataset('competition', 'apix_hhi_competition.csv')}
               disabled={downloading === 'competition'}
-              style={{ background: '#F59E0B', color: '#060B14', fontWeight: 700, border: 'none' }}
+              style={{ background: '#296374', color: '#FFFFFF', fontWeight: 700, border: 'none', cursor: 'pointer' }}
             >
               {downloading === 'competition' ? 'Downloading...' : '📥 Download CSV'}
             </button>

@@ -34,20 +34,20 @@ function seededRand(seed: number, i: number): number {
 function plotBase(dark: boolean): Partial<any> {
   return {
     paper_bgcolor: 'rgba(0,0,0,0)',
-    plot_bgcolor:  dark ? '#0A1628' : '#F8FAFC',
-    font: { color: dark ? '#94A3B8' : '#334155', family: 'Inter, sans-serif', size: 12 },
+    plot_bgcolor:  dark ? '#163a63' : '#E1E1C4',
+    font: { color: dark ? '#B7C7CC' : '#296374', family: 'Inter, sans-serif', size: 12 },
   };
 }
 function axisStyle(dark: boolean): Partial<any> {
   return {
-    gridcolor:   dark ? '#1E3A5F' : '#E2E8F0',
+    gridcolor:   dark ? '#296374' : '#B7C7CC',
     gridwidth:   1,
-    zerolinecolor: dark ? '#2D4A6E' : '#CBD5E1',
+    zerolinecolor: dark ? '#296374' : '#B7C7CC',
     zerolinewidth: 1,
-    tickfont:    { color: dark ? '#64748B' : '#475569', size: 12, family: 'Inter, sans-serif' },
-    titlefont:   { color: dark ? '#94A3B8' : '#334155', size: 13, family: 'Inter, sans-serif' },
+    tickfont:    { color: dark ? '#296374' : '#296374', size: 12, family: 'Inter, sans-serif' },
+    titlefont:   { color: dark ? '#B7C7CC' : '#296374', size: 13, family: 'Inter, sans-serif' },
     showline:    true,
-    linecolor:   dark ? '#1E3A5F' : '#CBD5E1',
+    linecolor:   dark ? '#296374' : '#B7C7CC',
     linewidth:   1,
   };
 }
@@ -96,9 +96,9 @@ const Arrow: React.FC<{idx: number}> = ({idx}) => {
   return <span className="hud-ticker-value hud-ticker-flat">— 0.00%</span>;
 };
 
-/* ═══════════════════════════════════════════════════════════════════════════
+/* ───────────────────────────────────────────────────────────────────────────
    MAIN COMPONENT
-══════════════════════════════════════════════════════════════════════════════ */
+────────────────────────────────────────────────────────────────────────────── */
 const Dashboard: React.FC = () => {
   const { dark } = useTheme();
 
@@ -198,7 +198,7 @@ const Dashboard: React.FC = () => {
     <div className="page-content">
 
       {/* ── Control Panel ── */}
-      <div className="section-label" style={{marginBottom:10}}>✦ Flight Control Panel</div>
+      <div className="section-label" style={{marginBottom:10}}>✈ Flight Control Panel</div>
       <div className="control-panel">
         <div className="control-group">
           <label className="control-label">Cabin Class</label>
@@ -241,7 +241,7 @@ const Dashboard: React.FC = () => {
         <div className="control-group">
           <label className="control-label">Status</label>
           <div style={{display:'flex', alignItems:'center', gap:8, marginTop:8}}>
-            <span style={{color:'var(--green)', fontSize:'0.85rem', fontWeight:700}}>● LIVE</span>
+            <span style={{color:'var(--green)', fontSize:'0.85rem', fontWeight:700}}>■ LIVE</span>
             <span style={{color:'var(--sub)', fontSize:'0.78rem'}}>{aggregation} · {cabinClass}</span>
           </div>
         </div>
@@ -258,7 +258,7 @@ const Dashboard: React.FC = () => {
         ))}
         <div style={{marginLeft:'auto', display:'flex', gap:16, fontSize:'0.75rem', fontFamily:'JetBrains Mono,monospace', color:'var(--sub)', whiteSpace:'nowrap'}}>
           <span>ROUTES: <b style={{color:'var(--text)'}}>{routeSummary.length}</b></span>
-          <span>FEED: <b style={{color:'var(--green)'}}>● LIVE</b></span>
+          <span>FEED: <b style={{color:'var(--green)'}}>■ LIVE</b></span>
         </div>
       </div>
 
@@ -296,18 +296,18 @@ const Dashboard: React.FC = () => {
           {
             x:trendDates, y:trendVals,
             mode:'lines', name:'APIx Index',
-            fill:'tonexty', fillcolor: dark ? 'rgba(6,182,212,0.09)' : 'rgba(2,132,199,0.09)',
-            line:{color: dark ? '#06B6D4' : '#0284C7', width:2.5, shape:'spline' as const},
+            fill:'tonexty', fillcolor: dark ? 'rgba(98,159,173,0.09)' : 'rgba(12,44,85,0.09)',
+            line:{color: dark ? '#629FAD' : '#0C2C55', width:2.5, shape:'spline' as const},
             hovertemplate:'<b>Date:</b> %{x}<br><b>APIx:</b> %{y:.2f}<extra></extra>',
             hoverlabel: {
-              bgcolor: dark ? '#121B32' : '#FFFFFF',
-              bordercolor: dark ? '#1F2D54' : '#CBD5E1',
-              font: { color: dark ? '#F1F5F9' : '#0F172A', size: 12, family: 'Inter, sans-serif' }
+              bgcolor: dark ? '#1c4262' : '#FFFFFF',
+              bordercolor: dark ? '#296374' : '#B7C7CC',
+              font: { color: dark ? '#EDEDCE' : '#0C2C55', size: 12, family: 'Inter, sans-serif' }
             }
           },
           {
             x:[trendDates[0], trendDates[44]], y:[100,100], mode:'lines', name:'Parity (100)',
-            line:{color: dark ? 'rgba(245,158,11,0.5)' : 'rgba(217,119,6,0.5)', dash:'dot', width:1.5},
+            line:{color: dark ? 'rgba(41,99,116,0.5)' : 'rgba(41,99,116,0.5)', dash:'dot', width:1.5},
             hoverinfo:'skip' as const,
           },
         ]}
@@ -321,16 +321,16 @@ const Dashboard: React.FC = () => {
             xanchor: 'center' as const,
             yanchor: 'bottom' as const,
             bgcolor: 'rgba(0,0,0,0)',
-            font: { color: dark ? '#94A3B8' : '#475569', size: 11 }
+            font: { color: dark ? '#B7C7CC' : '#296374', size: 11 }
           },
           margin:{l:70, r:40, t:50, b:55},
           xaxis:{
             ...AX,
-            title:{text:'Date', font:{color: dark?'#94A3B8':'#334155', size:13}, standoff:12},
+            title:{text:'Date', font:{color: dark?'#B7C7CC':'#296374', size:13}, standoff:12},
           },
           yaxis:{
             ...AX,
-            title:{text:'APIx Index', font:{color: dark?'#94A3B8':'#334155', size:13}, standoff:10},
+            title:{text:'APIx Index', font:{color: dark?'#B7C7CC':'#296374', size:13}, standoff:10},
             tickformat:'.1f',
             range: [yMin, yMax],
           },
@@ -353,7 +353,7 @@ const Dashboard: React.FC = () => {
           transition={{duration:0.2}}
         >
 
-          {/* ══════════ TAB 0 — MAP ══════════ */}
+          {/* ────────── TAB 0 — MAP ────────── */}
           {activeTab===0 && (
             <div className="grid-2" style={{gridTemplateColumns:'3fr 1fr', gap:16}}>
               <div>
@@ -374,7 +374,7 @@ const Dashboard: React.FC = () => {
                           pathOptions={{color:pctColor(r.avg_pct_change), weight, opacity:0.75}}>
                           <Popup>
                             <div style={{fontFamily:'Inter,sans-serif', minWidth:160}}>
-                              <div style={{fontSize:'1.05rem', fontWeight:800, color:'#06B6D4', marginBottom:6}}>{r.route_id}</div>
+                              <div style={{fontSize:'1.05rem', fontWeight:800, color:'#629FAD', marginBottom:6}}>{r.route_id}</div>
                               <div>APIx: <b>{r.route_index.toFixed(1)}</b></div>
                               <div>Avg Change: <b style={{color:r.avg_pct_change>0?'#EF4444':'#10B981'}}>
                                 {r.avg_pct_change>0?'+':''}{r.avg_pct_change.toFixed(1)}%
@@ -392,8 +392,8 @@ const Dashboard: React.FC = () => {
                       const lon = row.origin===code ? row.origin_lon : row.dest_lon;
                       return (
                         <CircleMarker key={code} center={[lat,lon]} radius={5}
-                          pathOptions={{color:'#06B6D4',fillColor:'#06B6D4',fillOpacity:0.9,weight:1}}>
-                          <Popup><b style={{color:'#06B6D4'}}>{code}</b></Popup>
+                          pathOptions={{color:'#629FAD',fillColor:'#629FAD',fillOpacity:0.9,weight:1}}>
+                          <Popup><b style={{color:'#629FAD'}}>{code}</b></Popup>
                         </CircleMarker>
                       );
                     })}
@@ -416,7 +416,7 @@ const Dashboard: React.FC = () => {
             </div>
           )}
 
-          {/* ══════════ TAB 1 — HEATMAP (ALL 80 ROUTES) ══════════ */}
+          {/* ────────── TAB 1 — HEATMAP (ALL 80 ROUTES) ────────── */}
           {activeTab===1 && heatmapData && (() => {
             const N = heatmapData.routes.length; // All routes — no cap
             const CELL_H = 36; // px per row
@@ -450,7 +450,7 @@ const Dashboard: React.FC = () => {
                   maxHeight: '80vh',
                   border: '1px solid var(--border)',
                   borderRadius: 12,
-                  background: dark ? '#0A1628' : '#F8FAFC',
+                  background: dark ? '#163a63' : '#E1E1C4',
                 }}>
                   <Plot
                     key={`heatmap-${dark}`}
@@ -476,14 +476,14 @@ const Dashboard: React.FC = () => {
                         zmin: -10, zmax: 30,
                         showscale: true,
                         colorbar: {
-                          title:{ text:'% Change', side:'right' as const, font:{color: dark?'#94A3B8':'#334155', size:12} },
-                          tickfont:{ color: dark?'#64748B':'#475569', size:11 },
+                          title:{ text:'% Change', side:'right' as const, font:{color: dark?'#B7C7CC':'#296374', size:12} },
+                          tickfont:{ color: dark?'#296374':'#296374', size:11 },
                           ticksuffix:'%',
                           thickness:15,
                           len:0.9,
                           x: 0.76,
                           bgcolor:'rgba(0,0,0,0)',
-                          bordercolor: dark?'#1E3A5F':'#CBD5E1',
+                          bordercolor: dark?'#296374':'#B7C7CC',
                         },
                         customdata: heatmapData.hover,
                         hovertemplate: '%{customdata}<extra></extra>',
@@ -500,9 +500,9 @@ const Dashboard: React.FC = () => {
                           color: heatmapData.weights.map(w => {
                             const maxW = Math.max(...heatmapData.weights);
                             const alpha = 0.35 + (w / maxW) * 0.65;
-                            return dark ? `rgba(6,182,212,${alpha})` : `rgba(3,105,161,${alpha})`;
+                            return dark ? `rgba(98,159,173,${alpha})` : `rgba(12,44,85,${alpha})`;
                           }),
-                          line:{color: dark?'rgba(6,182,212,0.2)':'rgba(3,105,161,0.2)', width:1},
+                          line:{color: dark?'rgba(98,159,173,0.2)':'rgba(12,44,85,0.2)', width:1},
                         },
                         hovertemplate:'<b>%{y}</b><br>Weight: <b>%{x:.3f}%</b><extra></extra>',
                         xaxis:'x2', yaxis:'y',
@@ -518,33 +518,33 @@ const Dashboard: React.FC = () => {
                       xaxis:{
                         ...AX,
                         domain:[0,0.73],
-                        title:{ text:'Booking Horizon (Days Before Travel)', font:{color:dark?'#94A3B8':'#334155', size:13}, standoff:12 },
-                        tickfont:{ color:dark?'#C4CBDA':'#334155', size:13, family:'JetBrains Mono, monospace' },
+                        title:{ text:'Booking Horizon (Days Before Travel)', font:{color:dark?'#B7C7CC':'#296374', size:13}, standoff:12 },
+                        tickfont:{ color:dark?'#EDEDCE':'#296374', size:13, family:'JetBrains Mono, monospace' },
                         showgrid:false,
                         side:'bottom',
                       },
                       yaxis:{
                         ...AX,
                         autorange:'reversed',
-                        tickfont:{ color:dark?'#C4CBDA':'#334155', size:12, family:'JetBrains Mono, monospace' },
+                        tickfont:{ color:dark?'#EDEDCE':'#296374', size:12, family:'JetBrains Mono, monospace' },
                         showgrid:false,
-                        title:{ text:'Route (Origin–Destination)', font:{color:dark?'#94A3B8':'#334155', size:13}, standoff:10 },
+                        title:{ text:'Route (Origin–Destination)', font:{color:dark?'#B7C7CC':'#296374', size:13}, standoff:10 },
                       },
 
                       /* ── Weight bar axes ── */
                       xaxis2:{
                         ...AX,
                         domain:[0.80,1],
-                        title:{ text:'Traffic %', font:{color:dark?'#94A3B8':'#334155', size:11}, standoff:8 },
-                        tickfont:{ color:dark?'#64748B':'#475569', size:10 },
+                        title:{ text:'Traffic %', font:{color:dark?'#B7C7CC':'#296374', size:11}, standoff:8 },
+                        tickfont:{ color:dark?'#296374':'#296374', size:10 },
                         showgrid:true,
                         zeroline:false,
                         ticksuffix:'%',
                       },
 
                       annotations:[
-                        { text:'% Change', showarrow:false, x:0.77, xref:'paper', y:1.015, yref:'paper', font:{color:dark?'#94A3B8':'#334155', size:12}, xanchor:'center' },
-                        { text:'Passenger Weight', showarrow:false, x:0.90, xref:'paper', y:1.015, yref:'paper', font:{color:dark?'#06B6D4':'#0369A1', size:12}, xanchor:'center' },
+                        { text:'% Change', showarrow:false, x:0.77, xref:'paper', y:1.015, yref:'paper', font:{color:dark?'#B7C7CC':'#296374', size:12}, xanchor:'center' },
+                        { text:'Passenger Weight', showarrow:false, x:0.90, xref:'paper', y:1.015, yref:'paper', font:{color:dark?'#629FAD':'#0C2C55', size:12}, xanchor:'center' },
                       ],
                       showlegend:false,
                     }}
@@ -557,7 +557,7 @@ const Dashboard: React.FC = () => {
             );
           })()}
 
-          {/* ══════════ TAB 2 — MoSPI CPI ══════════ */}
+          {/* ────────── TAB 2 — MoSPI CPI ────────── */}
           {activeTab===2 && (
             <div>
               <div className="section-label">MoSPI CPI Base Period</div>
@@ -595,22 +595,22 @@ const Dashboard: React.FC = () => {
                           return [`${MONTHS[d.getMonth()+1]} ${d.getFullYear()}`, r.cpi_rebased-100];
                         }),
                         mode:'lines', name:'MoSPI CPI (Rebased)',
-                        line:{color:dark?'#06B6D4':'#0284C7', width:2.5, shape:'spline' as const},
-                        fill:'tonexty', fillcolor:dark?'rgba(6,182,212,0.08)':'rgba(2,132,199,0.08)',
+                        line:{color:dark?'#629FAD':'#0C2C55', width:2.5, shape:'spline' as const},
+                        fill:'tonexty', fillcolor:dark?'rgba(98,159,173,0.08)':'rgba(12,44,85,0.08)',
                         hovertemplate:
                           '<b>%{customdata[0]}</b><br>' +
                           '<span style="font-size:16px; font-weight:900">%{y:.1f}</span><br>' +
-                          '<span style="color:#06B6D4">%{customdata[1]:+.2f}% vs base</span><extra></extra>',
+                          '<span style="color:#629FAD">%{customdata[1]:+.2f}% vs base</span><extra></extra>',
                         hoverlabel: {
-                          bgcolor: dark ? '#121B32' : '#FFFFFF',
-                          bordercolor: dark ? '#1F2D54' : '#CBD5E1',
-                          font: { color: dark ? '#F1F5F9' : '#0F172A', size: 12, family: 'Inter, sans-serif' }
+                          bgcolor: dark ? '#1c4262' : '#FFFFFF',
+                          bordercolor: dark ? '#296374' : '#B7C7CC',
+                          font: { color: dark ? '#EDEDCE' : '#0C2C55', size: 12, family: 'Inter, sans-serif' }
                         }
                       },
                       {
                         x:[mospiRebased[0]?.date, mospiRebased[mospiRebased.length-1]?.date],
                         y:[100,100], mode:'lines', name:'Base (= 100)',
-                        line:{color:dark?'rgba(245,158,11,0.45)':'rgba(217,119,6,0.45)', dash:'dot', width:1.5},
+                        line:{color:dark?'rgba(41,99,116,0.45)':'rgba(41,99,116,0.45)', dash:'dot', width:1.5},
                         hoverinfo:'skip' as const,
                       },
                     ]}
@@ -618,23 +618,23 @@ const Dashboard: React.FC = () => {
                       ...PB, height:520,
                       hovermode:'closest',
                       showlegend:true,
-                      legend:{x:0.01, y:0.99, bgcolor:'rgba(0,0,0,0)', font:{color:dark?'#64748B':'#475569', size:12}},
+                      legend:{x:0.01, y:0.99, bgcolor:'rgba(0,0,0,0)', font:{color:dark?'#296374':'#296374', size:12}},
                       margin:{l:75, r:30, t:50, b:65},
                       title:{
                         text:`MoSPI Consumer Price Index — Rebased to ${MONTHS[baseMonth]} ${baseYear}`,
-                        font:{color:dark?'#E2E8F0':'#0F172A', size:15},
+                        font:{color:dark?'#B7C7CC':'#0C2C55', size:15},
                         x:0.04,
                       },
                       xaxis:{
                         ...AX,
-                        title:{text:'Year', font:{color:dark?'#94A3B8':'#334155', size:13}, standoff:14},
+                        title:{text:'Year', font:{color:dark?'#B7C7CC':'#296374', size:13}, standoff:14},
                         tickformat:'%Y', dtick:'M24',
                         showspikes:true, spikedash:'dash',
-                        spikecolor:dark?'#2D4A6E':'#CBD5E1', spikethickness:1, spikemode:'across',
+                        spikecolor:dark?'#296374':'#B7C7CC', spikethickness:1, spikemode:'across',
                       },
                       yaxis:{
                         ...AX,
-                        title:{text:'Price Index  (Base = 100)', font:{color:dark?'#94A3B8':'#334155', size:13}, standoff:12},
+                        title:{text:'Price Index  (Base = 100)', font:{color:dark?'#B7C7CC':'#296374', size:13}, standoff:12},
                         tickformat:'.1f',
                         range:[minY, maxY],
                       },
@@ -648,7 +648,7 @@ const Dashboard: React.FC = () => {
                         x:covidRow.date, y:maxY*0.97,
                         text:covidRow.date.slice(0,7),
                         showarrow:false,
-                        font:{color:dark?'#94A3B8':'#475569', size:11},
+                        font:{color:dark?'#B7C7CC':'#296374', size:11},
                         xanchor:'left', yanchor:'top', xshift:6,
                       }] : [],
                     }}

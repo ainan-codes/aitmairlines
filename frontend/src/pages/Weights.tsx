@@ -15,20 +15,20 @@ interface RouteWeight {
 function plotBase(dark: boolean): Partial<any> {
   return {
     paper_bgcolor: 'rgba(0,0,0,0)',
-    plot_bgcolor:  dark ? '#0A1628' : '#F8FAFC',
-    font: { color: dark ? '#94A3B8' : '#334155', family: 'Inter, sans-serif', size: 12 },
+    plot_bgcolor:  dark ? '#163a63' : '#E1E1C4',
+    font: { color: dark ? '#B7C7CC' : '#296374', family: 'Inter, sans-serif', size: 12 },
   };
 }
 function axisStyle(dark: boolean): Partial<any> {
   return {
-    gridcolor:   dark ? '#1E3A5F' : '#E2E8F0',
+    gridcolor:   dark ? '#296374' : '#B7C7CC',
     gridwidth:   1,
-    zerolinecolor: dark ? '#2D4A6E' : '#CBD5E1',
+    zerolinecolor: dark ? '#296374' : '#B7C7CC',
     zerolinewidth: 1,
-    tickfont:    { color: dark ? '#64748B' : '#475569', size: 11, family: 'Inter, sans-serif' },
-    titlefont:   { color: dark ? '#94A3B8' : '#334155', size: 12, family: 'Inter, sans-serif' },
+    tickfont:    { color: dark ? '#296374' : '#296374', size: 11, family: 'Inter, sans-serif' },
+    titlefont:   { color: dark ? '#B7C7CC' : '#296374', size: 12, family: 'Inter, sans-serif' },
     showline:    true,
-    linecolor:   dark ? '#1E3A5F' : '#CBD5E1',
+    linecolor:   dark ? '#296374' : '#B7C7CC',
     linewidth:   1,
   };
 }
@@ -57,7 +57,7 @@ const Weights: React.FC = () => {
 
   if (loading) return (
     <div className="page-content" style={{ display: 'flex', justifyContent: 'center', paddingTop: 60 }}>
-      <div style={{ color: 'var(--cyan)', fontSize: '1.2rem', fontFamily: 'JetBrains Mono,monospace' }}>● Loading DGCA data...</div>
+      <div style={{ color: 'var(--cyan)', fontSize: '1.2rem', fontFamily: 'JetBrains Mono,monospace' }}>■ Loading DGCA data...</div>
     </div>
   );
 
@@ -161,20 +161,20 @@ const Weights: React.FC = () => {
             x: top25.map(r => r.passenger_share * 100),
             y: top25.map(r => r.route_id),
             orientation: 'h',
-            marker: { color: top25.map(r => r.route_id === selectedId ? '#8B5CF6' : (dark ? '#1F2D54' : '#E2E8F0')) },
+            marker: { color: top25.map(r => r.route_id === selectedId ? '#0C2C55' : (dark ? '#296374' : '#B7C7CC')) },
             text: top25.map(r => `${(r.passenger_share * 100).toFixed(2)}%`),
             textposition: 'outside',
-            textfont: { color: dark ? '#94A3B8' : '#475569', size: 10 },
+            textfont: { color: dark ? '#B7C7CC' : '#296374', size: 10 },
             hovertemplate: '<b>%{y}</b><br>Weight: %{x:.3f}%<extra></extra>',
             hoverlabel: {
-              bgcolor: dark ? '#121B32' : '#FFFFFF',
-              bordercolor: dark ? '#1F2D54' : '#CBD5E1',
-              font: { color: dark ? '#F1F5F9' : '#0F172A', size: 12 }
+              bgcolor: dark ? '#1c4262' : '#FFFFFF',
+              bordercolor: dark ? '#296374' : '#B7C7CC',
+              font: { color: dark ? '#EDEDCE' : '#0C2C55', size: 12 }
             }
           }]}
           layout={{
             ...PB,
-            title: { text: 'Top 25 Routes by Passenger Weight', font: { color: dark ? '#E2E8F0' : '#0F172A', size: 13 } },
+            title: { text: 'Top 25 Routes by Passenger Weight', font: { color: dark ? '#B7C7CC' : '#0C2C55', size: 13 } },
             height: 560,
             margin: { l: 90, r: 50, t: 40, b: 60 },
             xaxis: {
@@ -204,27 +204,27 @@ const Weights: React.FC = () => {
               hole: 0.72,
               pull: routes.map(r => r.route_id === selectedId ? 0.09 : 0),
               marker: {
-                colors: routes.map(r => r.route_id === selectedId ? '#8B5CF6' : (dark ? '#131D35' : '#E2E8F0')),
-                line: { color: dark ? '#060B14' : '#FFFFFF', width: 1 },
+                colors: routes.map(r => r.route_id === selectedId ? '#0C2C55' : (dark ? '#296374' : '#B7C7CC')),
+                line: { color: dark ? '#0C2C55' : '#FFFFFF', width: 1 },
               },
               hovertemplate: '<b>%{label}</b><br>%{value:,} pax<br>%{percent:.2f}<extra></extra>',
               textinfo: 'none',
               hoverlabel: {
-                bgcolor: dark ? '#121B32' : '#FFFFFF',
-                bordercolor: dark ? '#1F2D54' : '#CBD5E1',
-                font: { color: dark ? '#F1F5F9' : '#0F172A', size: 12 }
+                bgcolor: dark ? '#1c4262' : '#FFFFFF',
+                bordercolor: dark ? '#296374' : '#B7C7CC',
+                font: { color: dark ? '#EDEDCE' : '#0C2C55', size: 12 }
               }
             }]}
             layout={{
               ...PB,
-              title: { text: `All ${routes.length} Routes — Weight Distribution`, font: { color: dark ? '#E2E8F0' : '#0F172A', size: 12 } },
+              title: { text: `All ${routes.length} Routes — Weight Distribution`, font: { color: dark ? '#B7C7CC' : '#0C2C55', size: 12 } },
               showlegend: false,
               height: 320,
               margin: { t: 50, b: 10, l: 30, r: 30 },
               annotations: [{
                 text: `<b>${selRow.route_id}</b><br>${pct.toFixed(2)}%`,
                 x: 0.5, y: 0.5, showarrow: false,
-                font: { color: dark ? '#E2E8F0' : '#0F172A', size: 13 }, align: 'center',
+                font: { color: dark ? '#B7C7CC' : '#0C2C55', size: 13 }, align: 'center',
               }],
             }}
             config={{ displayModeBar: false, responsive: true }}
@@ -269,7 +269,7 @@ const Weights: React.FC = () => {
               <div style={{ color: 'var(--sub)', fontSize: '0.8rem', marginTop: 4 }}>Equally divides across {routes.length} routes</div>
             </div>
             <div className="card" style={{ border: '1px solid rgba(139,92,246,0.3)', background: 'rgba(139,92,246,0.06)' }}>
-              <div style={{ color: '#C4B5FD', fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>APIx DGCA Weighted</div>
+              <div style={{ color: '#629FAD', fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>APIx DGCA Weighted</div>
               <div style={{ color: 'var(--purple)', fontSize: '1.8rem', fontWeight: 900, fontFamily: 'JetBrains Mono,monospace' }}>
                 {weightImpact >= 0 ? '+' : ''}{weightImpact.toFixed(3)} pts
               </div>
@@ -285,15 +285,15 @@ const Weights: React.FC = () => {
               type: 'bar',
               x: ['Naive (Unweighted)', `APIx | ${selectedId}`],
               y: [naiveImpact, weightImpact],
-              marker: { color: ['#EF4444', '#8B5CF6'] },
+              marker: { color: ['#EF4444', '#0C2C55'] },
               text: [`${naiveImpact >= 0 ? '+' : ''}${naiveImpact.toFixed(3)} pts`, `${weightImpact >= 0 ? '+' : ''}${weightImpact.toFixed(3)} pts`],
               textposition: 'outside',
-              textfont: { color: dark ? '#E2E8F0' : '#0F172A', size: 11, family: 'Inter, sans-serif' },
+              textfont: { color: dark ? '#B7C7CC' : '#0C2C55', size: 11, family: 'Inter, sans-serif' },
               hovertemplate: '%{x}<br>%{y:.3f} pts<extra></extra>',
               hoverlabel: {
-                bgcolor: dark ? '#121B32' : '#FFFFFF',
-                bordercolor: dark ? '#1F2D54' : '#CBD5E1',
-                font: { color: dark ? '#F1F5F9' : '#0F172A', size: 12 }
+                bgcolor: dark ? '#1c4262' : '#FFFFFF',
+                bordercolor: dark ? '#296374' : '#B7C7CC',
+                font: { color: dark ? '#EDEDCE' : '#0C2C55', size: 12 }
               }
             }]}
             layout={{

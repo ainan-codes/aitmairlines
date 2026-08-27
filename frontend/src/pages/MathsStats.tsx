@@ -10,24 +10,24 @@ const CLEAN = RAW_FARES.filter(x => x <= UB);
 const MEDIAN_CLEAN = CLEAN[Math.floor(CLEAN.length / 2)];
 
 const PIPELINE_STEPS = [
-  { num: '01', title: 'Ingestion', color: '#06B6D4',
+  { num: '01', title: 'Ingestion', color: '#629FAD',
     action: 'Continuous scraping of MakeMyTrip, Ixigo, Goibibo, and direct airline portals.',
     rationale: 'Captures real pricing signals across T+1, T+7, T+15, T+30, T+45 booking horizons.' },
-  { num: '02', title: 'IQR Filtration', color: '#F59E0B',
+  { num: '02', title: 'IQR Filtration', color: '#296374',
     action: 'Discard any fare outside Q3 + 1.5 × IQR for its route-horizon pair.',
     rationale: 'Eliminates last-seat surge outliers that would catastrophically distort the average.' },
   { num: '03', title: 'Median Aggregation', color: '#10B981',
     action: 'Compute the statistical median of remaining clean fares.',
     rationale: 'Median is resistant to residual skewness — gives a truer reflection of what a typical traveller pays.' },
-  { num: '04', title: 'Laspeyres Weighting', color: '#8B5CF6',
+  { num: '04', title: 'Laspeyres Weighting', color: '#0C2C55',
     action: "Multiply each route's price ratio (current/base) by its DGCA passenger share Q_base.",
     rationale: 'DEL-BOM correctly outweighs low-traffic routes, producing a consumer-representative national index.' },
 ];
 
 const VARS = [
-  { sym: 'P(r,t)', title: 'Current Median Fare',    color: '#06B6D4', desc: 'IQR-filtered median ticket price on route r at time t, scraped live from airlines and OTAs.' },
-  { sym: 'P(r,0)', title: 'Base Period Fare',        color: '#F59E0B', desc: 'Fixed reference price for route r during the chosen base year, anchoring the index at exactly 100.' },
-  { sym: 'Q(r,0)', title: 'Passenger Weight (DGCA)', color: '#8B5CF6', desc: 'Proportion of national passengers on route r during the base period, from DGCA quarterly data.' },
+  { sym: 'P(r,t)', title: 'Current Median Fare',    color: '#629FAD', desc: 'IQR-filtered median ticket price on route r at time t, scraped live from airlines and OTAs.' },
+  { sym: 'P(r,0)', title: 'Base Period Fare',        color: '#296374', desc: 'Fixed reference price for route r during the chosen base year, anchoring the index at exactly 100.' },
+  { sym: 'Q(r,0)', title: 'Passenger Weight (DGCA)', color: '#0C2C55', desc: 'Proportion of national passengers on route r during the base period, from DGCA quarterly data.' },
 ];
 
 const API = API_BASE_URL;
@@ -42,27 +42,27 @@ interface RouteWeight {
 function plotBase(dark: boolean): Partial<any> {
   return {
     paper_bgcolor: 'rgba(0,0,0,0)',
-    plot_bgcolor:  dark ? '#0A1628' : '#F8FAFC',
-    font: { color: dark ? '#94A3B8' : '#334155', family: 'Inter, sans-serif', size: 12 },
+    plot_bgcolor:  dark ? '#163a63' : '#E1E1C4',
+    font: { color: dark ? '#B7C7CC' : '#296374', family: 'Inter, sans-serif', size: 12 },
   };
 }
 function axisStyle(dark: boolean): Partial<any> {
   return {
-    gridcolor:   dark ? '#1E3A5F' : '#E2E8F0',
+    gridcolor:   dark ? '#296374' : '#B7C7CC',
     gridwidth:   1,
-    zerolinecolor: dark ? '#2D4A6E' : '#CBD5E1',
+    zerolinecolor: dark ? '#296374' : '#B7C7CC',
     zerolinewidth: 1,
-    tickfont:    { color: dark ? '#64748B' : '#475569', size: 11, family: 'Inter, sans-serif' },
-    titlefont:   { color: dark ? '#94A3B8' : '#334155', size: 12, family: 'Inter, sans-serif' },
+    tickfont:    { color: dark ? '#296374' : '#296374', size: 11, family: 'Inter, sans-serif' },
+    titlefont:   { color: dark ? '#B7C7CC' : '#296374', size: 12, family: 'Inter, sans-serif' },
     showline:    true,
-    linecolor:   dark ? '#1E3A5F' : '#CBD5E1',
+    linecolor:   dark ? '#296374' : '#B7C7CC',
     linewidth:   1,
   };
 }
 
-/* ════════════════════════════════════════════════════════════════════════════
+/* ────────────────────────────────────────────────────────────────────────────
    INDEX MATHEMATICS PANEL
-   ════════════════════════════════════════════════════════════════════════════ */
+   ──────────────────────────────────────────────────────────────────────────── */
 const IndexMath: React.FC<{ dark: boolean }> = ({ dark }) => {
   const [outlierVal, setOutlierVal] = useState(22000);
   const baseFares = [4200, 4400, 4500, 4600, 4750];
@@ -114,7 +114,7 @@ const IndexMath: React.FC<{ dark: boolean }> = ({ dark }) => {
             <div style={{ display: 'flex', justifyContent: 'center', gap: 24, marginTop: 20, fontSize: '0.78rem' }}>
               {[['var(--cyan)', 'Current fare'], ['var(--amber)', 'Base fare'], ['var(--purple)', 'DGCA weight']].map(([c, l]) => (
                 <span key={String(l)}>
-                  <span style={{ color: String(c) }}>■</span>{' '}{l}
+                  <span style={{ color: String(c) }}>▪</span>{' '}{l}
                 </span>
               ))}
             </div>
@@ -169,19 +169,19 @@ const IndexMath: React.FC<{ dark: boolean }> = ({ dark }) => {
           type: 'bar',
           x: RAW_FARES.map(x => `₹${x.toLocaleString()}`),
           y: RAW_FARES,
-          marker: { color: RAW_FARES.map(x => x > UB ? '#EF4444' : '#06B6D4'), line: { width: 0 } },
+          marker: { color: RAW_FARES.map(x => x > UB ? '#EF4444' : '#629FAD'), line: { width: 0 } },
           hovertemplate: '<b>₹%{y:,}</b><br>%{customdata}<extra></extra>',
-          customdata: RAW_FARES.map(x => x > UB ? '⚠ Outlier (IQR rejected)' : '✓ Valid fare'),
+          customdata: RAW_FARES.map(x => x > UB ? '⚠️ Outlier (IQR rejected)' : '✓ Valid fare'),
         }]}
         layout={{
           ...PB, height: 350,
           margin: { l: 80, r: 30, t: 20, b: 60 },
           shapes: [
-            { type: 'line', x0: -0.5, x1: RAW_FARES.length - 0.5, y0: UB, y1: UB, line: { color: '#F59E0B', dash: 'dash', width: 2 } },
+            { type: 'line', x0: -0.5, x1: RAW_FARES.length - 0.5, y0: UB, y1: UB, line: { color: '#296374', dash: 'dash', width: 2 } },
             { type: 'line', x0: -0.5, x1: RAW_FARES.length - 0.5, y0: MEDIAN_CLEAN, y1: MEDIAN_CLEAN, line: { color: '#10B981', dash: 'dot', width: 2 } },
           ],
           annotations: [
-            { x: 0, y: UB, text: `IQR Upper Bound: ₹${UB.toLocaleString()}`, showarrow: false, font: { color: '#F59E0B', size: 12, family: 'Inter, sans-serif' }, xanchor: 'left', yanchor: 'bottom', yshift: 4 },
+            { x: 0, y: UB, text: `IQR Upper Bound: ₹${UB.toLocaleString()}`, showarrow: false, font: { color: '#296374', size: 12, family: 'Inter, sans-serif' }, xanchor: 'left', yanchor: 'bottom', yshift: 4 },
             { x: 0, y: MEDIAN_CLEAN, text: `Clean Median: ₹${MEDIAN_CLEAN.toLocaleString()}`, showarrow: false, font: { color: '#10B981', size: 12, family: 'Inter, sans-serif' }, xanchor: 'left', yanchor: 'bottom', yshift: 4 },
           ],
           showlegend: false,
@@ -223,7 +223,7 @@ const IndexMath: React.FC<{ dark: boolean }> = ({ dark }) => {
             x: [...baseFares.map((_, i) => `₹${baseFares[i].toLocaleString()}`), `₹${outlierVal.toLocaleString()} (Outlier)`],
             y: allFares,
             mode: 'markers',
-            marker: { size: 18, color: [...Array(5).fill('#06B6D4'), '#EF4444'], line: { color: dark ? '#060B14' : '#FFFFFF', width: 2 } },
+            marker: { size: 18, color: [...Array(5).fill('#629FAD'), '#EF4444'], line: { color: dark ? '#0C2C55' : '#FFFFFF', width: 2 } },
             hovertemplate: '<b>%{x}</b><extra></extra>',
           }]}
           layout={{
@@ -249,9 +249,9 @@ const IndexMath: React.FC<{ dark: boolean }> = ({ dark }) => {
   );
 };
 
-/* ════════════════════════════════════════════════════════════════════════════
+/* ────────────────────────────────────────────────────────────────────────────
    WEIGHT ALLOCATION PANEL
-   ════════════════════════════════════════════════════════════════════════════ */
+   ──────────────────────────────────────────────────────────────────────────── */
 const WeightAllocation: React.FC<{ dark: boolean }> = ({ dark }) => {
   const [routes,      setRoutes]      = useState<RouteWeight[]>([]);
   const [total,       setTotal]       = useState(0);
@@ -274,7 +274,7 @@ const WeightAllocation: React.FC<{ dark: boolean }> = ({ dark }) => {
 
   if (loading) return (
     <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 60 }}>
-      <div style={{ color: 'var(--cyan)', fontSize: '1.2rem', fontFamily: 'JetBrains Mono,monospace' }}>● Loading DGCA data...</div>
+      <div style={{ color: 'var(--cyan)', fontSize: '1.2rem', fontFamily: 'JetBrains Mono,monospace' }}>■ Loading DGCA data...</div>
     </div>
   );
 
@@ -367,14 +367,14 @@ const WeightAllocation: React.FC<{ dark: boolean }> = ({ dark }) => {
           data={[{
             type: 'bar', x: top25.map(r => r.passenger_share * 100), y: top25.map(r => r.route_id),
             orientation: 'h',
-            marker: { color: top25.map(r => r.route_id === selectedId ? '#8B5CF6' : (dark ? '#1F2D54' : '#E2E8F0')) },
+            marker: { color: top25.map(r => r.route_id === selectedId ? '#0C2C55' : (dark ? '#296374' : '#B7C7CC')) },
             text: top25.map(r => `${(r.passenger_share * 100).toFixed(2)}%`),
-            textposition: 'outside', textfont: { color: dark ? '#94A3B8' : '#475569', size: 10 },
+            textposition: 'outside', textfont: { color: dark ? '#B7C7CC' : '#296374', size: 10 },
             hovertemplate: '<b>%{y}</b><br>Weight: %{x:.3f}%<extra></extra>',
           }]}
           layout={{
             ...PB,
-            title: { text: 'Top 25 Routes by Passenger Weight', font: { color: dark ? '#E2E8F0' : '#0F172A', size: 13 } },
+            title: { text: 'Top 25 Routes by Passenger Weight', font: { color: dark ? '#B7C7CC' : '#0C2C55', size: 13 } },
             height: 560, margin: { l: 90, r: 50, t: 40, b: 60 },
             xaxis: { ...AX, title: { text: 'Weight (%)', font: { size: 12 }, standoff: 12 }, ticksuffix: '%' },
             yaxis: { ...AX, showgrid: false, autorange: 'reversed', tickfont: { size: 10, family: 'JetBrains Mono, monospace' } },
@@ -388,15 +388,15 @@ const WeightAllocation: React.FC<{ dark: boolean }> = ({ dark }) => {
             data={[{
               type: 'pie', labels: routes.map(r => r.route_id), values: routes.map(r => r.passenger_count),
               hole: 0.72, pull: routes.map(r => r.route_id === selectedId ? 0.09 : 0),
-              marker: { colors: routes.map(r => r.route_id === selectedId ? '#8B5CF6' : (dark ? '#131D35' : '#E2E8F0')), line: { color: dark ? '#060B14' : '#FFFFFF', width: 1 } },
+              marker: { colors: routes.map(r => r.route_id === selectedId ? '#0C2C55' : (dark ? '#296374' : '#B7C7CC')), line: { color: dark ? '#0C2C55' : '#FFFFFF', width: 1 } },
               hovertemplate: '<b>%{label}</b><br>%{value:,} pax<br>%{percent:.2f}<extra></extra>',
               textinfo: 'none',
             }]}
             layout={{
               ...PB,
-              title: { text: `All ${routes.length} Routes — Weight Distribution`, font: { color: dark ? '#E2E8F0' : '#0F172A', size: 12 } },
+              title: { text: `All ${routes.length} Routes — Weight Distribution`, font: { color: dark ? '#B7C7CC' : '#0C2C55', size: 12 } },
               showlegend: false, height: 320, margin: { t: 50, b: 10, l: 30, r: 30 },
-              annotations: [{ text: `<b>${selRow.route_id}</b><br>${pct.toFixed(2)}%`, x: 0.5, y: 0.5, showarrow: false, font: { color: dark ? '#E2E8F0' : '#0F172A', size: 13 }, align: 'center' }],
+              annotations: [{ text: `<b>${selRow.route_id}</b><br>${pct.toFixed(2)}%`, x: 0.5, y: 0.5, showarrow: false, font: { color: dark ? '#B7C7CC' : '#0C2C55', size: 13 }, align: 'center' }],
             }}
             config={{ displayModeBar: false, responsive: true }}
             style={{ width: '100%' }}
@@ -436,7 +436,7 @@ const WeightAllocation: React.FC<{ dark: boolean }> = ({ dark }) => {
               <div style={{ color: 'var(--sub)', fontSize: '0.8rem', marginTop: 4 }}>Equally divides across {routes.length} routes</div>
             </div>
             <div className="card" style={{ border: '1px solid rgba(139,92,246,0.3)', background: 'rgba(139,92,246,0.06)' }}>
-              <div style={{ color: '#C4B5FD', fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>APIx DGCA Weighted</div>
+              <div style={{ color: '#629FAD', fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>APIx DGCA Weighted</div>
               <div style={{ color: 'var(--purple)', fontSize: '1.8rem', fontWeight: 900, fontFamily: 'JetBrains Mono,monospace' }}>
                 {weightImpact >= 0 ? '+' : ''}{weightImpact.toFixed(3)} pts
               </div>
@@ -451,10 +451,10 @@ const WeightAllocation: React.FC<{ dark: boolean }> = ({ dark }) => {
               type: 'bar',
               x: ['Naive (Unweighted)', `APIx | ${selectedId}`],
               y: [naiveImpact, weightImpact],
-              marker: { color: ['#EF4444', '#8B5CF6'] },
+              marker: { color: ['#EF4444', '#0C2C55'] },
               text: [`${naiveImpact >= 0 ? '+' : ''}${naiveImpact.toFixed(3)} pts`, `${weightImpact >= 0 ? '+' : ''}${weightImpact.toFixed(3)} pts`],
               textposition: 'outside',
-              textfont: { color: dark ? '#E2E8F0' : '#0F172A', size: 11, family: 'Inter, sans-serif' },
+              textfont: { color: dark ? '#B7C7CC' : '#0C2C55', size: 11, family: 'Inter, sans-serif' },
               hovertemplate: '%{x}<br>%{y:.3f} pts<extra></extra>',
             }]}
             layout={{
@@ -477,12 +477,12 @@ const WeightAllocation: React.FC<{ dark: boolean }> = ({ dark }) => {
   );
 };
 
-/* ════════════════════════════════════════════════════════════════════════════
+/* ────────────────────────────────────────────────────────────────────────────
    METHODOLOGY ROOT — inner tab switcher
-   ════════════════════════════════════════════════════════════════════════════ */
+   ──────────────────────────────────────────────────────────────────────────── */
 const INNER_TABS = [
   { id: 'math',    label: '📊 Index Mathematics' },
-  { id: 'weights', label: '⚖ Weight Allocation'  },
+  { id: 'weights', label: '⚖️ Weight Allocation'  },
 ];
 
 const MathsStats: React.FC = () => {
@@ -496,7 +496,7 @@ const MathsStats: React.FC = () => {
       {/* Inner tab switcher */}
       <div style={{
         display: 'flex', gap: 8, marginBottom: 40,
-        borderBottom: `1px solid ${dark ? '#1E3A5F' : '#E2E8F0'}`,
+        borderBottom: `1px solid ${dark ? '#296374' : '#B7C7CC'}`,
         paddingBottom: 0,
       }}>
         {INNER_TABS.map(t => (

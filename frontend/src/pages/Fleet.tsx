@@ -33,7 +33,7 @@ const CARRIERS = [
     bannerBg: 'linear-gradient(to bottom, #D9174E 0%, #B81342 50%, #981342 100%)',
     logo: `${LOGO_BASE}/AIR%20INDIA.png`,
     domain: 'airindia.com',
-    rating: 'PREMIUM', ratingColor: '#F59E0B',
+    rating: 'PREMIUM', ratingColor: '#296374',
     tagline: "National carrier reborn. Tata premium push.",
     fleet: 188, fleetType: 'Mixed Wide + Narrow body',
     founded: 1932, hubs: ['DEL', 'BOM'],
@@ -52,7 +52,7 @@ const CARRIERS = [
     bannerBg: 'linear-gradient(120deg, #ED1B24 0%, #D8141D 60%, #B80F17 100%)',
     logo: `${LOGO_BASE}/SpiceJet_Cropped.jpg`,
     domain: 'spicejet.com',
-    rating: 'BUDGET', ratingColor: '#06B6D4',
+    rating: 'BUDGET', ratingColor: '#629FAD',
     tagline: "India's discount warrior. Turbulent, but cheap.",
     fleet: 62, fleetType: 'B737 + Q400',
     founded: 2005, hubs: ['DEL', 'HYD'],
@@ -71,7 +71,7 @@ const CARRIERS = [
     bannerBg: 'linear-gradient(120deg, #160B29 0%, #2A114B 50%, #120722 100%)',
     logo: `${LOGO_BASE}/Akasa_Clean.png`,
     domain: 'akasaair.com',
-    rating: 'DISRUPTOR', ratingColor: '#8B5CF6',
+    rating: 'DISRUPTOR', ratingColor: '#629FAD',
     tagline: "Rakesh Jhunjhunwala's dream LCC. Greenest fleet.",
     fleet: 25, fleetType: 'B737 MAX 8 exclusively',
     founded: 2022, hubs: ['BOM', 'DEL'],
@@ -90,7 +90,7 @@ const CARRIERS = [
     bannerBg: 'linear-gradient(120deg, #1C0A15 0%, #380F28 50%, #150610 100%)',
     logo: `${LOGO_BASE}/Air_India_Express_logo.svg.webp`,
     domain: 'airindiaexpress.in',
-    rating: 'MID-RANGE', ratingColor: '#06B6D4',
+    rating: 'MID-RANGE', ratingColor: '#629FAD',
     tagline: "AI's low-cost arm. South India & Gulf specialist.",
     fleet: 84, fleetType: 'B737-800 + A320',
     founded: 2005, hubs: ['COK', 'BLR', 'MAA'],
@@ -111,17 +111,17 @@ const HORIZON_KEYS = ['t1', 't7', 't15', 't30', 't45'] as const;
 function plotBase(dark: boolean): Partial<any> {
   return {
     paper_bgcolor: 'rgba(0,0,0,0)',
-    plot_bgcolor: dark ? '#0A1628' : '#F8FAFC',
-    font: { color: dark ? '#94A3B8' : '#334155', family: 'Inter, sans-serif', size: 12 },
+    plot_bgcolor: dark ? '#163a63' : '#EDEDCE',
+    font: { color: dark ? '#B7C7CC' : '#0C2C55', family: 'Inter, sans-serif', size: 12 },
   };
 }
 function axisStyle(dark: boolean): Partial<any> {
   return {
-    gridcolor: dark ? '#1E3A5F' : '#E2E8F0', gridwidth: 1,
-    zerolinecolor: dark ? '#2D4A6E' : '#CBD5E1', zerolinewidth: 1,
-    tickfont: { color: dark ? '#64748B' : '#475569', size: 10, family: 'Inter, sans-serif' },
-    titlefont: { color: dark ? '#94A3B8' : '#334155', size: 12, family: 'Inter, sans-serif' },
-    showline: true, linecolor: dark ? '#1E3A5F' : '#CBD5E1', linewidth: 1,
+    gridcolor: dark ? '#296374' : '#B7C7CC', gridwidth: 1,
+    zerolinecolor: dark ? '#296374' : '#B7C7CC', zerolinewidth: 1,
+    tickfont: { color: dark ? '#B7C7CC' : '#296374', size: 10, family: 'Inter, sans-serif' },
+    titlefont: { color: dark ? '#B7C7CC' : '#0C2C55', size: 12, family: 'Inter, sans-serif' },
+    showline: true, linecolor: dark ? '#296374' : '#B7C7CC', linewidth: 1,
   };
 }
 
@@ -132,15 +132,15 @@ const MetricBar: React.FC<{ label: string; value: number; color: string; dark: b
       <span style={{ fontSize: '0.78rem', color: 'var(--sub)' }}>{label}</span>
       <span style={{ fontSize: '0.78rem', fontWeight: 700, color, fontFamily: 'JetBrains Mono,monospace' }}>{value}</span>
     </div>
-    <div style={{ height: 6, borderRadius: 3, background: dark ? '#1E3A5F' : '#E2E8F0', overflow: 'hidden' }}>
+    <div style={{ height: 6, borderRadius: 3, background: dark ? '#296374' : '#B7C7CC', overflow: 'hidden' }}>
       <div style={{ width: `${value}%`, height: '100%', background: color, borderRadius: 3, transition: 'width 0.6s ease' }} />
     </div>
   </div>
 );
 
-/* ════════════════════════════════════════════════════════════════════════════
+/* ────────────────────────────────────────────────────────────────────────────
    MAIN FLEET & CARRIERS PAGE
-   ════════════════════════════════════════════════════════════════════════════ */
+   ──────────────────────────────────────────────────────────────────────────── */
 const Fleet: React.FC = () => {
   const { dark } = useTheme();
   const [selected, setSelected] = useState(0);
@@ -174,11 +174,11 @@ const Fleet: React.FC = () => {
 
       {/* ── PAGE HEADER ─────────────────────────────────────────────────── */}
       <div style={{ marginBottom: 36 }}>
-        <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 2, color: '#06B6D4', marginBottom: 8 }}>
+        <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 2, color: '#629FAD', marginBottom: 8 }}>
           Carrier Command Center
         </div>
         <h1 style={{ fontSize: '2.5rem', fontWeight: 900, letterSpacing: -1, color: 'var(--text)', margin: '0 0 10px 0' }}>
-          🛩 India Aviation Fleet Intelligence
+          🛩️ India Aviation Fleet Intelligence
         </h1>
         <p style={{ color: 'var(--sub)', fontSize: '1rem', maxWidth: 820, lineHeight: 1.75, margin: 0 }}>
           Live-grade carrier intelligence for India's 5 major domestic airlines. From fleet composition and booking dynamics to competitive pricing radar — this is the aerospace enthusiast's cockpit.
@@ -187,27 +187,27 @@ const Fleet: React.FC = () => {
 
       {/* ── LIVE FARE TICKER ────────────────────────────────────────────── */}
       <div style={{
-        overflow: 'hidden', height: 40, background: dark ? '#030710' : '#0F172A',
+        overflow: 'hidden', height: 40, background: dark ? '#091f3d' : '#0C2C55',
         borderRadius: 8, marginBottom: 32, display: 'flex', alignItems: 'center',
-        border: `1px solid ${dark ? '#1E3A5F' : '#1E3A5F'}`,
+        border: `1px solid ${dark ? '#296374' : '#296374'}`,
         position: 'relative',
       }}>
-        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: `linear-gradient(to right, ${dark ? '#030710' : '#0F172A'}, transparent)` }} />
-        <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: `linear-gradient(to left, ${dark ? '#030710' : '#0F172A'}, transparent)` }} />
+        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: `linear-gradient(to right, ${dark ? '#091f3d' : '#0C2C55'}, transparent)` }} />
+        <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: `linear-gradient(to left, ${dark ? '#091f3d' : '#0C2C55'}, transparent)` }} />
         <div style={{ whiteSpace: 'nowrap', transform: `translateX(${tickerPos}px)`, transition: 'transform 0.03s linear', display: 'flex', alignItems: 'center', gap: 40 }}>
           {[...tickerItems, ...tickerItems].map((item, i) => {
             const [code, ...rest] = item.split(' ');
             const carrier = CARRIERS.find(a => a.code === code);
             return (
-              <span key={i} style={{ fontSize: '0.82rem', fontFamily: 'JetBrains Mono, monospace', color: '#94A3B8' }}>
-                <span style={{ color: carrier?.color ?? '#06B6D4', fontWeight: 700 }}>{code}</span>
+              <span key={i} style={{ fontSize: '0.82rem', fontFamily: 'JetBrains Mono, monospace', color: '#B7C7CC' }}>
+                <span style={{ color: carrier?.color ?? '#629FAD', fontWeight: 700 }}>{code}</span>
                 {' '}{rest.join(' ')}
-                <span style={{ color: dark ? '#1E3A5F' : '#334155', margin: '0 16px' }}>◆</span>
+                <span style={{ color: dark ? '#296374' : '#B7C7CC', margin: '0 16px' }}>▪</span>
               </span>
             );
           })}
         </div>
-        <div style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', fontSize: '0.65rem', fontWeight: 700, color: '#10B981', letterSpacing: 1, textTransform: 'uppercase', zIndex: 3, background: dark ? '#030710' : '#0F172A', padding: '2px 6px', borderRadius: 4 }}>
+        <div style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', fontSize: '0.65rem', fontWeight: 700, color: '#10B981', letterSpacing: 1, textTransform: 'uppercase', zIndex: 3, background: dark ? '#091f3d' : '#0C2C55', padding: '2px 6px', borderRadius: 4 }}>
           LIVE
         </div>
       </div>
@@ -221,7 +221,7 @@ const Fleet: React.FC = () => {
         </div>
         <div className="stat-cell">
           <div className="stat-sub">Combined Fleet</div>
-          <div className="stat-big" style={{ color: '#F59E0B' }}>{CARRIERS.reduce((s, a) => s + a.fleet, 0)}</div>
+          <div className="stat-big" style={{ color: '#296374' }}>{CARRIERS.reduce((s, a) => s + a.fleet, 0)}</div>
           <div className="stat-note">active aircraft</div>
         </div>
         <div className="stat-cell">
@@ -244,7 +244,7 @@ const Fleet: React.FC = () => {
             style={{
               display: 'flex', alignItems: 'center', gap: 10,
               padding: '12px 20px', borderRadius: 12, cursor: 'pointer',
-              border: `2px solid ${selected === i ? a.color : (dark ? '#1E3A5F' : '#E2E8F0')}`,
+              border: `2px solid ${selected === i ? a.color : (dark ? '#296374' : '#B7C7CC')}`,
               background: selected === i ? `linear-gradient(135deg, ${a.color}22, ${a.accent}11)` : 'transparent',
               transition: 'all 0.25s',
               boxShadow: selected === i ? `0 0 20px ${a.color}30` : 'none',
@@ -335,7 +335,7 @@ const Fleet: React.FC = () => {
         </div>
 
         {/* Body */}
-        <div style={{ padding: 28, background: dark ? '#080F1F' : '#FFFFFF' }}>
+        <div style={{ padding: 28, background: dark ? '#1c4262' : '#FFFFFF' }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 24, flexWrap: 'wrap' }}>
 
             {/* Col 1 — Info */}
@@ -354,7 +354,7 @@ const Fleet: React.FC = () => {
               <div style={{ marginTop: 20 }}>
                 <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1.5, color: 'var(--sub)', marginBottom: 10 }}>Fleet Composition</div>
                 {c.fleetBreakdown.map(f => (
-                  <div key={f.type} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '6px 0', borderBottom: `1px solid ${dark ? '#1E3A5F' : '#E2E8F0'}` }}>
+                  <div key={f.type} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '6px 0', borderBottom: `1px solid ${dark ? '#296374' : '#B7C7CC'}` }}>
                     <span style={{ fontSize: '0.82rem', color: 'var(--text)', fontFamily: 'JetBrains Mono,monospace' }}>{f.type}</span>
                     <span style={{ fontSize: '0.82rem', color: c.color, fontWeight: 700 }}>{f.count}</span>
                   </div>
@@ -371,16 +371,16 @@ const Fleet: React.FC = () => {
             {/* Col 2 — Performance Metrics */}
             <div>
               <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1.5, color: 'var(--sub)', marginBottom: 16 }}>Performance Metrics</div>
-              <MetricBar label="Network Breadth"       value={c.metrics.network}  color="#06B6D4" dark={dark} />
+              <MetricBar label="Network Breadth"       value={c.metrics.network}  color="#629FAD" dark={dark} />
               <MetricBar label="Price Competitiveness" value={c.metrics.price}    color="#10B981" dark={dark} />
-              <MetricBar label="On-Time Performance"   value={c.metrics.onTime}   color="#8B5CF6" dark={dark} />
+              <MetricBar label="On-Time Performance"   value={c.metrics.onTime}   color="#296374" dark={dark} />
               <MetricBar label="Surge Aggression"      value={c.metrics.surge}    color="#EF4444" dark={dark} />
-              <MetricBar label="Comfort Score"         value={c.metrics.comfort}  color="#F59E0B" dark={dark} />
+              <MetricBar label="Comfort Score"         value={c.metrics.comfort}  color="#296374" dark={dark} />
 
               <div style={{ marginTop: 24 }}>
                 <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1.5, color: 'var(--sub)', marginBottom: 12 }}>Top Routes in APIx Basket</div>
                 {c.topRoutes.map((r, i) => (
-                  <div key={r} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 0', borderBottom: `1px solid ${dark ? '#1E3A5F' : '#E2E8F0'}` }}>
+                  <div key={r} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 0', borderBottom: `1px solid ${dark ? '#296374' : '#B7C7CC'}` }}>
                     <span style={{ width: 22, height: 22, borderRadius: 6, background: c.color + '22', color: c.color, fontSize: '0.7rem', fontWeight: 800, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>#{i + 1}</span>
                     <span style={{ fontSize: '0.88rem', fontFamily: 'JetBrains Mono,monospace', color: 'var(--text)' }}>{r}</span>
                   </div>
@@ -388,16 +388,16 @@ const Fleet: React.FC = () => {
               </div>
 
               {/* Booking recommendation */}
-              <div style={{ marginTop: 20, padding: 14, borderRadius: 10, background: dark ? '#0A1628' : '#F8FAFC', border: `1px solid ${dark ? '#1E3A5F' : '#E2E8F0'}` }}>
+              <div style={{ marginTop: 20, padding: 14, borderRadius: 10, background: dark ? '#163a63' : '#EDEDCE', border: `1px solid ${dark ? '#296374' : '#B7C7CC'}` }}>
                 <div style={{ fontSize: '0.68rem', fontWeight: 700, color: '#10B981', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 8 }}>Consumer Booking Guide</div>
                 <div style={{ fontSize: '0.82rem', color: 'var(--sub)', lineHeight: 1.6 }}>
                   T+1/T+45 surge ratio: <strong style={{ color: c.color, fontFamily: 'JetBrains Mono,monospace' }}>{surgeRatio}×</strong>
                   <br />
                   {Number(surgeRatio) > 2.0
-                    ? `⚠ Book ≥30 days ahead to avoid ${((Number(surgeRatio) - 1) * 100).toFixed(0)}% premium.`
+                    ? `⚠️ Book ≥30 days ahead to avoid ${((Number(surgeRatio) - 1) * 100).toFixed(0)}% premium.`
                     : Number(surgeRatio) > 1.5
                     ? `📅 Book ≥15 days ahead for best fares.`
-                    : `✅ Low surge penalty — flexible booking works fine.`}
+                    : `✔ Low surge penalty — flexible booking works fine.`}
                 </div>
               </div>
             </div>
@@ -412,7 +412,7 @@ const Fleet: React.FC = () => {
                   x: HORIZONS,
                   y: HORIZON_KEYS.map(k => c.booking[k]),
                   line: { color: c.color, width: 3, shape: 'spline' },
-                  marker: { size: 10, color: c.color, line: { color: dark ? '#080F1F' : '#fff', width: 2 } },
+                  marker: { size: 10, color: c.color, line: { color: dark ? '#1c4262' : '#fff', width: 2 } },
                   fill: 'tozeroy', fillcolor: c.color + '18',
                   hovertemplate: '<b>%{x}</b><br>₹%{y:,}<extra></extra>',
                 }]}
@@ -433,7 +433,7 @@ const Fleet: React.FC = () => {
                   { label: 'T+1 Fare',    val: `₹${c.booking.t1.toLocaleString()}`, color: '#EF4444' },
                   { label: 'T+45 Fare',   val: `₹${c.booking.t45.toLocaleString()}`, color: '#10B981' },
                   { label: 'Avg Fare',    val: `₹${c.avgFare.toLocaleString()}`,     color: c.color    },
-                  { label: 'Surge ×',     val: `${surgeRatio}×`,                     color: Number(surgeRatio) > 2 ? '#EF4444' : '#F59E0B' },
+                  { label: 'Surge ×',     val: `${surgeRatio}×`,                     color: Number(surgeRatio) > 2 ? '#EF4444' : '#296374' },
                 ].map(k => (
                   <div key={k.label} className="card" style={{ textAlign: 'center', padding: '10px 6px' }}>
                     <div style={{ fontSize: '0.65rem', color: 'var(--sub)', textTransform: 'uppercase', letterSpacing: 0.8, marginBottom: 4 }}>{k.label}</div>
@@ -458,17 +458,17 @@ const Fleet: React.FC = () => {
             labels: CARRIERS.map(a => `${a.code} ${a.name}`),
             values: CARRIERS.map(a => a.marketShare),
             hole: 0.65,
-            marker: { colors: CARRIERS.map(a => a.color), line: { color: dark ? '#060B14' : '#fff', width: 2 } },
+            marker: { colors: CARRIERS.map(a => a.color), line: { color: dark ? '#0C2C55' : '#fff', width: 2 } },
             hovertemplate: '<b>%{label}</b><br>%{value}% market share<extra></extra>',
             textinfo: 'none',
           }]}
           layout={{
             ...PB, height: 320,
             margin: { t: 40, b: 10, l: 30, r: 30 },
-            title: { text: 'Market Share by Carrier (APIx Routes)', font: { color: dark ? '#E2E8F0' : '#0F172A', size: 13 } },
+            title: { text: 'Market Share by Carrier (APIx Routes)', font: { color: dark ? '#EDEDCE' : '#0C2C55', size: 13 } },
             showlegend: true,
-            legend: { font: { color: dark ? '#94A3B8' : '#475569', size: 10 }, bgcolor: 'transparent', orientation: 'h', x: 0.5, xanchor: 'center', y: -0.1 },
-            annotations: [{ text: '<b>Market Share</b>', x: 0.5, y: 0.5, showarrow: false, font: { color: dark ? '#E2E8F0' : '#0F172A', size: 13 }, align: 'center' }],
+            legend: { font: { color: dark ? '#B7C7CC' : '#296374', size: 10 }, bgcolor: 'transparent', orientation: 'h', x: 0.5, xanchor: 'center', y: -0.1 },
+            annotations: [{ text: '<b>Market Share</b>', x: 0.5, y: 0.5, showarrow: false, font: { color: dark ? '#EDEDCE' : '#0C2C55', size: 13 }, align: 'center' }],
           }}
           config={{ displayModeBar: false, responsive: true }}
           style={{ width: '100%' }}
@@ -484,13 +484,13 @@ const Fleet: React.FC = () => {
             marker: { color: CARRIERS.map(a => a.color), line: { width: 0 } },
             text: CARRIERS.map(a => `${a.fleet}`),
             textposition: 'outside',
-            textfont: { color: dark ? '#94A3B8' : '#475569', size: 11 },
+            textfont: { color: dark ? '#B7C7CC' : '#296374', size: 11 },
             hovertemplate: '<b>%{x}</b><br>%{y} aircraft<extra></extra>',
           }]}
           layout={{
             ...PB, height: 320,
             margin: { l: 50, r: 20, t: 40, b: 50 },
-            title: { text: 'Active Fleet Size by Carrier', font: { color: dark ? '#E2E8F0' : '#0F172A', size: 13 } },
+            title: { text: 'Active Fleet Size by Carrier', font: { color: dark ? '#EDEDCE' : '#0C2C55', size: 13 } },
             showlegend: false,
             xaxis: { ...AX, showgrid: false },
             yaxis: { ...AX, title: { text: 'Aircraft Count', font: { size: 11 }, standoff: 8 } },
@@ -521,11 +521,11 @@ const Fleet: React.FC = () => {
         layout={{
           ...PB, height: 460,
           polar: {
-            bgcolor: dark ? '#060B14' : '#F8FAFC',
-            radialaxis: { visible: true, range: [0, 100], color: dark ? '#1E3A5F' : '#CBD5E1', tickfont: { size: 9, color: dark ? '#475569' : '#94A3B8' } },
-            angularaxis: { color: dark ? '#2D4A6E' : '#CBD5E1', tickfont: { size: 12, color: dark ? '#94A3B8' : '#334155' } },
+            bgcolor: dark ? '#091f3d' : '#EDEDCE',
+            radialaxis: { visible: true, range: [0, 100], color: dark ? '#296374' : '#B7C7CC', tickfont: { size: 9, color: dark ? '#296374' : '#B7C7CC' } },
+            angularaxis: { color: dark ? '#296374' : '#B7C7CC', tickfont: { size: 12, color: dark ? '#B7C7CC' : '#0C2C55' } },
           },
-          legend: { font: { color: dark ? '#94A3B8' : '#475569', size: 11 }, bgcolor: 'transparent', orientation: 'h', x: 0.5, xanchor: 'center', y: -0.12 },
+          legend: { font: { color: dark ? '#B7C7CC' : '#296374', size: 11 }, bgcolor: 'transparent', orientation: 'h', x: 0.5, xanchor: 'center', y: -0.12 },
           margin: { t: 30, b: 70, l: 40, r: 40 },
         }}
         config={{ displayModeBar: false, responsive: true }}
@@ -533,7 +533,7 @@ const Fleet: React.FC = () => {
       />
 
       {/* Footer context */}
-      <div style={{ marginTop: 32, padding: 20, borderRadius: 12, background: dark ? '#0A1628' : '#F8FAFC', border: `1px solid ${dark ? '#1E3A5F' : '#E2E8F0'}` }}>
+      <div style={{ marginTop: 32, padding: 20, borderRadius: 12, background: dark ? '#163a63' : '#EDEDCE', border: `1px solid ${dark ? '#296374' : '#B7C7CC'}` }}>
         <div style={{ fontSize: '0.75rem', color: 'var(--sub)', lineHeight: 1.8 }}>
           <strong style={{ color: 'var(--text)' }}>📌 Data Sources & Methodology:</strong> Market share figures derived from DGCA quarterly traffic data (Q1 2024). Fleet counts from DGCA aircraft register and airline annual reports. Performance metrics are composite scores computed from DGCA on-time statistics, DGCA consumer complaint data, and APIx pricing analysis. Logos served via Logo.dev (identification use only). All figures are for analytical and research purposes.
         </div>
