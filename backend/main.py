@@ -71,9 +71,11 @@ DYNAMIC_ROUTE_WEIGHTS = {f"{orig}-{dest}": float(base_shares[i]) for i, (orig, d
 try:
     from backend.scraper import scrape_fares
     from backend.static_data import ROUTE_WEIGHTS, BASE_FARES
+    from backend.db import persist_fares_snapshot, persist_mospi
 except ModuleNotFoundError:
     from scraper import scrape_fares
     from static_data import ROUTE_WEIGHTS, BASE_FARES
+    from db import persist_fares_snapshot, persist_mospi
 
 
 def fetch_and_process_live_data():
@@ -132,6 +134,8 @@ def fetch_and_process_live_data():
     except Exception as e:
         print(f"Scraper notice: {e}")
 
+    weights_data = [{"route_id": f"{orig}-{dest}", "weight": round(float(base_shares[i]), 6), "passenger_count": int(float(base_shares[i]) * 150_000_000)} for i, (orig, dest) in enumerate(selected_pairs)]
+
     # Export full 80-routes dataset to CSV and SQLite
     try:
         import pandas as pd
@@ -142,7 +146,6 @@ def fetch_and_process_live_data():
         records_df = pd.DataFrame(records)
         records_df.to_csv("exports/fares_latest.csv", index=False)
 
-        weights_data = [{"route_id": f"{orig}-{dest}", "weight": round(float(base_shares[i]), 6), "passenger_count": int(float(base_shares[i]) * 150_000_000)} for i, (orig, dest) in enumerate(selected_pairs)]
         weights_df = pd.DataFrame(weights_data)
         weights_df.to_csv("exports/routes_weights.csv", index=False)
 
@@ -155,6 +158,8 @@ def fetch_and_process_live_data():
         print(f"Exported {len(records)} fare records across 80 routes to SQLite and CSV.")
     except Exception as e:
         print(f"Failed to export data: {e}")
+
+    persist_fares_snapshot(records, weights_data)
 
     return records
 
@@ -186,6 +191,7 @@ def _build_mospi():
     return result
 
 _MOSPI = _build_mospi()
+persist_mospi(_MOSPI)
 
 
 # ─── Helpers ─────────────────────────────────────────────────────────────────

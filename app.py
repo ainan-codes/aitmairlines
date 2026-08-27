@@ -353,8 +353,8 @@ def bezier(p1, p2, n=22):
 
 def render_route_map(summary_df):
     m = folium.Map(location=[22.5,80], zoom_start=5,
-        tiles="https://basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-        attr='CartoDB DarkMatter')
+        tiles="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+        attr='Esri')
     added = set()
     mn, mx = summary_df['passenger_share'].min(), summary_df['passenger_share'].max()
     for _, row in summary_df.iterrows():
