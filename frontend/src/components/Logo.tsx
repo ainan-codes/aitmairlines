@@ -11,11 +11,11 @@ interface LogoProps {
 }
 
 /**
- * World-Class Precision Aerospace & Financial Index Emblem Mark
- * Designed with mathematical golden-ratio curves, faceted delta wings,
- * and an iconic 'X' trajectory vector.
+ * AITM AIRLINES Master Aerospace Emblem
+ * Bespoke geometric monogram uniting the "A" altitude apex with the "M" dual-turbine wingspan,
+ * sliced by an ascending supersonic titanium aircraft with gold navigation beacon.
  */
-export const LogoMark: React.FC<{ size?: number; className?: string }> = ({ size = 42, className = '' }) => {
+export const LogoMark: React.FC<{ size?: number; className?: string }> = ({ size = 44, className = '' }) => {
   return (
     <svg
       width={size}
@@ -23,169 +23,166 @@ export const LogoMark: React.FC<{ size?: number; className?: string }> = ({ size
       viewBox="0 0 120 120"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={`farex-logo-mark ${className}`}
+      className={`aitm-logo-mark ${className}`}
       style={{
-        filter: 'drop-shadow(0 4px 12px rgba(12, 44, 85, 0.25))',
+        filter: 'drop-shadow(0 4px 14px rgba(12, 44, 85, 0.28))',
         flexShrink: 0,
       }}
     >
       <defs>
-        {/* Deep Sovereign Navy Base Gradient */}
-        <linearGradient id="fxNavyDeep" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#08182B" />
-          <stop offset="50%" stopColor="#0C2C55" />
-          <stop offset="100%" stopColor="#173D68" />
+        {/* Deep Sovereign Navy Gradient */}
+        <linearGradient id="aitmNavy" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#081A30" />
+          <stop offset="60%" stopColor="#0C2C55" />
+          <stop offset="100%" stopColor="#19426D" />
         </linearGradient>
 
-        {/* Hyper Sonic Electric Cyan Gradient */}
-        <linearGradient id="fxCyanElectric" x1="10" y1="110" x2="110" y2="10" gradientUnits="userSpaceOnUse">
+        {/* Hyper Cyan Flight Gradient */}
+        <linearGradient id="aitmCyan" x1="15" y1="105" x2="105" y2="15" gradientUnits="userSpaceOnUse">
           <stop offset="0%" stopColor="#0284C7" />
-          <stop offset="45%" stopColor="#00D2FF" />
+          <stop offset="50%" stopColor="#00D2FF" />
           <stop offset="100%" stopColor="#38BDF8" />
         </linearGradient>
 
-        {/* Dynamic Trajectory Gradient with Emerald Profit/Index Accent */}
-        <linearGradient id="fxTrajectory" x1="15" y1="105" x2="105" y2="15" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#0284C7" stopOpacity="0.1" />
-          <stop offset="40%" stopColor="#00D2FF" />
-          <stop offset="85%" stopColor="#10B981" />
-          <stop offset="100%" stopColor="#34D399" />
+        {/* Luxury Gold Airline Winglet Accent */}
+        <linearGradient id="aitmGold" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#FDE68A" />
+          <stop offset="50%" stopColor="#F59E0B" />
+          <stop offset="100%" stopColor="#D97706" />
         </linearGradient>
 
-        {/* Wing Shading 3D Gradient */}
-        <linearGradient id="fxWing3D" x1="40" y1="30" x2="90" y2="90" gradientUnits="userSpaceOnUse">
+        {/* Facet Wing 3D Gradient */}
+        <linearGradient id="aitmWingFacet" x1="30" y1="30" x2="90" y2="90" gradientUnits="userSpaceOnUse">
           <stop offset="0%" stopColor="#38BDF8" />
-          <stop offset="50%" stopColor="#00D2FF" />
+          <stop offset="60%" stopColor="#00D2FF" />
           <stop offset="100%" stopColor="#0284C7" />
         </linearGradient>
 
-        {/* Gold Apex Flash */}
-        <linearGradient id="fxGoldFlash" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#FDE047" />
-          <stop offset="100%" stopColor="#F59E0B" />
-        </linearGradient>
-
-        {/* Glowing Drop Shadow */}
-        <filter id="fxShadowGlow" x="-20%" y="-20%" width="140%" height="140%">
-          <feDropShadow dx="0" dy="4" stdDeviation="4" floodColor="#00D2FF" floodOpacity="0.35" />
+        {/* Atmospheric Sonic Glow */}
+        <filter id="aitmGlow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="3" stdDeviation="3.5" floodColor="#00D2FF" floodOpacity="0.4" />
         </filter>
       </defs>
 
-      {/* ── 1. Aerodynamic Hex-Shield Base with Precision Glass Bevel ── */}
+      {/* ── Base Aerodynamic Rounded Shield ── */}
       <rect
         x="6"
         y="6"
         width="108"
         height="108"
-        rx="28"
-        fill="url(#fxNavyDeep)"
+        rx="26"
+        fill="url(#aitmNavy)"
         stroke="#1E4A78"
         strokeWidth="1.5"
       />
       <rect
-        x="7"
-        y="7"
-        width="106"
-        height="106"
-        rx="27"
-        stroke="url(#fxCyanElectric)"
+        x="7.5"
+        y="7.5"
+        width="105"
+        height="105"
+        rx="24.5"
+        stroke="url(#aitmCyan)"
         strokeWidth="1"
-        strokeOpacity="0.35"
+        strokeOpacity="0.3"
       />
 
-      {/* ── 2. Subtle Precision Radar / Latitude Coordinate Rings ── */}
-      <circle cx="60" cy="60" r="44" stroke="#00D2FF" strokeWidth="1" strokeDasharray="3 5" strokeOpacity="0.22" />
-      <circle cx="60" cy="60" r="28" stroke="#00D2FF" strokeWidth="0.8" strokeOpacity="0.15" />
-
-      {/* Cardinal Ticks */}
-      <line x1="60" y1="12" x2="60" y2="17" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeOpacity="0.7" />
-      <line x1="60" y1="103" x2="60" y2="108" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeOpacity="0.4" />
-      <line x1="12" y1="60" x2="17" y2="60" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeOpacity="0.4" />
-      <line x1="103" y1="60" x2="108" y2="60" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeOpacity="0.7" />
-
-      {/* ── 3. The Bold 'X' Cross-Vector Coordinate Geometry ── */}
-      {/* Downward X-Slash: Representing Lead-Time Horizon Convergence */}
+      {/* ── Subtle Compass Horizon Arc ── */}
       <path
-        d="M 28 28 L 92 92"
-        stroke="#1E4A78"
-        strokeWidth="4"
-        strokeLinecap="round"
+        d="M 22 76 C 34 52, 86 52, 98 76"
+        stroke="#00D2FF"
+        strokeWidth="1.2"
+        strokeDasharray="3 4"
+        strokeOpacity="0.3"
+      />
+
+      {/* ── The "M" Dual Aerodynamic Swept Wing Structure ── */}
+      {/* Left Wing Arch of M */}
+      <path
+        d="M 22 84 L 38 42 L 52 64 L 40 84 Z"
+        fill="#13365E"
+        stroke="#00D2FF"
+        strokeWidth="0.8"
         strokeOpacity="0.4"
       />
-
-      {/* Upward X-Slash: Laspeyres Index Exponential Surge Arc */}
+      {/* Right Wing Arch of M */}
       <path
-        d="M 22 94 C 36 94, 48 80, 60 60 C 72 40, 86 26, 98 18"
-        stroke="url(#fxTrajectory)"
-        strokeWidth="4.5"
+        d="M 98 84 L 82 42 L 68 64 L 80 84 Z"
+        fill="url(#aitmWingFacet)"
+        opacity="0.85"
+      />
+
+      {/* ── Gold Airline Horizon Stabilizer Bar ── */}
+      <path
+        d="M 24 84 L 96 84"
+        stroke="url(#aitmGold)"
+        strokeWidth="2.8"
         strokeLinecap="round"
       />
 
-      {/* ── 4. The Centerpiece: Hypersonic Stealth Delta Jet ── */}
-      <g filter="url(#fxShadowGlow)">
-        {/* Left Swept Wing (Shadow / Obsidian facet) */}
+      {/* ── The Master "A" Ascent Vector (Supersonic Aircraft Climbing to Zenith) ── */}
+      <g filter="url(#aitmGlow)">
+        {/* Left Delta Wing (Obsidian navy shade) */}
         <path
-          d="M 60 18 L 36 78 L 57 68 Z"
-          fill="#08182B"
+          d="M 60 16 L 36 74 L 57 65 Z"
+          fill="#081A30"
           stroke="#00D2FF"
-          strokeWidth="0.7"
-          strokeOpacity="0.4"
+          strokeWidth="0.8"
+          strokeOpacity="0.6"
         />
 
-        {/* Right Swept Wing (High-Altitude Electric Cyan facet) */}
+        {/* Right Delta Wing (Electric Azure illumination) */}
         <path
-          d="M 60 18 L 57 68 L 84 78 Z"
-          fill="url(#fxWing3D)"
+          d="M 60 16 L 57 65 L 84 74 Z"
+          fill="url(#aitmWingFacet)"
         />
 
-        {/* Titanium Centerline Spine Highlight */}
+        {/* Center Titanium Fuselage Ridge */}
         <path
-          d="M 60 18 L 58 69 L 60 75 L 62 69 Z"
+          d="M 60 16 L 58 66 L 60 72 L 62 66 Z"
           fill="#FFFFFF"
           opacity="0.95"
         />
 
-        {/* Jet Afterburner Propulsion Flare */}
-        <path
-          d="M 55 72 L 60 90 L 65 72 Z"
-          fill="url(#fxTrajectory)"
-          opacity="0.95"
-        />
+        {/* Gold Navigation Apex Beacon */}
+        <circle cx="60" cy="16" r="3.2" fill="#FFFFFF" />
+        <circle cx="60" cy="16" r="1.8" fill="url(#aitmGold)" />
 
-        {/* Supersonic Nose Apex Sensor Bead */}
-        <circle cx="60" cy="18" r="3.2" fill="#FFFFFF" />
-        <circle cx="60" cy="18" r="1.5" fill="url(#fxGoldFlash)" />
+        {/* Supersonic Afterburner Thrust Flare */}
+        <path
+          d="M 55 68 L 60 84 L 65 68 Z"
+          fill="url(#aitmCyan)"
+          opacity="0.9"
+        />
       </g>
 
-      {/* ── 5. Index Metric Nodes (T+1, T+15, T+45) ── */}
-      <circle cx="34" cy="88" r="3" fill="#0284C7" />
-      <circle cx="60" cy="60" r="3.5" fill="#00D2FF" />
-      <circle cx="90" cy="24" r="4.2" fill="#10B981" />
-      <circle cx="90" cy="24" r="8" fill="#10B981" fillOpacity="0.25" />
+      {/* ── Precision Flight Navigation Coordinates ── */}
+      <circle cx="36" cy="74" r="2.5" fill="url(#aitmGold)" />
+      <circle cx="84" cy="74" r="2.5" fill="#00D2FF" />
+      <circle cx="60" cy="84" r="3" fill="#FFFFFF" />
+      <circle cx="60" cy="84" r="6" fill="#00D2FF" fillOpacity="0.25" />
     </svg>
   );
 };
 
 export const Logo: React.FC<LogoProps> = ({
   size = 'md',
-  showSubtitle = false,
+  showSubtitle = true,
   showBadge = false,
   badgeText = '',
   className = '',
   iconOnly = false,
   onClick,
 }) => {
-  // Proportions tailored for visual impact
   const metrics = {
-    sm:   { mark: 36, title: '1.4rem', sub: '0.62rem', gap: 10, badgePad: '2px 7px', badgeFont: '0.62rem' },
-    md:   { mark: 46, title: '1.85rem', sub: '0.68rem', gap: 13, badgePad: '3px 9px', badgeFont: '0.72rem' },
-    lg:   { mark: 58, title: '2.4rem', sub: '0.76rem', gap: 16, badgePad: '4px 11px', badgeFont: '0.78rem' },
-    hero: { mark: 80, title: '4.2rem', sub: '0.92rem', gap: 22, badgePad: '6px 16px', badgeFont: '0.88rem' },
+    sm:   { mark: 36, title: '1.25rem', sub: '0.52rem', gap: 11, tracking: '0.12em', subTracking: '0.34em' },
+    md:   { mark: 46, title: '1.65rem', sub: '0.62rem', gap: 14, tracking: '0.14em', subTracking: '0.38em' },
+    lg:   { mark: 58, title: '2.2rem',  sub: '0.72rem', gap: 18, tracking: '0.15em', subTracking: '0.42em' },
+    hero: { mark: 80, title: '3.6rem',  sub: '0.95rem', gap: 24, tracking: '0.16em', subTracking: '0.46em' },
   }[size];
 
   return (
     <div
-      className={`farex-brand-logo farex-logo-${size} ${className}`}
+      className={`aitm-brand-logo aitm-logo-${size} ${className}`}
       onClick={onClick}
       style={{
         display: 'inline-flex',
@@ -196,94 +193,80 @@ export const Logo: React.FC<LogoProps> = ({
         textDecoration: 'none',
       }}
     >
-      {/* ── Precision Emblem ── */}
+      {/* ── Emblem Mark ── */}
       <div
-        className="farex-mark-container"
+        className="aitm-mark-container"
         style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
+          transition: 'all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)',
         }}
       >
         <LogoMark size={metrics.mark} />
       </div>
 
-      {/* ── Master Brand Logotype ── */}
+      {/* ── Master Typography Wordmark ── */}
       {!iconOnly && (
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, lineHeight: 1 }}>
-            {/* Custom High-Tech Wordmark */}
+            {/* Primary Airline Identity */}
             <span
-              className="farex-wordmark"
+              className="aitm-wordmark"
               style={{
                 fontSize: metrics.title,
                 fontWeight: 900,
                 fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-                letterSpacing: '-0.05em',
+                letterSpacing: metrics.tracking,
+                color: '#0C2C55',
                 display: 'inline-flex',
                 alignItems: 'baseline',
+                textTransform: 'uppercase',
               }}
             >
+              <span>AITM</span>
               <span
-                style={{
-                  color: '#0C2C55',
-                  fontWeight: 900,
-                  letterSpacing: '-0.04em',
-                }}
-              >
-                Fare
-              </span>
-              <span
-                className="farex-x-letter"
                 style={{
                   color: '#00D2FF',
                   background: 'linear-gradient(135deg, #00D2FF 0%, #0284C7 60%, #0C2C55 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   fontWeight: 950,
-                  fontStyle: 'italic',
-                  marginLeft: '1px',
+                  marginLeft: '4px',
                   display: 'inline-block',
-                  transform: 'skewX(-4deg)',
-                  filter: 'drop-shadow(0 2px 8px rgba(0, 210, 255, 0.4))',
                 }}
               >
-                X
+                .
               </span>
             </span>
 
-            {/* Live Status Pill Badge */}
-            {showBadge && (
+            {/* Optional Status Badge */}
+            {showBadge && badgeText && (
               <span
-                className="farex-badge-pill"
+                className="aitm-logo-badge"
                 style={{
-                  fontSize: metrics.badgeFont,
+                  fontSize: '0.65rem',
                   fontFamily: "'JetBrains Mono', monospace",
                   fontWeight: 700,
-                  padding: metrics.badgePad,
-                  borderRadius: 20,
-                  background: 'rgba(12, 44, 85, 0.07)',
+                  padding: '2.5px 8px',
+                  borderRadius: 16,
+                  background: 'rgba(12, 44, 85, 0.08)',
                   color: '#0C2C55',
                   border: '1px solid rgba(12, 44, 85, 0.16)',
                   letterSpacing: '0.05em',
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: 6,
-                  backdropFilter: 'blur(8px)',
-                  WebkitBackdropFilter: 'blur(8px)',
-                  boxShadow: '0 2px 6px rgba(12, 44, 85, 0.04)',
+                  gap: 5,
                 }}
               >
                 <span
                   style={{
-                    width: 6,
-                    height: 6,
+                    width: 5,
+                    height: 5,
                     borderRadius: '50%',
                     background: '#10B981',
-                    boxShadow: '0 0 8px #10B981',
+                    boxShadow: '0 0 6px #10B981',
                     display: 'inline-block',
-                    animation: 'farexPulse 2s infinite ease-in-out',
                   }}
                 />
                 {badgeText}
@@ -291,22 +274,22 @@ export const Logo: React.FC<LogoProps> = ({
             )}
           </div>
 
-          {/* Subtitle Branding */}
+          {/* Luxury Airline Sub-Wordmark */}
           {showSubtitle && (
             <span
-              className="farex-subtitle-text"
+              className="aitm-subline"
               style={{
                 fontSize: metrics.sub,
                 fontWeight: 800,
                 fontFamily: "'Inter', sans-serif",
                 textTransform: 'uppercase',
-                letterSpacing: size === 'hero' ? '0.28em' : '0.18em',
+                letterSpacing: metrics.subTracking,
                 color: 'var(--sub)',
                 marginTop: size === 'hero' ? 8 : 3,
                 display: 'block',
               }}
             >
-              National Airfare Price Index &amp; Aviation Intelligence
+              A I R L I N E S
             </span>
           )}
         </div>

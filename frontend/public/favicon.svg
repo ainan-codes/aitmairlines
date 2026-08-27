@@ -1,46 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
   <defs>
-    <linearGradient id="favNavy" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stopColor="#08182B" />
-      <stop offset="50%" stopColor="#0C2C55" />
-      <stop offset="100%" stopColor="#173D68" />
+    <linearGradient id="favNavyAitm" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#081A30" />
+      <stop offset="60%" stopColor="#0C2C55" />
+      <stop offset="100%" stopColor="#19426D" />
     </linearGradient>
-    <linearGradient id="favCyan" x1="10" y1="110" x2="110" y2="10" gradientUnits="userSpaceOnUse">
+    <linearGradient id="favCyanAitm" x1="15" y1="105" x2="105" y2="15" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stopColor="#0284C7" />
-      <stop offset="45%" stopColor="#00D2FF" />
+      <stop offset="50%" stopColor="#00D2FF" />
       <stop offset="100%" stopColor="#38BDF8" />
     </linearGradient>
-    <linearGradient id="favTraj" x1="15" y1="105" x2="105" y2="15" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stopColor="#0284C7" stopOpacity="0.2" />
-      <stop offset="50%" stopColor="#00D2FF" />
-      <stop offset="100%" stopColor="#10B981" />
+    <linearGradient id="favGoldAitm" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#FDE68A" />
+      <stop offset="100%" stopColor="#D97706" />
     </linearGradient>
   </defs>
 
-  <!-- Hex-Shield Background -->
-  <rect x="6" y="6" width="108" height="108" rx="28" fill="url(#favNavy)" stroke="#00D2FF" stroke-width="1.5" stroke-opacity="0.4" />
+  <!-- Aerodynamic Shield Background -->
+  <rect x="6" y="6" width="108" height="108" rx="26" fill="url(#favNavyAitm)" stroke="#00D2FF" stroke-width="1.5" stroke-opacity="0.4" />
 
-  <!-- Radar Coordinates -->
-  <circle cx="60" cy="60" r="44" stroke="#00D2FF" stroke-width="1" stroke-dasharray="3 5" stroke-opacity="0.25" />
+  <!-- "M" Swept Wings Base -->
+  <path d="M 22 84 L 38 44 L 52 64 L 40 84 Z" fill="#13365E" />
+  <path d="M 98 84 L 82 44 L 68 64 L 80 84 Z" fill="url(#favCyanAitm)" opacity="0.85" />
+  <path d="M 24 84 L 96 84" stroke="url(#favGoldAitm)" stroke-width="3" stroke-linecap="round" />
 
-  <!-- Trajectory Arc -->
-  <path d="M 22 94 C 36 94, 48 80, 60 60 C 72 40, 86 26, 98 18" stroke="url(#favTraj)" stroke-width="5" stroke-linecap="round" />
-
-  <!-- Supersonic Delta Jet -->
+  <!-- "A" Delta Supersonic Aircraft -->
   <g>
-    <!-- Left Wing -->
-    <path d="M 60 18 L 36 78 L 57 68 Z" fill="#08182B" stroke="#00D2FF" stroke-width="0.8" />
-    <!-- Right Wing -->
-    <path d="M 60 18 L 57 68 L 84 78 Z" fill="url(#favCyan)" />
-    <!-- Titanium Spine -->
-    <path d="M 60 18 L 58 69 L 60 75 L 62 69 Z" fill="#FFFFFF" />
-    <!-- Jet Flare -->
-    <path d="M 55 72 L 60 90 L 65 72 Z" fill="url(#favTraj)" opacity="0.9" />
-    <!-- Nose Apex -->
-    <circle cx="60" cy="18" r="3.5" fill="#FFFFFF" />
+    <path d="M 60 16 L 36 74 L 57 65 Z" fill="#081A30" stroke="#00D2FF" stroke-width="0.8" />
+    <path d="M 60 16 L 57 65 L 84 74 Z" fill="url(#favCyanAitm)" />
+    <path d="M 60 16 L 58 66 L 60 72 L 62 66 Z" fill="#FFFFFF" />
+    <circle cx="60" cy="16" r="3.2" fill="#FFFFFF" />
+    <circle cx="60" cy="16" r="1.8" fill="url(#favGoldAitm)" />
+    <path d="M 55 68 L 60 84 L 65 68 Z" fill="url(#favCyanAitm)" opacity="0.9" />
   </g>
 
-  <!-- Metric Nodes -->
-  <circle cx="60" cy="60" r="3.5" fill="#00D2FF" />
-  <circle cx="90" cy="24" r="4.5" fill="#10B981" />
+  <!-- Gold & Cyan Coordinates -->
+  <circle cx="36" cy="74" r="2.5" fill="url(#favGoldAitm)" />
+  <circle cx="84" cy="74" r="2.5" fill="#00D2FF" />
 </svg>

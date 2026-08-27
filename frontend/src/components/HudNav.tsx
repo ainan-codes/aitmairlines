@@ -38,7 +38,7 @@ const HudNav: React.FC = () => {
   return (
     <nav className="hud-nav">
       {/* Logo */}
-      <Logo size="sm" onClick={() => navigate('/dashboard')} className="hud-logo-clickable" />
+      <Logo size="sm" showSubtitle onClick={() => navigate('/dashboard')} className="hud-logo-clickable" />
 
       {/* Tabs */}
       <div className="hud-nav-tabs">

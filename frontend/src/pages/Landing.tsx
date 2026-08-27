@@ -37,7 +37,7 @@ const Landing: React.FC = () => {
     <div className="landing">
       {/* Top bar */}
       <div style={{ width: '100%', maxWidth: 1100, display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-        <Logo size="md" />
+        <Logo size="md" showSubtitle />
         <button className="btn btn-primary" onClick={() => navigate('/dashboard')}>
           ENTER FLIGHT DECK →
         </button>
@@ -51,10 +51,10 @@ const Landing: React.FC = () => {
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
         <div style={{ marginBottom: 18 }}>
-          <Logo size="hero" />
+          <Logo size="hero" showSubtitle />
         </div>
-        <div className="landing-subtitle" style={{ marginTop: 8 }}>
-          National Airfare Price Index &amp; Aviation Intelligence
+        <div className="landing-subtitle" style={{ marginTop: 14 }}>
+          National Aviation Intelligence &amp; Airfare Price Index
         </div>
         <div className="landing-desc">
           A real-time aviation intelligence platform utilizing modified Laspeyres passenger-weighted
