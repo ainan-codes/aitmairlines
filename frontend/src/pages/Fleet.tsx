@@ -12,7 +12,8 @@ const CARRIERS = [
     name: 'IndiGo', fullName: 'InterGlobe Aviation Ltd.',
     color: '#1B67B2', accent: '#00AEEF', textColor: '#fff',
     bannerBg: 'linear-gradient(120deg, #1B67B2 0%, #134E8A 50%, #0D3B6C 100%)',
-    logo: `${LOGO_BASE}/IndiGo_Clean.png`,
+    logo: `${LOGO_BASE}/IndiGo-Logo.png`,
+    bannerLogo: `${LOGO_BASE}/IndiGo_Clean.png`,
     domain: 'goindigo.in',
     rating: 'CHEAPEST', ratingColor: '#10B981',
     tagline: "India's dominant LCC. Pure capacity game.",
@@ -242,26 +243,59 @@ const Fleet: React.FC = () => {
         {CARRIERS.map((a, i) => (
           <button key={a.code} onClick={() => setSelected(i)}
             style={{
-              display: 'flex', alignItems: 'center', gap: 10,
-              padding: '12px 20px', borderRadius: 12, cursor: 'pointer',
+              display: 'flex', alignItems: 'center', gap: 12,
+              padding: '10px 18px', borderRadius: 14, cursor: 'pointer',
               border: `2px solid ${selected === i ? a.color : (dark ? '#296374' : '#B7C7CC')}`,
-              background: selected === i ? `linear-gradient(135deg, ${a.color}22, ${a.accent}11)` : 'transparent',
+              background: selected === i ? (dark ? `${a.color}28` : `linear-gradient(135deg, ${a.color}15, #FFFFFF 90%)`) : (dark ? '#163a63' : '#FFFFFF'),
               transition: 'all 0.25s',
-              boxShadow: selected === i ? `0 0 20px ${a.color}30` : 'none',
+              boxShadow: selected === i ? `0 4px 20px ${a.color}35` : '0 2px 8px rgba(0,0,0,0.04)',
             }}>
-            {!logoErrors[a.code] ? (
-              <img
-                src={a.logo}
-                alt={a.name}
-                style={{ width: 28, height: 28, objectFit: 'contain', borderRadius: 4 }}
-                onError={() => setLogoErrors(prev => ({ ...prev, [a.code]: true }))}
-              />
-            ) : (
-              <div style={{ width: 28, height: 28, background: a.color, borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.6rem', fontWeight: 900, color: '#fff' }}>{a.code}</div>
-            )}
+            {/* High-visibility contrast container for carrier logo */}
+            <div style={{
+              width: 58,
+              height: 34,
+              borderRadius: 8,
+              background: '#FFFFFF',
+              border: '1px solid rgba(0, 0, 0, 0.12)',
+              boxShadow: '0 2px 6px rgba(0, 0, 0, 0.08)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '3px 6px',
+              flexShrink: 0,
+              overflow: 'hidden',
+            }}>
+              {!logoErrors[a.code] ? (
+                <img
+                  src={a.logo}
+                  alt={a.name}
+                  style={{
+                    maxWidth: '100%',
+                    maxHeight: '100%',
+                    objectFit: 'contain',
+                  }}
+                  onError={() => setLogoErrors(prev => ({ ...prev, [a.code]: true }))}
+                />
+              ) : (
+                <div style={{
+                  width: '100%',
+                  height: '100%',
+                  background: a.color,
+                  borderRadius: 4,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '0.72rem',
+                  fontWeight: 900,
+                  color: '#fff',
+                }}>
+                  {a.code}
+                </div>
+              )}
+            </div>
             <div style={{ textAlign: 'left' }}>
-              <div style={{ fontSize: '0.88rem', fontWeight: 700, color: selected === i ? a.color : 'var(--text)' }}>{a.name}</div>
-              <div style={{ fontSize: '0.68rem', color: 'var(--sub)' }}>{a.fleet} aircraft</div>
+              <div style={{ fontSize: '0.88rem', fontWeight: 800, color: selected === i ? a.color : 'var(--text)' }}>{a.name}</div>
+              <div style={{ fontSize: '0.68rem', color: 'var(--sub)', fontWeight: 600 }}>{a.fleet} aircraft</div>
             </div>
           </button>
         ))}
@@ -287,32 +321,47 @@ const Fleet: React.FC = () => {
             pointerEvents: 'none',
           }} />
 
-          {/* LEFT — seamlessly blended floating logo */}
+          {/* LEFT — seamlessly blended floating logo with glass contrast badge */}
           <div style={{
             width: 280, minHeight: '100%', flexShrink: 0,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             padding: '16px 24px',
             position: 'relative',
           }}>
-            {!logoErrors[c.code] ? (
-              <img
-                src={c.logo}
-                alt={`${c.name} logo`}
-                style={{
-                  maxWidth: 240, maxHeight: 115,
-                  objectFit: 'contain',
-                  filter: 'drop-shadow(0 6px 20px rgba(0,0,0,0.32))',
-                }}
-                onError={() => setLogoErrors(prev => ({ ...prev, [c.code]: true }))}
-              />
-            ) : (
-              /* Fallback IATA badge if logo fails to load */
-              <div style={{
-                fontSize: '2.8rem', fontWeight: 900, color: '#fff',
-                fontFamily: 'JetBrains Mono,monospace', letterSpacing: 4,
-                textShadow: '0 2px 12px rgba(0,0,0,0.4)',
-              }}>{c.code}</div>
-            )}
+            <div style={{
+              background: 'rgba(255, 255, 255, 0.18)',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+              borderRadius: 16,
+              padding: '12px 24px',
+              border: '1px solid rgba(255, 255, 255, 0.35)',
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.25)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              maxWidth: 240,
+              maxHeight: 110,
+            }}>
+              {!logoErrors[c.code] ? (
+                <img
+                  src={c.bannerLogo || c.logo}
+                  alt={`${c.name} logo`}
+                  style={{
+                    maxWidth: 200, maxHeight: 85,
+                    objectFit: 'contain',
+                    filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.3))',
+                  }}
+                  onError={() => setLogoErrors(prev => ({ ...prev, [c.code]: true }))}
+                />
+              ) : (
+                /* Fallback IATA badge if logo fails to load */
+                <div style={{
+                  fontSize: '2.8rem', fontWeight: 900, color: '#fff',
+                  fontFamily: 'JetBrains Mono,monospace', letterSpacing: 4,
+                  textShadow: '0 2px 12px rgba(0,0,0,0.4)',
+                }}>{c.code}</div>
+              )}
+            </div>
           </div>
 
           {/* RIGHT — airline name, codes, rating */}
